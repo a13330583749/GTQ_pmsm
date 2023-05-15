@@ -1,4 +1,3 @@
-#include "PMSM_sim.h"
 namespace PanJL{
 struct PMSM_state_varibles
 {
@@ -6,6 +5,19 @@ struct PMSM_state_varibles
     double Iq;
     double wr;
     double theta_ele;
+    //play a trick, the result is operator* of 'struct PMSM_state_dvaribles'
+    struct PMSM_state_varibles operator+(const struct PMSM_state_varibles& rhs);
+};
+
+struct PMSM_state_dvaribles
+{
+    double dId;
+    double dIq;
+    double dwr;
+    double dtheta_ele;
+    struct PMSM_state_varibles operator*(const double& samlpe_times);
+    struct PMSM_state_dvaribles& operator*(const int& times);
+    struct PMSM_state_dvaribles& operator+(const struct PMSM_state_dvaribles&rhs);
 };
 
 class PMSM
@@ -22,13 +34,15 @@ private:
 
     double J; //转动惯量
     double Pn; //极对数
-
-    void PMSM_differential_equation(double ud, double uq);
+    double Bm;
+    struct PMSM_state_dvaribles PMSM_differential_equation(double& ud, double& uq, 
+                         const   struct PMSM_state_varibles& states);
 public:
     PMSM() = default;
-    int init_PMSM(double ld, double lq, double f, double rs, double tl, double pn, double j){};
-    int set_state_PMSM(double id_, double iq_, double wr_, double theta_ele_){};
-    int ode45(double ud, double uq);
-    struct PMSM_state_varibles get_PMSM_state_varibles()    {return state_varibles;}
+    int init_PMSM(const double& ld, const double& lq, const double& f, const double& Bm,
+                    const double& rs, const double& tl, const double& pn, const double& j);
+    int set_state_PMSM(double id_, double iq_, double wr_, double theta_ele_);
+    void ode45(double& ud, double& uq);
+    struct PMSM_state_varibles get_PMSM_state_varibles()  {return state_varibles;}
 };
 }
