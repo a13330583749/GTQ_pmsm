@@ -1,3 +1,6 @@
+#ifndef PMSM_H
+#define PMSM_H
+
 #include <vector>
 namespace PanJL{
 struct PMSM_state_varibles
@@ -48,3 +51,4 @@ public:
     const std::vector<double> out_iabc();
 };
 }
+#endif

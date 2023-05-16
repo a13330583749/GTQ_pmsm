@@ -1,3 +1,6 @@
+#ifndef INVERTER_H
+#define INVERTER_H
+
 #include <functional>
 namespace PanJL{
 
@@ -23,3 +26,5 @@ public:
 };
 
 }
+
+#endif
