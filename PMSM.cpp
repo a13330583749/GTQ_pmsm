@@ -60,8 +60,9 @@ struct PMSM_state_dvaribles PMSM::PMSM_differential_equation(double& ud, double&
     return result;
 }   
 
-void PMSM::ode45(double& ud, double& uq)
+void PMSM::ode45(double& ud, double& uq, const double& times)
 {
+    double DT = times/ ODE45_M;
     struct PMSM_state_varibles& temp = state_varibles;
     for(int _=0; _< ODE45_M; _++){
         auto k1 = PMSM_differential_equation(ud, uq, temp);
