@@ -1,3 +1,4 @@
+#include <vector>
 namespace PanJL{
 struct PMSM_state_varibles
 {
@@ -44,5 +45,6 @@ public:
     int set_state_PMSM(double id_, double iq_, double wr_, double theta_ele_);
     void ode45(double& ud, double& uq);
     struct PMSM_state_varibles get_PMSM_state_varibles()  {return state_varibles;}
+    const std::vector<double> out_iabc();
 };
 }

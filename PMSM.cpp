@@ -86,4 +86,15 @@ int PMSM::init_PMSM(const double& ld, const double& lq, const double& f, const d
     return 1;
 }
 
+const std::vector<double> PMSM::out_iabc()
+{
+    std::vector<double> Iabc(3);
+    double Ialpha = dq2alpha(state_varibles.Id, state_varibles.Iq, state_varibles.theta_ele);
+    double Ibeta  = dq2beta(state_varibles.Id, state_varibles.Iq, state_varibles.theta_ele);
+    Iabc[0] = alphabeta2a(Ialpha, Ibeta);
+    Iabc[1] = alphabeta2b(Ialpha, Ibeta);
+    Iabc[2] = alphabeta2c(Ialpha, Ibeta);
+    return Iabc;
+}
+
 }
