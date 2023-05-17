@@ -37,14 +37,15 @@ private:
     struct PMSM_state_varibles state_varibles;    
 
     double J; //转动惯量
-    double Pn; //极对数
+    int Pn; //极对数
     double Bm;
+protected:
     struct PMSM_state_dvaribles PMSM_differential_equation(double& ud, double& uq, 
-                         const   struct PMSM_state_varibles& states);
+                         const struct PMSM_state_varibles& states);
 public:
     PMSM() = default;
     int init_PMSM(const double& ld, const double& lq, const double& f, const double& Bm,
-                    const double& rs, const double& tl, const double& pn, const double& j);
+                    const double& rs, const double& tl, const int& pn, const double& j);
     int set_state_PMSM(double id_, double iq_, double wr_, double theta_ele_);
     void ode45(double& ud, double& uq, const double& times);
     struct PMSM_state_varibles get_PMSM_state_varibles()  {return state_varibles;}

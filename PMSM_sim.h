@@ -2,9 +2,9 @@
 #define PMSM_sim
 #include <utility>
 #include <iostream>
-#include "PMSM.h"
-#include "inverter.h"
+#include "system.h"
 #include "speed_controller.h"
+#include "current_controller.h"
 #include <cmath>
 const auto abc2alpha = [](double a, double b, double c){return 2 * (a - 0.5 *b - 0.5 * c) / 3;};
 const auto abc2beta = [](double a, double b, double c){return 2 * (std::sqrt(3))/ 2 * (b -  c) / 3 ;};
@@ -19,11 +19,23 @@ const auto dq2beta = [](double d, double q, double theta){return std::sin(theta)
 // const auto abc2d = [](const double&a, const double&b, const double& c, const double& theta)
 //                     {}
 
+    // pmsm参数：
+const double Ld_ = 7e-3;
+const double Lq_ = 7e-3;
+const double F_ = 0.125;
+const double Rs_ = 2.98;
+const double TL_ = 0;
+const double Bm_ = 1.1e-4;
+const double J_ = 4.7e-5;
+const int Pn_ = 2;
+
 namespace PanJL{
     #define SparseInverter ture
-
+    
     const double Ts = 25e-6;
     const int ODE45_M = 5;
     // const double DT = Ts/ODE45_M;
+
+
 }
 #endif

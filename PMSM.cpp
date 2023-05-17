@@ -74,7 +74,7 @@ void PMSM::ode45(double& ud, double& uq, const double& times)
 }
 
 int PMSM::init_PMSM(const double& ld, const double& lq, const double& f, const double& bm,
-                    const double& rs, const double& tl, const double& pn, const double& j)
+                    const double& rs, const double& tl, const int& pn, const double& j)
 {
     Ld = ld;
     Lq = lq;

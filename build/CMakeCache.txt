@@ -144,7 +144,7 @@ CMAKE_PROJECT_DESCRIPTION:STATIC=
 CMAKE_PROJECT_HOMEPAGE_URL:STATIC=
 
 //Value Computed by CMake
-CMAKE_PROJECT_NAME:STATIC=Project
+CMAKE_PROJECT_NAME:STATIC=pmsm
 
 //Path to a program.
 CMAKE_RANLIB:FILEPATH=/usr/bin/ranlib
@@ -216,6 +216,15 @@ Project_IS_TOP_LEVEL:STATIC=ON
 
 //Value Computed by CMake
 Project_SOURCE_DIR:STATIC=/home/gtq/GTQ_pmsm
+
+//Value Computed by CMake
+pmsm_BINARY_DIR:STATIC=/home/gtq/GTQ_pmsm/build
+
+//Value Computed by CMake
+pmsm_IS_TOP_LEVEL:STATIC=ON
+
+//Value Computed by CMake
+pmsm_SOURCE_DIR:STATIC=/home/gtq/GTQ_pmsm
 
 
 ########################

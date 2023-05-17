@@ -1,3 +1,5 @@
-cmake_minimum_required(3.1)
+cmake_minimum_required(VERSION 3.0)
 
-add_subdirectory()
+project(pmsm)
+
+add_executable(PMSM ./example/test_PMSM_model.cpp current_controller.cpp PMSM.cpp system.cpp inverter.cpp)

@@ -1,4 +1,4 @@
-#include "system.h"
+#include "PMSM_sim.h"
 namespace PanJL{
 std::vector<double> Plant::updata(std::vector<int>inputs, const double& times)
 {
