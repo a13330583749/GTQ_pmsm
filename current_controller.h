@@ -9,7 +9,7 @@ class FCSMPCer: public PMSM
 {
 private:
     struct PMSM_state_varibles predict_states;
-
+    std::vector<double> predict_i(const double& ud, const double& uq);
 
 public:
     std::vector<int> controller(const double& Id_ref, const double& Iq_ref, const double& theta_ele);
