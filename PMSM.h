@@ -26,7 +26,7 @@ struct PMSM_state_dvaribles
 
 class PMSM
 {
-private:
+protected:
     double Lq;
     double Ld;
     double F; //电机磁链
@@ -39,20 +39,23 @@ private:
     double J; //转动惯量
     int Pn; //极对数
     double Bm;
+
 protected:
     struct PMSM_state_dvaribles PMSM_differential_equation(double& ud, double& uq, 
                          const struct PMSM_state_varibles& states);
+    inline const double& get_id(){return state_varibles.Id;}
+    inline const double& get_iq(){return state_varibles.Iq;}
+    inline const double& get_wr(){return state_varibles.wr;}
+    inline const double& get_ele_theta(){return state_varibles.theta_ele;}
+
 public:
     PMSM() = default;
     int init_PMSM(const double& ld, const double& lq, const double& f, const double& Bm,
                     const double& rs, const double& tl, const int& pn, const double& j);
     int set_state_PMSM(double id_, double iq_, double wr_, double theta_ele_);
     void ode45(double& ud, double& uq, const double& times);
-    struct PMSM_state_varibles get_PMSM_state_varibles()  {return state_varibles;}
-    const double& get_ele_theta(){return state_varibles.theta_ele;}
+    struct PMSM_state_varibles& get_PMSM_state_varibles()  {return state_varibles;}
     const std::vector<double> out_iabc();
-    const double& get_id(){return state_varibles.Id;}
-    const double& get_iq(){return state_varibles.Iq;}
 };
 }
 #endif

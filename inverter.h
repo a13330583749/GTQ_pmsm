@@ -12,11 +12,13 @@ private:
     int Sta;
     int Stb;
     int Stc;
-    double Vdc;
-    double u0;
+
+    
     double u0_differential_equation(const double&, const double&, const double&);
     double C;
-
+protected:
+    double Vdc;
+    double u0;
 public:
     std::function<int(int)> Sm = [this](int Sabc){return Sc1 * Sabc + (Sabc - 1) * Sc2;};
     std::function<double(int)> Uabc = [this](int Sabc) -> double {return Sm(Sabc) * Vdc / 2 - Sm(Sabc) * Sm(Sabc) * u0;};
