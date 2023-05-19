@@ -1,0 +1,1 @@
+/usr/bin/g++ -Wall  -g -g -rdynamic CMakeFiles/bool_test.dir/example/bool_test.cpp.o -o bool_test 

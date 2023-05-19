@@ -50,7 +50,7 @@ protected:
 
 public:
     PMSM() = default;
-    int init_PMSM(const double& ld, const double& lq, const double& f, const double& Bm,
+    bool init_PMSM(const double& ld, const double& lq, const double& f, const double& Bm,
                     const double& rs, const double& tl, const int& pn, const double& j);
     int set_state_PMSM(double id_, double iq_, double wr_, double theta_ele_);
     void ode45(double& ud, double& uq, const double& times);

@@ -15,7 +15,8 @@
 					"source" : ".",
 					"targetIndexes" : 
 					[
-						0
+						0,
+						1
 					]
 				}
 			],
@@ -30,7 +31,8 @@
 					"name" : "pmsm",
 					"targetIndexes" : 
 					[
-						0
+						0,
+						1
 					]
 				}
 			],
@@ -39,8 +41,15 @@
 				{
 					"directoryIndex" : 0,
 					"id" : "PMSM::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-PMSM-Debug-aa31047975a890d632af.json",
+					"jsonFile" : "target-PMSM-Debug-4a3bb390aad369dc96b3.json",
 					"name" : "PMSM",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "bool_test::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-bool_test-Debug-2ed986c93042096305be.json",
+					"name" : "bool_test",
 					"projectIndex" : 0
 				}
 			]

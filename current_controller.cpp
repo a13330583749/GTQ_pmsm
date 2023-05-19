@@ -22,6 +22,7 @@ std::vector<int> FCSMPCer::controller(const double &Id_ref, const double &Iq_ref
     double Ialpha = dq2alpha(Id_ref, Iq_ref, theta_ele);
     double Ibeta  = dq2beta(Id_ref, Iq_ref, theta_ele);
     */
+    std::shared_ptr<std::vector<int>> ptr = std::make_shared<std::vector<int>>(std::initializer_list<int>{1, 1, 1});
     std::vector<int> result_vir_output{0,0,0};
     double result_value = DBL_MAX ;
     updata_pmsm_model(Iabc, wr, theta_ele, u0_input);
@@ -32,10 +33,15 @@ std::vector<int> FCSMPCer::controller(const double &Id_ref, const double &Iq_ref
                 predict_i_updata(abc2alpha(i*Vdc/2,j*Vdc/2,k*Vdc/2), abc2beta(i*Vdc/2,j*Vdc/2,k*Vdc/2), times);
                 if( result_value > ((Id_ref - Idq_predict[0])*(Id_ref - Idq_predict[0]) +  (Iq_ref - Idq_predict[1])*(Iq_ref - Idq_predict[1]))){
                     result_vir_output = {i, j, k};
-                    result_value > ((Id_ref - Idq_predict[0])*(Id_ref - Idq_predict[0]) +  (Iq_ref - Idq_predict[1])*(Iq_ref - Idq_predict[1]));
+                    result_value = ((Id_ref - Idq_predict[0])*(Id_ref - Idq_predict[0]) +  (Iq_ref - Idq_predict[1])*(Iq_ref - Idq_predict[1]));
                 }
             }
         }
+    }
+    // use the medium voltage vector
+    if(result_vir_output[0] + result_vir_output[1] + result_vir_output[2] == 0 
+        && result_vir_output[0] + result_vir_output[1] != 0 ){
+
     }
     return result_vir_output;
 }
@@ -49,14 +55,11 @@ void FCSMPCer::updata_pmsm_model(const std::vector<double>& Iabc, const double& 
     u0 = u0_;
 }
 
-FCSMPCer::FCSMPCer(double vdc, double c): Plant(vdc, c)
-{
-    Idq_predict.reserve(2);
-}
 
-std::vector<int> FCSMPCer::Voltage_output_mapping(const std::vector<int>& controller_outputs)
-{
+
+// std::vector<int> FCSMPCer::Voltage_output_mapping(const std::vector<int>& controller_outputs)
+// {
     
-}
+// }
 
 }

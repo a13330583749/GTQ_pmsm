@@ -129,6 +129,19 @@ PMSM/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/PMSM.dir/build.make CMakeFiles/PMSM.dir/build
 .PHONY : PMSM/fast
 
+#=============================================================================
+# Target rules for targets named bool_test
+
+# Build rule for target.
+bool_test: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 bool_test
+.PHONY : bool_test
+
+# fast build rule for target.
+bool_test/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/bool_test.dir/build.make CMakeFiles/bool_test.dir/build
+.PHONY : bool_test/fast
+
 PMSM.o: PMSM.cpp.o
 .PHONY : PMSM.o
 
@@ -176,6 +189,30 @@ current_controller.s: current_controller.cpp.s
 current_controller.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/PMSM.dir/build.make CMakeFiles/PMSM.dir/current_controller.cpp.s
 .PHONY : current_controller.cpp.s
+
+example/bool_test.o: example/bool_test.cpp.o
+.PHONY : example/bool_test.o
+
+# target to build an object file
+example/bool_test.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/bool_test.dir/build.make CMakeFiles/bool_test.dir/example/bool_test.cpp.o
+.PHONY : example/bool_test.cpp.o
+
+example/bool_test.i: example/bool_test.cpp.i
+.PHONY : example/bool_test.i
+
+# target to preprocess a source file
+example/bool_test.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/bool_test.dir/build.make CMakeFiles/bool_test.dir/example/bool_test.cpp.i
+.PHONY : example/bool_test.cpp.i
+
+example/bool_test.s: example/bool_test.cpp.s
+.PHONY : example/bool_test.s
+
+# target to generate assembly for a file
+example/bool_test.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/bool_test.dir/build.make CMakeFiles/bool_test.dir/example/bool_test.cpp.s
+.PHONY : example/bool_test.cpp.s
 
 example/test_PMSM_model.o: example/test_PMSM_model.cpp.o
 .PHONY : example/test_PMSM_model.o
@@ -258,12 +295,16 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... PMSM"
+	@echo "... bool_test"
 	@echo "... PMSM.o"
 	@echo "... PMSM.i"
 	@echo "... PMSM.s"
 	@echo "... current_controller.o"
 	@echo "... current_controller.i"
 	@echo "... current_controller.s"
+	@echo "... example/bool_test.o"
+	@echo "... example/bool_test.i"
+	@echo "... example/bool_test.s"
 	@echo "... example/test_PMSM_model.o"
 	@echo "... example/test_PMSM_model.i"
 	@echo "... example/test_PMSM_model.s"

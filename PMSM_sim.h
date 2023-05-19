@@ -8,6 +8,7 @@
 #include <cmath>
 // #include <climits>
 #include <cfloat>
+#include <memory>
 const auto abc2alpha = [](double a, double b, double c){return 2 * (a - 0.5 *b - 0.5 * c) / 3;};
 const auto abc2beta = [](double a, double b, double c){return 2 * (std::sqrt(3))/ 2 * (b -  c) / 3 ;};
 const auto alphabeta2a = [](double alpha, double beta){return 2 /3 * alpha;};
