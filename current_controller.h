@@ -27,7 +27,7 @@ private:
     // const std::unordered_map<std::vector<int>, std::vector<double>> Uabc2alphabeta = {
     //     {std::vector<int>{0,0,0}, }
     // };
-
+    // if flag is true, control is once, else(false) control two times
     bool flag;//need one or two times control
     std::vector<double> Idq_predict;
     //这个采用单步预测，直接输出预测得到的电流
@@ -38,7 +38,7 @@ private:
 public:
     FCSMPCer(double vdc, double c): Plant(vdc, c), flag(true){Idq_predict.resize(2);}   
     // std::vector<double> get_i_alpha_beta(const std::vector<double>& Iabc, const double& wr, const double& ele_theta);
-    std::vector<int> controller(const double& Id_ref, const double& Iq_ref, const double& theta_ele,
+    std::shared_ptr<std::vector<std::vector<int>>> controller(const double& Id_ref, const double& Iq_ref, const double& theta_ele,
                                 const std::vector<double>& Iabc, const double& wr, const double& times,
                                 const double& u0_input);
     

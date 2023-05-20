@@ -2,6 +2,7 @@
 namespace PanJL{
 void sparse_inverter::set_igbt(const std::vector<int>& inputs)
 {
+    // 在这里可知u[1-5]代表的各个数值
     Sc1 = inputs[0];
     Sc2 = inputs[1];
     Sta = inputs[2];
