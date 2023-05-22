@@ -117,174 +117,161 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named PMSM
+# Target rules for targets named onestep_without_delay
 
 # Build rule for target.
-PMSM: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 PMSM
-.PHONY : PMSM
+onestep_without_delay: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 onestep_without_delay
+.PHONY : onestep_without_delay
 
 # fast build rule for target.
-PMSM/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/PMSM.dir/build.make CMakeFiles/PMSM.dir/build
-.PHONY : PMSM/fast
+onestep_without_delay/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/onestep_without_delay.dir/build.make CMakeFiles/onestep_without_delay.dir/build
+.PHONY : onestep_without_delay/fast
 
-#=============================================================================
-# Target rules for targets named bool_test
-
-# Build rule for target.
-bool_test: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 bool_test
-.PHONY : bool_test
-
-# fast build rule for target.
-bool_test/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/bool_test.dir/build.make CMakeFiles/bool_test.dir/build
-.PHONY : bool_test/fast
-
-PMSM.o: PMSM.cpp.o
-.PHONY : PMSM.o
+example/onestep_without_delay.o: example/onestep_without_delay.cpp.o
+.PHONY : example/onestep_without_delay.o
 
 # target to build an object file
-PMSM.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/PMSM.dir/build.make CMakeFiles/PMSM.dir/PMSM.cpp.o
-.PHONY : PMSM.cpp.o
+example/onestep_without_delay.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/onestep_without_delay.dir/build.make CMakeFiles/onestep_without_delay.dir/example/onestep_without_delay.cpp.o
+.PHONY : example/onestep_without_delay.cpp.o
 
-PMSM.i: PMSM.cpp.i
-.PHONY : PMSM.i
+example/onestep_without_delay.i: example/onestep_without_delay.cpp.i
+.PHONY : example/onestep_without_delay.i
 
 # target to preprocess a source file
-PMSM.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/PMSM.dir/build.make CMakeFiles/PMSM.dir/PMSM.cpp.i
-.PHONY : PMSM.cpp.i
+example/onestep_without_delay.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/onestep_without_delay.dir/build.make CMakeFiles/onestep_without_delay.dir/example/onestep_without_delay.cpp.i
+.PHONY : example/onestep_without_delay.cpp.i
 
-PMSM.s: PMSM.cpp.s
-.PHONY : PMSM.s
+example/onestep_without_delay.s: example/onestep_without_delay.cpp.s
+.PHONY : example/onestep_without_delay.s
 
 # target to generate assembly for a file
-PMSM.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/PMSM.dir/build.make CMakeFiles/PMSM.dir/PMSM.cpp.s
-.PHONY : PMSM.cpp.s
+example/onestep_without_delay.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/onestep_without_delay.dir/build.make CMakeFiles/onestep_without_delay.dir/example/onestep_without_delay.cpp.s
+.PHONY : example/onestep_without_delay.cpp.s
 
-current_controller.o: current_controller.cpp.o
-.PHONY : current_controller.o
+src/PMSM.o: src/PMSM.cpp.o
+.PHONY : src/PMSM.o
 
 # target to build an object file
-current_controller.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/PMSM.dir/build.make CMakeFiles/PMSM.dir/current_controller.cpp.o
-.PHONY : current_controller.cpp.o
+src/PMSM.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/onestep_without_delay.dir/build.make CMakeFiles/onestep_without_delay.dir/src/PMSM.cpp.o
+.PHONY : src/PMSM.cpp.o
 
-current_controller.i: current_controller.cpp.i
-.PHONY : current_controller.i
+src/PMSM.i: src/PMSM.cpp.i
+.PHONY : src/PMSM.i
 
 # target to preprocess a source file
-current_controller.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/PMSM.dir/build.make CMakeFiles/PMSM.dir/current_controller.cpp.i
-.PHONY : current_controller.cpp.i
+src/PMSM.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/onestep_without_delay.dir/build.make CMakeFiles/onestep_without_delay.dir/src/PMSM.cpp.i
+.PHONY : src/PMSM.cpp.i
 
-current_controller.s: current_controller.cpp.s
-.PHONY : current_controller.s
+src/PMSM.s: src/PMSM.cpp.s
+.PHONY : src/PMSM.s
 
 # target to generate assembly for a file
-current_controller.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/PMSM.dir/build.make CMakeFiles/PMSM.dir/current_controller.cpp.s
-.PHONY : current_controller.cpp.s
+src/PMSM.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/onestep_without_delay.dir/build.make CMakeFiles/onestep_without_delay.dir/src/PMSM.cpp.s
+.PHONY : src/PMSM.cpp.s
 
-example/bool_test.o: example/bool_test.cpp.o
-.PHONY : example/bool_test.o
+src/current_controller.o: src/current_controller.cpp.o
+.PHONY : src/current_controller.o
 
 # target to build an object file
-example/bool_test.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/bool_test.dir/build.make CMakeFiles/bool_test.dir/example/bool_test.cpp.o
-.PHONY : example/bool_test.cpp.o
+src/current_controller.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/onestep_without_delay.dir/build.make CMakeFiles/onestep_without_delay.dir/src/current_controller.cpp.o
+.PHONY : src/current_controller.cpp.o
 
-example/bool_test.i: example/bool_test.cpp.i
-.PHONY : example/bool_test.i
+src/current_controller.i: src/current_controller.cpp.i
+.PHONY : src/current_controller.i
 
 # target to preprocess a source file
-example/bool_test.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/bool_test.dir/build.make CMakeFiles/bool_test.dir/example/bool_test.cpp.i
-.PHONY : example/bool_test.cpp.i
+src/current_controller.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/onestep_without_delay.dir/build.make CMakeFiles/onestep_without_delay.dir/src/current_controller.cpp.i
+.PHONY : src/current_controller.cpp.i
 
-example/bool_test.s: example/bool_test.cpp.s
-.PHONY : example/bool_test.s
+src/current_controller.s: src/current_controller.cpp.s
+.PHONY : src/current_controller.s
 
 # target to generate assembly for a file
-example/bool_test.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/bool_test.dir/build.make CMakeFiles/bool_test.dir/example/bool_test.cpp.s
-.PHONY : example/bool_test.cpp.s
+src/current_controller.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/onestep_without_delay.dir/build.make CMakeFiles/onestep_without_delay.dir/src/current_controller.cpp.s
+.PHONY : src/current_controller.cpp.s
 
-example/test_PMSM_model.o: example/test_PMSM_model.cpp.o
-.PHONY : example/test_PMSM_model.o
+src/inverter.o: src/inverter.cpp.o
+.PHONY : src/inverter.o
 
 # target to build an object file
-example/test_PMSM_model.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/PMSM.dir/build.make CMakeFiles/PMSM.dir/example/test_PMSM_model.cpp.o
-.PHONY : example/test_PMSM_model.cpp.o
+src/inverter.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/onestep_without_delay.dir/build.make CMakeFiles/onestep_without_delay.dir/src/inverter.cpp.o
+.PHONY : src/inverter.cpp.o
 
-example/test_PMSM_model.i: example/test_PMSM_model.cpp.i
-.PHONY : example/test_PMSM_model.i
+src/inverter.i: src/inverter.cpp.i
+.PHONY : src/inverter.i
 
 # target to preprocess a source file
-example/test_PMSM_model.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/PMSM.dir/build.make CMakeFiles/PMSM.dir/example/test_PMSM_model.cpp.i
-.PHONY : example/test_PMSM_model.cpp.i
+src/inverter.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/onestep_without_delay.dir/build.make CMakeFiles/onestep_without_delay.dir/src/inverter.cpp.i
+.PHONY : src/inverter.cpp.i
 
-example/test_PMSM_model.s: example/test_PMSM_model.cpp.s
-.PHONY : example/test_PMSM_model.s
+src/inverter.s: src/inverter.cpp.s
+.PHONY : src/inverter.s
 
 # target to generate assembly for a file
-example/test_PMSM_model.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/PMSM.dir/build.make CMakeFiles/PMSM.dir/example/test_PMSM_model.cpp.s
-.PHONY : example/test_PMSM_model.cpp.s
+src/inverter.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/onestep_without_delay.dir/build.make CMakeFiles/onestep_without_delay.dir/src/inverter.cpp.s
+.PHONY : src/inverter.cpp.s
 
-inverter.o: inverter.cpp.o
-.PHONY : inverter.o
+src/speed_control.o: src/speed_control.cpp.o
+.PHONY : src/speed_control.o
 
 # target to build an object file
-inverter.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/PMSM.dir/build.make CMakeFiles/PMSM.dir/inverter.cpp.o
-.PHONY : inverter.cpp.o
+src/speed_control.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/onestep_without_delay.dir/build.make CMakeFiles/onestep_without_delay.dir/src/speed_control.cpp.o
+.PHONY : src/speed_control.cpp.o
 
-inverter.i: inverter.cpp.i
-.PHONY : inverter.i
+src/speed_control.i: src/speed_control.cpp.i
+.PHONY : src/speed_control.i
 
 # target to preprocess a source file
-inverter.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/PMSM.dir/build.make CMakeFiles/PMSM.dir/inverter.cpp.i
-.PHONY : inverter.cpp.i
+src/speed_control.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/onestep_without_delay.dir/build.make CMakeFiles/onestep_without_delay.dir/src/speed_control.cpp.i
+.PHONY : src/speed_control.cpp.i
 
-inverter.s: inverter.cpp.s
-.PHONY : inverter.s
+src/speed_control.s: src/speed_control.cpp.s
+.PHONY : src/speed_control.s
 
 # target to generate assembly for a file
-inverter.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/PMSM.dir/build.make CMakeFiles/PMSM.dir/inverter.cpp.s
-.PHONY : inverter.cpp.s
+src/speed_control.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/onestep_without_delay.dir/build.make CMakeFiles/onestep_without_delay.dir/src/speed_control.cpp.s
+.PHONY : src/speed_control.cpp.s
 
-system.o: system.cpp.o
-.PHONY : system.o
+src/system.o: src/system.cpp.o
+.PHONY : src/system.o
 
 # target to build an object file
-system.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/PMSM.dir/build.make CMakeFiles/PMSM.dir/system.cpp.o
-.PHONY : system.cpp.o
+src/system.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/onestep_without_delay.dir/build.make CMakeFiles/onestep_without_delay.dir/src/system.cpp.o
+.PHONY : src/system.cpp.o
 
-system.i: system.cpp.i
-.PHONY : system.i
+src/system.i: src/system.cpp.i
+.PHONY : src/system.i
 
 # target to preprocess a source file
-system.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/PMSM.dir/build.make CMakeFiles/PMSM.dir/system.cpp.i
-.PHONY : system.cpp.i
+src/system.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/onestep_without_delay.dir/build.make CMakeFiles/onestep_without_delay.dir/src/system.cpp.i
+.PHONY : src/system.cpp.i
 
-system.s: system.cpp.s
-.PHONY : system.s
+src/system.s: src/system.cpp.s
+.PHONY : src/system.s
 
 # target to generate assembly for a file
-system.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/PMSM.dir/build.make CMakeFiles/PMSM.dir/system.cpp.s
-.PHONY : system.cpp.s
+src/system.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/onestep_without_delay.dir/build.make CMakeFiles/onestep_without_delay.dir/src/system.cpp.s
+.PHONY : src/system.cpp.s
 
 # Help Target
 help:
@@ -294,26 +281,25 @@ help:
 	@echo "... depend"
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
-	@echo "... PMSM"
-	@echo "... bool_test"
-	@echo "... PMSM.o"
-	@echo "... PMSM.i"
-	@echo "... PMSM.s"
-	@echo "... current_controller.o"
-	@echo "... current_controller.i"
-	@echo "... current_controller.s"
-	@echo "... example/bool_test.o"
-	@echo "... example/bool_test.i"
-	@echo "... example/bool_test.s"
-	@echo "... example/test_PMSM_model.o"
-	@echo "... example/test_PMSM_model.i"
-	@echo "... example/test_PMSM_model.s"
-	@echo "... inverter.o"
-	@echo "... inverter.i"
-	@echo "... inverter.s"
-	@echo "... system.o"
-	@echo "... system.i"
-	@echo "... system.s"
+	@echo "... onestep_without_delay"
+	@echo "... example/onestep_without_delay.o"
+	@echo "... example/onestep_without_delay.i"
+	@echo "... example/onestep_without_delay.s"
+	@echo "... src/PMSM.o"
+	@echo "... src/PMSM.i"
+	@echo "... src/PMSM.s"
+	@echo "... src/current_controller.o"
+	@echo "... src/current_controller.i"
+	@echo "... src/current_controller.s"
+	@echo "... src/inverter.o"
+	@echo "... src/inverter.i"
+	@echo "... src/inverter.s"
+	@echo "... src/speed_control.o"
+	@echo "... src/speed_control.i"
+	@echo "... src/speed_control.s"
+	@echo "... src/system.o"
+	@echo "... src/system.i"
+	@echo "... src/system.s"
 .PHONY : help
 
 

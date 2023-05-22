@@ -1,32 +1,32 @@
 [
 {
   "directory": "/home/gtq/GTQ_pmsm/build",
-  "command": "/usr/bin/g++   -Wall  -g -g -o CMakeFiles/PMSM.dir/example/test_PMSM_model.cpp.o -c /home/gtq/GTQ_pmsm/example/test_PMSM_model.cpp",
-  "file": "/home/gtq/GTQ_pmsm/example/test_PMSM_model.cpp"
+  "command": "/usr/bin/g++   -Wall  -g -g -o CMakeFiles/onestep_without_delay.dir/example/onestep_without_delay.cpp.o -c /home/gtq/GTQ_pmsm/example/onestep_without_delay.cpp",
+  "file": "/home/gtq/GTQ_pmsm/example/onestep_without_delay.cpp"
 },
 {
   "directory": "/home/gtq/GTQ_pmsm/build",
-  "command": "/usr/bin/g++   -Wall  -g -g -o CMakeFiles/PMSM.dir/current_controller.cpp.o -c /home/gtq/GTQ_pmsm/current_controller.cpp",
-  "file": "/home/gtq/GTQ_pmsm/current_controller.cpp"
+  "command": "/usr/bin/g++   -Wall  -g -g -o CMakeFiles/onestep_without_delay.dir/src/PMSM.cpp.o -c /home/gtq/GTQ_pmsm/src/PMSM.cpp",
+  "file": "/home/gtq/GTQ_pmsm/src/PMSM.cpp"
 },
 {
   "directory": "/home/gtq/GTQ_pmsm/build",
-  "command": "/usr/bin/g++   -Wall  -g -g -o CMakeFiles/PMSM.dir/PMSM.cpp.o -c /home/gtq/GTQ_pmsm/PMSM.cpp",
-  "file": "/home/gtq/GTQ_pmsm/PMSM.cpp"
+  "command": "/usr/bin/g++   -Wall  -g -g -o CMakeFiles/onestep_without_delay.dir/src/current_controller.cpp.o -c /home/gtq/GTQ_pmsm/src/current_controller.cpp",
+  "file": "/home/gtq/GTQ_pmsm/src/current_controller.cpp"
 },
 {
   "directory": "/home/gtq/GTQ_pmsm/build",
-  "command": "/usr/bin/g++   -Wall  -g -g -o CMakeFiles/PMSM.dir/system.cpp.o -c /home/gtq/GTQ_pmsm/system.cpp",
-  "file": "/home/gtq/GTQ_pmsm/system.cpp"
+  "command": "/usr/bin/g++   -Wall  -g -g -o CMakeFiles/onestep_without_delay.dir/src/inverter.cpp.o -c /home/gtq/GTQ_pmsm/src/inverter.cpp",
+  "file": "/home/gtq/GTQ_pmsm/src/inverter.cpp"
 },
 {
   "directory": "/home/gtq/GTQ_pmsm/build",
-  "command": "/usr/bin/g++   -Wall  -g -g -o CMakeFiles/PMSM.dir/inverter.cpp.o -c /home/gtq/GTQ_pmsm/inverter.cpp",
-  "file": "/home/gtq/GTQ_pmsm/inverter.cpp"
+  "command": "/usr/bin/g++   -Wall  -g -g -o CMakeFiles/onestep_without_delay.dir/src/speed_control.cpp.o -c /home/gtq/GTQ_pmsm/src/speed_control.cpp",
+  "file": "/home/gtq/GTQ_pmsm/src/speed_control.cpp"
 },
 {
   "directory": "/home/gtq/GTQ_pmsm/build",
-  "command": "/usr/bin/g++   -Wall  -g -g -o CMakeFiles/bool_test.dir/example/bool_test.cpp.o -c /home/gtq/GTQ_pmsm/example/bool_test.cpp",
-  "file": "/home/gtq/GTQ_pmsm/example/bool_test.cpp"
+  "command": "/usr/bin/g++   -Wall  -g -g -o CMakeFiles/onestep_without_delay.dir/src/system.cpp.o -c /home/gtq/GTQ_pmsm/src/system.cpp",
+  "file": "/home/gtq/GTQ_pmsm/src/system.cpp"
 }
 ]

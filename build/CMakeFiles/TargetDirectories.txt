@@ -1,4 +1,3 @@
-/home/gtq/GTQ_pmsm/build/CMakeFiles/PMSM.dir
-/home/gtq/GTQ_pmsm/build/CMakeFiles/bool_test.dir
+/home/gtq/GTQ_pmsm/build/CMakeFiles/onestep_without_delay.dir
 /home/gtq/GTQ_pmsm/build/CMakeFiles/edit_cache.dir
 /home/gtq/GTQ_pmsm/build/CMakeFiles/rebuild_cache.dir
