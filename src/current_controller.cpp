@@ -122,7 +122,7 @@ void FCSMPCer::updata_pmsm_model(const std::vector<double>& Iabc, const double& 
     auto Ialpha = abc2alpha(Iabc[0], Iabc[1], Iabc[2]);
     auto Ibeta  = abc2beta(Iabc[0], Iabc[1], Iabc[2]);
     state_varibles.Id = alphabeta2d(Ialpha, Ibeta, theta_ele);
-    state_varibles.Iq = abc2alpha(Ialpha, Ibeta, theta_ele);
+    state_varibles.Iq = alphabeta2q(Ialpha, Ibeta, theta_ele);
     state_varibles.theta_ele = theta_ele;
     state_varibles.wr = wr;
     u0 = u0_;

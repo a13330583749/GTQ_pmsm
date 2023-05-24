@@ -3,8 +3,8 @@
 #include <fstream>
 #include <fcntl.h>
 #include <chrono>
-#define kp  2.2
-#define ki  0.01//(20000 * PanJL::Ts)
+#define kp  3
+#define ki  0.02//(20000 * PanJL::Ts)
 #define kd  0
 
 int main()
@@ -24,7 +24,7 @@ int main()
     std::vector<std::vector<int>> inputs;
     
     double Iq_ref{0};
-    double wr_ref = 20;
+    double wr_ref = 100;
      // 获取程序开始执行的时间点
     auto start = std::chrono::high_resolution_clock::now();
     for(int i_=0; i_< 1/ PanJL::Ts; i_++){
