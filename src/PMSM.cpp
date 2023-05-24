@@ -113,4 +113,6 @@ std::vector<double> const PMSM::get_Iabc()
     return std::vector<double>{alphabeta2a(Ialpha, Ibeta), alphabeta2b(Ialpha, Ibeta), alphabeta2c(Ialpha, Ibeta)};
 }
 
+
+z
 }

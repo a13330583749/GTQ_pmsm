@@ -22,6 +22,7 @@ int main()
     plant.set_state_PMSM(0, 0, 0, 0);
     current_trl.init_PMSM(Ld_, Lq_, F_, Bm_, Rs_, TL_, Pn_, J_);
     std::vector<std::vector<int>> inputs;
+    
     double Iq_ref{0};
     double wr_ref = 100;
      // 获取程序开始执行的时间点

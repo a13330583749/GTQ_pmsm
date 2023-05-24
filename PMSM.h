@@ -42,7 +42,8 @@ protected:
     double Bm;
 
 protected:
-
+    struct PMSM_state_dvaribles PMSM_differential_equation(double& ud, double& uq, 
+                    const struct PMSM_state_varibles& states);
     void ode45(double& ud, double& uq, const double& times);
 public:
     inline const double& get_id(){return state_varibles.Id;}
@@ -56,8 +57,7 @@ public:
     bool init_PMSM(const double& ld, const double& lq, const double& f, const double& Bm,
                     const double& rs, const double& tl, const int& pn, const double& j);
     void set_state_PMSM(const double& id_, const double& iq_, const double& wr_, const double& theta_ele_);
-    struct PMSM_state_dvaribles PMSM_differential_equation(double& ud, double& uq, 
-                        const struct PMSM_state_varibles& states);
+
     struct PMSM_state_varibles& get_PMSM_state_varibles()  {return state_varibles;}
     const std::vector<double> out_iabc();
 };
