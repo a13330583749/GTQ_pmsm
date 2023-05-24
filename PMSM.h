@@ -11,6 +11,7 @@ struct PMSM_state_varibles
     double theta_ele;
     //play a trick, the result is operator* of 'struct PMSM_state_dvaribles'
     struct PMSM_state_varibles operator+(const struct PMSM_state_varibles& rhs);
+    PMSM_state_varibles():wr(0){}
 };
 
 struct PMSM_state_dvaribles
@@ -41,19 +42,22 @@ protected:
     double Bm;
 
 protected:
-    struct PMSM_state_dvaribles PMSM_differential_equation(double& ud, double& uq, 
-                         const struct PMSM_state_varibles& states);
+
+    void ode45(double& ud, double& uq, const double& times);
+public:
     inline const double& get_id(){return state_varibles.Id;}
     inline const double& get_iq(){return state_varibles.Iq;}
     inline const double& get_wr(){return state_varibles.wr;}
     inline const double& get_ele_theta(){return state_varibles.theta_ele;}
+    std::vector<double> const get_Iabc();
 
 public:
-    PMSM() = default;
+    PMSM()= default;
     bool init_PMSM(const double& ld, const double& lq, const double& f, const double& Bm,
                     const double& rs, const double& tl, const int& pn, const double& j);
-    int set_state_PMSM(double id_, double iq_, double wr_, double theta_ele_);
-    void ode45(double& ud, double& uq, const double& times);
+    void set_state_PMSM(const double& id_, const double& iq_, const double& wr_, const double& theta_ele_);
+    struct PMSM_state_dvaribles PMSM_differential_equation(double& ud, double& uq, 
+                        const struct PMSM_state_varibles& states);
     struct PMSM_state_varibles& get_PMSM_state_varibles()  {return state_varibles;}
     const std::vector<double> out_iabc();
 };

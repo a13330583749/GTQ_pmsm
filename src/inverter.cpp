@@ -1,4 +1,4 @@
-#include "PMSM_sim.h"
+#include "../PMSM_sim.h"
 namespace PanJL{
 void sparse_inverter::set_igbt(const std::vector<int>& inputs)
 {

@@ -1,4 +1,4 @@
-#include "PMSM_sim.h"
+#include "../PMSM_sim.h"
 
 namespace PanJL{
 void FCSMPCer::predict_i_updata(const double& ualpha, const double& ubeta, const double& times)
@@ -14,7 +14,7 @@ void FCSMPCer::predict_i_updata(const double& ualpha, const double& ubeta, const
 }
 
 
-std::shared_ptr<std::vector<std::vector<int>>> FCSMPCer::controller(const double &Id_ref, const double &Iq_ref, const double &theta_ele,
+std::vector<std::vector<int>> FCSMPCer::controller(const double &Id_ref, const double &Iq_ref, const double &theta_ele,
                                         const std::vector<double> &Iabc, const double &wr, const double& times,
                                          const double& u0_input)
 {
@@ -22,7 +22,7 @@ std::shared_ptr<std::vector<std::vector<int>>> FCSMPCer::controller(const double
     double Ialpha = dq2alpha(Id_ref, Iq_ref, theta_ele);
     double Ibeta  = dq2beta(Id_ref, Iq_ref, theta_ele);
     */
-    std::shared_ptr<std::vector<std::vector<int>>> ptr;
+    std::vector<std::vector<int>> ptr;
     std::vector<int> result_vir_output{0,0,0};
     double result_value = DBL_MAX ;
     updata_pmsm_model(Iabc, wr, theta_ele, u0_input);
@@ -39,76 +39,75 @@ std::shared_ptr<std::vector<std::vector<int>>> FCSMPCer::controller(const double
         }
     }
     
-
+    // std::cout << result_vir_output[0] << " "<< result_vir_output[1] << " "<< result_vir_output[2] << std::endl;
     // 电压输出映射
     if(result_vir_output[0] + result_vir_output[1] + result_vir_output[2] == 0){
         // use the medium voltage vector
         if(result_vir_output[0] + result_vir_output[1] != 0){
             flag = false;
-            ptr = std::make_shared<std::vector<std::vector<int>>>
-                (outputs_mapping_mediem.at((result_vir_output)));
-            return ptr;
+            // ptr->push_back(outputs_mapping_mediem.at((result_vir_output)));
+            return outputs_mapping_mediem.at((result_vir_output));
         }else{ // ues zero voltage vector
             flag = true;
-            ptr = std::make_shared<std::vector<std::vector<int>>>(std::initializer_list{1,1,1,1,1});
-            return ptr;
+            //ptr = std::make_shared<std::vector<std::vector<int>>>(std::initializer_list<std::vector<int>>{{1, 1, 1, 1, 1}});
+            return std::vector<std::vector<int>>(std::initializer_list<std::vector<int>>{{1, 1, 1, 1, 1}});
         }
     }else{
         flag = true;
         auto it = std::find(result_vir_output.begin(), result_vir_output.end(),  0);
         if( it == result_vir_output.end()){ // 使用长矢量
-            ptr = std::make_shared<std::vector<std::vector<int>>>
-                (outputs_mapping_positive.at((result_vir_output)));
-                return ptr;
+            // ptr = std::make_shared<std::vector<std::vector<int>>>
+                // (outputs_mapping_positive.at((result_vir_output)));
+                return outputs_mapping_positive.at((result_vir_output));
         }else{ // 使用短矢量
-            ptr = std::make_shared<std::vector<std::vector<int>>>
-                (outputs_mapping_positive.at((result_vir_output)));
+            ptr = outputs_mapping_positive.at((result_vir_output));
 
             // v 1
-            if( (*ptr)[0] == std::vector<int>{0,1,1,0,0}){
+            if( ptr[0] == std::vector<int>{0,1,1,0,0}){
                 if( Iabc[0] * u0 < 0){
-                    (*ptr)[0] = outputs_mapping_negative.at((result_vir_output));
-                    return ptr;
+                    // ptr = std::make_shared<std::vector<std::vector<int>>>
+                    // (outputs_mapping_negative.at((result_vir_output)));
+                    return outputs_mapping_negative.at((result_vir_output));
                 }else
                     return ptr;
             }
             // v 2
-            if( (*ptr)[0] == std::vector<int>{1,0,1,1,0} ){
+            if( ptr[0] == std::vector<int>{1,0,1,1,0} ){
                 if( Iabc[2] * u0 < 0){
-                    (*ptr)[0] = outputs_mapping_negative.at((result_vir_output));
-                    return ptr;
+                    // ptr = std::make_shared<std::vector<std::vector<int>>>
+                    return outputs_mapping_negative.at((result_vir_output));
                 }else
                     return ptr;
             }
             // v 3
-            if( (*ptr)[0] == std::vector<int>{0,1,0,1,0} ){
+            if( ptr[0] == std::vector<int>{0,1,0,1,0} ){
                 if( Iabc[1] * u0 < 0){
-                    (*ptr)[0] = outputs_mapping_negative.at((result_vir_output));
-                    return ptr;
+                    // ptr = std::make_shared<std::vector<std::vector<int>>>
+                    return outputs_mapping_negative.at((result_vir_output));
                 }else
                     return ptr;
             }
             // v 4
-            if( (*ptr)[0] == std::vector<int>{0,1,0,1,0} ){
+            if( ptr[0] == std::vector<int>{0,1,0,1,0} ){
                 if( Iabc[0] * u0 < 0){
-                    (*ptr)[0] = outputs_mapping_negative.at((result_vir_output));
-                    return ptr;
+                    //ptr = std::make_shared<std::vector<std::vector<int>>>
+                    return outputs_mapping_negative.at((result_vir_output));
                 }else
                     return ptr;
             }
             // v 5
-            if( (*ptr)[0] == std::vector<int>{0,1,0,0,1} ){
+            if( ptr[0] == std::vector<int>{0,1,0,0,1} ){
                 if( Iabc[2] * u0 < 0){
-                    (*ptr)[0] = outputs_mapping_negative.at((result_vir_output));
-                    return ptr;
+                    // ptr = std::make_shared<std::vector<std::vector<int>>>
+                    return outputs_mapping_negative.at((result_vir_output));
                 }else
                     return ptr;
             }
             // v 6
-            if( (*ptr)[0] == std::vector<int>{1,0,1,0,1} ){
+            if( ptr[0] == std::vector<int>{1,0,1,0,1} ){
                 if( Iabc[1] * u0 < 0){
-                    (*ptr)[0] = outputs_mapping_negative.at((result_vir_output));
-                    return ptr;
+                    //ptr = std::make_shared<std::vector<std::vector<int>>>
+                    return outputs_mapping_negative.at((result_vir_output));
                 }else
                     return ptr;
             }

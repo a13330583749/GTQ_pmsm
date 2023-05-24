@@ -1,4 +1,4 @@
-#include "PMSM_sim.h"
+#include "../PMSM_sim.h"
 namespace PanJL{
 
 struct PMSM_state_varibles PMSM_state_dvaribles::operator*(const double& samlpe_times)
@@ -96,6 +96,21 @@ const std::vector<double> PMSM::out_iabc()
     Iabc[1] = alphabeta2b(Ialpha, Ibeta);
     Iabc[2] = alphabeta2c(Ialpha, Ibeta);
     return Iabc;
+}
+
+void PMSM::set_state_PMSM(const double& id_, const double& iq_, const double& wr_, const double& theta_ele_)
+{
+    state_varibles.wr = wr_;
+    state_varibles.Id = id_;
+    state_varibles.Iq = iq_;
+    state_varibles.theta_ele = theta_ele_;
+}
+
+std::vector<double> const PMSM::get_Iabc()
+{
+    double Ialpha = dq2alpha(state_varibles.Id, state_varibles.Iq, state_varibles.theta_ele);
+    double Ibeta = dq2beta(state_varibles.Id, state_varibles.Iq, state_varibles.theta_ele);
+    return std::vector<double>{alphabeta2a(Ialpha, Ibeta), alphabeta2b(Ialpha, Ibeta), alphabeta2c(Ialpha, Ibeta)};
 }
 
 }
