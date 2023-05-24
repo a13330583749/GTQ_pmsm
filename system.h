@@ -10,7 +10,7 @@ public:
     Plant(const double& vdc, const double& inv_c):sparse_inverter(vdc, inv_c){}
     Plant(const sparse_inverter rhs):sparse_inverter(rhs){}
     std::vector<double> updata(std::vector<int>, const double&);
-    const double get_wr(){return get_PMSM_state_varibles().wr;}
+    const double get_wr(){return state_varibles.wr;}
 };
 }
 

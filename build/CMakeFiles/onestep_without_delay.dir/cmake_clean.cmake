@@ -1,8 +1,6 @@
 file(REMOVE_RECURSE
   "CMakeFiles/onestep_without_delay.dir/example/onestep_without_delay.cpp.o"
   "CMakeFiles/onestep_without_delay.dir/example/onestep_without_delay.cpp.o.d"
-  "CMakeFiles/onestep_without_delay.dir/src/Compensator.cpp.o"
-  "CMakeFiles/onestep_without_delay.dir/src/Compensator.cpp.o.d"
   "CMakeFiles/onestep_without_delay.dir/src/PMSM.cpp.o"
   "CMakeFiles/onestep_without_delay.dir/src/PMSM.cpp.o.d"
   "CMakeFiles/onestep_without_delay.dir/src/current_controller.cpp.o"

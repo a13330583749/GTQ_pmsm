@@ -5,7 +5,7 @@
 #include "system.h"
 #include "speed_controller.h"
 #include "current_controller.h"
-#include "Compensator.h"
+// #include "Compensator.h"
 #include <cmath>
 // #include <climits>
 #include <cfloat>

@@ -114,5 +114,4 @@ std::vector<double> const PMSM::get_Iabc()
 }
 
 
-z
 }

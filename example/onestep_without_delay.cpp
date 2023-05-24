@@ -24,7 +24,7 @@ int main()
     std::vector<std::vector<int>> inputs;
     
     double Iq_ref{0};
-    double wr_ref = 100;
+    double wr_ref = 20;
      // 获取程序开始执行的时间点
     auto start = std::chrono::high_resolution_clock::now();
     for(int i_=0; i_< 1/ PanJL::Ts; i_++){

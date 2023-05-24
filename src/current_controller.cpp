@@ -8,9 +8,9 @@ void FCSMPCer::predict_i_updata(const double& ualpha, const double& ubeta, const
     auto uq = alphabeta2q(ualpha, ubeta, get_ele_theta());
     double did = (-Rs * get_id() + get_wr() * Pn * Lq + ud)/ Ld;
     double diq = (-Rs * get_iq() - get_wr() * Pn * Ld 
-                    - get_wr() * Pn * F + uq)/Lq;
-    Idq_predict[0] = did * times + get_id();
-    Idq_predict[1] = diq * times + get_iq(); 
+                    - get_wr() * Pn * F + uq)/ Lq;
+    Idq_predict[0] = (did * times) + get_id();
+    Idq_predict[1] = (diq * times) + get_iq(); 
 }
 
 
@@ -121,10 +121,10 @@ void FCSMPCer::updata_pmsm_model(const std::vector<double>& Iabc, const double& 
 {
     auto Ialpha = abc2alpha(Iabc[0], Iabc[1], Iabc[2]);
     auto Ibeta  = abc2beta(Iabc[0], Iabc[1], Iabc[2]);
-    get_PMSM_state_varibles().Id = alphabeta2d(Ialpha, Ibeta, theta_ele);
-    get_PMSM_state_varibles().Iq = abc2alpha(Ialpha, Ibeta, theta_ele);
-    get_PMSM_state_varibles().theta_ele = theta_ele;
-    get_PMSM_state_varibles().wr = wr;
+    state_varibles.Id = alphabeta2d(Ialpha, Ibeta, theta_ele);
+    state_varibles.Iq = abc2alpha(Ialpha, Ibeta, theta_ele);
+    state_varibles.theta_ele = theta_ele;
+    state_varibles.wr = wr;
     u0 = u0_;
 }
 

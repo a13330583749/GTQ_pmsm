@@ -35,7 +35,7 @@ protected:
 
     double TL; //转矩
     // [Id; Iq; 转速; 电角度]
-    struct PMSM_state_varibles state_varibles;    
+      
 
     double J; //转动惯量
     int Pn; //极对数
@@ -45,6 +45,7 @@ protected:
     struct PMSM_state_dvaribles PMSM_differential_equation(double& ud, double& uq, 
                     const struct PMSM_state_varibles& states);
     void ode45(double& ud, double& uq, const double& times);
+    struct PMSM_state_varibles state_varibles;  
 public:
     inline const double& get_id(){return state_varibles.Id;}
     inline const double& get_iq(){return state_varibles.Iq;}
