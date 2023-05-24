@@ -1,1 +1,0 @@
-/usr/bin/g++ -Wall  -g -g -rdynamic CMakeFiles/PMSM.dir/example/test_PMSM_model.cpp.o CMakeFiles/PMSM.dir/current_controller.cpp.o CMakeFiles/PMSM.dir/PMSM.cpp.o CMakeFiles/PMSM.dir/system.cpp.o CMakeFiles/PMSM.dir/inverter.cpp.o -o PMSM 

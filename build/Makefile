@@ -153,6 +153,30 @@ example/onestep_without_delay.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/onestep_without_delay.dir/build.make CMakeFiles/onestep_without_delay.dir/example/onestep_without_delay.cpp.s
 .PHONY : example/onestep_without_delay.cpp.s
 
+src/Compensator.o: src/Compensator.cpp.o
+.PHONY : src/Compensator.o
+
+# target to build an object file
+src/Compensator.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/onestep_without_delay.dir/build.make CMakeFiles/onestep_without_delay.dir/src/Compensator.cpp.o
+.PHONY : src/Compensator.cpp.o
+
+src/Compensator.i: src/Compensator.cpp.i
+.PHONY : src/Compensator.i
+
+# target to preprocess a source file
+src/Compensator.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/onestep_without_delay.dir/build.make CMakeFiles/onestep_without_delay.dir/src/Compensator.cpp.i
+.PHONY : src/Compensator.cpp.i
+
+src/Compensator.s: src/Compensator.cpp.s
+.PHONY : src/Compensator.s
+
+# target to generate assembly for a file
+src/Compensator.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/onestep_without_delay.dir/build.make CMakeFiles/onestep_without_delay.dir/src/Compensator.cpp.s
+.PHONY : src/Compensator.cpp.s
+
 src/PMSM.o: src/PMSM.cpp.o
 .PHONY : src/PMSM.o
 
@@ -285,6 +309,9 @@ help:
 	@echo "... example/onestep_without_delay.o"
 	@echo "... example/onestep_without_delay.i"
 	@echo "... example/onestep_without_delay.s"
+	@echo "... src/Compensator.o"
+	@echo "... src/Compensator.i"
+	@echo "... src/Compensator.s"
 	@echo "... src/PMSM.o"
 	@echo "... src/PMSM.i"
 	@echo "... src/PMSM.s"

@@ -38,7 +38,6 @@ private:
 
 public:
     FCSMPCer(double vdc, double c): Plant(vdc, c), flag(true){Idq_predict.resize(2);}   
-    // std::vector<double> get_i_alpha_beta(const std::vector<double>& Iabc, const double& wr, const double& ele_theta);
     std::vector<std::vector<int>> controller(const double& Id_ref, const double& Iq_ref, const double& theta_ele,
                                 const std::vector<double>& Iabc, const double& wr, const double& times,
                                 const double& u0_input);

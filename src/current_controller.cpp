@@ -119,8 +119,10 @@ std::vector<std::vector<int>> FCSMPCer::controller(const double &Id_ref, const d
 
 void FCSMPCer::updata_pmsm_model(const std::vector<double>& Iabc, const double& wr,const double& theta_ele, const double& u0_)
 {
-    get_PMSM_state_varibles().Id = abc2alpha(Iabc[0], Iabc[1], Iabc[2]);
-    get_PMSM_state_varibles().Iq = abc2alpha(Iabc[0], Iabc[1], Iabc[2]);
+    auto Ialpha = abc2alpha(Iabc[0], Iabc[1], Iabc[2]);
+    auto Ibeta  = abc2beta(Iabc[0], Iabc[1], Iabc[2]);
+    get_PMSM_state_varibles().Id = alphabeta2d(Ialpha, Ibeta, theta_ele);
+    get_PMSM_state_varibles().Iq = abc2alpha(Ialpha, Ibeta, theta_ele);
     get_PMSM_state_varibles().theta_ele = theta_ele;
     get_PMSM_state_varibles().wr = wr;
     u0 = u0_;

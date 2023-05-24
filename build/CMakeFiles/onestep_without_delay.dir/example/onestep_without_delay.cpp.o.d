@@ -1,6 +1,7 @@
-CMakeFiles/onestep_without_delay.dir/current_controller.cpp.o: \
- /home/gtq/GTQ_pmsm/current_controller.cpp /usr/include/stdc-predef.h \
- /home/gtq/GTQ_pmsm/PMSM_sim.h /usr/include/c++/11/utility \
+CMakeFiles/onestep_without_delay.dir/example/onestep_without_delay.cpp.o: \
+ /home/gtq/GTQ_pmsm/example/onestep_without_delay.cpp \
+ /usr/include/stdc-predef.h /home/gtq/GTQ_pmsm/example/../PMSM_sim.h \
+ /usr/include/c++/11/utility \
  /usr/include/x86_64-linux-gnu/c++/11/bits/c++config.h \
  /usr/include/x86_64-linux-gnu/c++/11/bits/os_defines.h \
  /usr/include/features.h /usr/include/features-time64.h \
@@ -145,14 +146,16 @@ CMakeFiles/onestep_without_delay.dir/current_controller.cpp.o: \
  /usr/include/c++/11/bits/locale_facets.tcc \
  /usr/include/c++/11/bits/basic_ios.tcc \
  /usr/include/c++/11/bits/ostream.tcc /usr/include/c++/11/istream \
- /usr/include/c++/11/bits/istream.tcc /home/gtq/GTQ_pmsm/system.h \
- /home/gtq/GTQ_pmsm/PMSM.h /usr/include/c++/11/vector \
+ /usr/include/c++/11/bits/istream.tcc \
+ /home/gtq/GTQ_pmsm/example/../system.h \
+ /home/gtq/GTQ_pmsm/example/../PMSM.h /usr/include/c++/11/vector \
  /usr/include/c++/11/bits/stl_uninitialized.h \
  /usr/include/c++/11/bits/stl_vector.h \
  /usr/include/c++/11/bits/stl_bvector.h \
- /usr/include/c++/11/bits/vector.tcc /home/gtq/GTQ_pmsm/inverter.h \
- /usr/include/c++/11/functional /usr/include/c++/11/tuple \
- /usr/include/c++/11/array /usr/include/c++/11/bits/uses_allocator.h \
+ /usr/include/c++/11/bits/vector.tcc \
+ /home/gtq/GTQ_pmsm/example/../inverter.h /usr/include/c++/11/functional \
+ /usr/include/c++/11/tuple /usr/include/c++/11/array \
+ /usr/include/c++/11/bits/uses_allocator.h \
  /usr/include/c++/11/bits/invoke.h /usr/include/c++/11/bits/refwrap.h \
  /usr/include/c++/11/bits/std_function.h \
  /usr/include/c++/11/unordered_map \
@@ -167,8 +170,9 @@ CMakeFiles/onestep_without_delay.dir/current_controller.cpp.o: \
  /usr/include/c++/11/bits/stl_heap.h \
  /usr/include/c++/11/bits/stl_tempbuf.h \
  /usr/include/c++/11/bits/uniform_int_dist.h \
- /home/gtq/GTQ_pmsm/speed_controller.h \
- /home/gtq/GTQ_pmsm/current_controller.h /usr/include/c++/11/memory \
+ /home/gtq/GTQ_pmsm/example/../speed_controller.h \
+ /home/gtq/GTQ_pmsm/example/../current_controller.h \
+ /usr/include/c++/11/memory \
  /usr/include/c++/11/bits/stl_raw_storage_iter.h \
  /usr/include/c++/11/bits/align.h /usr/include/c++/11/bit \
  /usr/include/c++/11/bits/unique_ptr.h \
@@ -181,7 +185,8 @@ CMakeFiles/onestep_without_delay.dir/current_controller.cpp.o: \
  /usr/include/c++/11/bits/atomic_lockfree_defines.h \
  /usr/include/c++/11/backward/auto_ptr.h \
  /usr/include/c++/11/pstl/glue_memory_defs.h \
- /usr/include/c++/11/pstl/execution_defs.h /usr/include/c++/11/cmath \
+ /usr/include/c++/11/pstl/execution_defs.h \
+ /home/gtq/GTQ_pmsm/example/../Compensator.h /usr/include/c++/11/cmath \
  /usr/include/math.h /usr/include/x86_64-linux-gnu/bits/math-vector.h \
  /usr/include/x86_64-linux-gnu/bits/libm-simd-decl-stubs.h \
  /usr/include/x86_64-linux-gnu/bits/flt-eval-method.h \
@@ -206,4 +211,16 @@ CMakeFiles/onestep_without_delay.dir/current_controller.cpp.o: \
  /usr/include/c++/11/tr1/riemann_zeta.tcc /usr/include/c++/11/cfloat \
  /usr/lib/gcc/x86_64-linux-gnu/11/include/float.h \
  /usr/include/c++/11/algorithm \
- /usr/include/c++/11/pstl/glue_algorithm_defs.h
+ /usr/include/c++/11/pstl/glue_algorithm_defs.h \
+ /home/gtq/GTQ_pmsm/example/../system.h /usr/include/c++/11/fstream \
+ /usr/include/c++/11/bits/codecvt.h \
+ /usr/include/x86_64-linux-gnu/c++/11/bits/basic_file.h \
+ /usr/include/x86_64-linux-gnu/c++/11/bits/c++io.h \
+ /usr/include/c++/11/bits/fstream.tcc /usr/include/fcntl.h \
+ /usr/include/x86_64-linux-gnu/bits/fcntl.h \
+ /usr/include/x86_64-linux-gnu/bits/fcntl-linux.h \
+ /usr/include/x86_64-linux-gnu/bits/types/struct_iovec.h \
+ /usr/include/linux/falloc.h /usr/include/x86_64-linux-gnu/bits/stat.h \
+ /usr/include/x86_64-linux-gnu/bits/struct_stat.h \
+ /usr/include/c++/11/chrono /usr/include/c++/11/ratio \
+ /usr/include/c++/11/ctime /usr/include/c++/11/bits/parse_numbers.h
