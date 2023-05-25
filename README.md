@@ -10,6 +10,15 @@
 6. 将逆变器模型更换了中点型钳位三电平逆变器，PWM的仿真支持
 7. ....
 ---
+2023/05/25
+
+这Windows比Linux为什么快了这么多啊！！
+![](/figure/time_compare.png)
+使用Windows下编译的方法：
+
+`mingw32-make`和`cmake -G "MinGW Makefiles" ..`
+
+---
 在wsl2中使用串口与控制器（单片机）通讯
 
 教程：https://learn.microsoft.com/zh-cn/windows/wsl/connect-usb

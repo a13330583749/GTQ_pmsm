@@ -47,7 +47,7 @@ int main()
     std::cout << "Program execution time: " << duration.count() << " milliseconds" << std::endl;
     outputFile.close();
 
-    std::system("python3 ../pyplot.py");
+    std::system("python ../pyplot.py");
     // ctrl.controller(1.0, 2.0);
     return 0;
 }
