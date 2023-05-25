@@ -6,7 +6,7 @@
 			[
 				{
 					"build" : ".",
-					"jsonFile" : "directory-.-f5ebdc15457944623624.json",
+					"jsonFile" : "directory-.-Debug-d0094a50bb2071803777.json",
 					"minimumCMakeVersion" : 
 					{
 						"string" : "3.0"
@@ -19,7 +19,7 @@
 					]
 				}
 			],
-			"name" : "",
+			"name" : "Debug",
 			"projects" : 
 			[
 				{
@@ -39,7 +39,7 @@
 				{
 					"directoryIndex" : 0,
 					"id" : "onestep_without_delay::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-onestep_without_delay-d6bd6b650c928ec76345.json",
+					"jsonFile" : "target-onestep_without_delay-Debug-e7d90479d57d9113c73f.json",
 					"name" : "onestep_without_delay",
 					"projectIndex" : 0
 				}
@@ -49,12 +49,12 @@
 	"kind" : "codemodel",
 	"paths" : 
 	{
-		"build" : "/home/gtq/GTQ_pmsm/build",
-		"source" : "/home/gtq/GTQ_pmsm"
+		"build" : "D:/codes/GTQ_pmsm/build",
+		"source" : "D:/codes/GTQ_pmsm"
 	},
 	"version" : 
 	{
 		"major" : 2,
-		"minor" : 3
+		"minor" : 5
 	}
 }

@@ -1,0 +1,44 @@
+[
+{
+  "directory": "D:/codes/GTQ_pmsm/build",
+  "command": "C:\\MinGW\\bin\\g++   -g -Wall -g -o CMakeFiles\\onestep_without_delay.dir\\example\\onestep_without_delay.cpp.obj -c D:\\codes\\GTQ_pmsm\\example\\onestep_without_delay.cpp",
+  "file": "D:/codes/GTQ_pmsm/example/onestep_without_delay.cpp",
+  "output": "CMakeFiles/onestep_without_delay.dir/example/onestep_without_delay.cpp.obj"
+},
+{
+  "directory": "D:/codes/GTQ_pmsm/build",
+  "command": "C:\\MinGW\\bin\\g++   -g -Wall -g -o CMakeFiles\\onestep_without_delay.dir\\src\\Compensator.cpp.obj -c D:\\codes\\GTQ_pmsm\\src\\Compensator.cpp",
+  "file": "D:/codes/GTQ_pmsm/src/Compensator.cpp",
+  "output": "CMakeFiles/onestep_without_delay.dir/src/Compensator.cpp.obj"
+},
+{
+  "directory": "D:/codes/GTQ_pmsm/build",
+  "command": "C:\\MinGW\\bin\\g++   -g -Wall -g -o CMakeFiles\\onestep_without_delay.dir\\src\\PMSM.cpp.obj -c D:\\codes\\GTQ_pmsm\\src\\PMSM.cpp",
+  "file": "D:/codes/GTQ_pmsm/src/PMSM.cpp",
+  "output": "CMakeFiles/onestep_without_delay.dir/src/PMSM.cpp.obj"
+},
+{
+  "directory": "D:/codes/GTQ_pmsm/build",
+  "command": "C:\\MinGW\\bin\\g++   -g -Wall -g -o CMakeFiles\\onestep_without_delay.dir\\src\\current_controller.cpp.obj -c D:\\codes\\GTQ_pmsm\\src\\current_controller.cpp",
+  "file": "D:/codes/GTQ_pmsm/src/current_controller.cpp",
+  "output": "CMakeFiles/onestep_without_delay.dir/src/current_controller.cpp.obj"
+},
+{
+  "directory": "D:/codes/GTQ_pmsm/build",
+  "command": "C:\\MinGW\\bin\\g++   -g -Wall -g -o CMakeFiles\\onestep_without_delay.dir\\src\\inverter.cpp.obj -c D:\\codes\\GTQ_pmsm\\src\\inverter.cpp",
+  "file": "D:/codes/GTQ_pmsm/src/inverter.cpp",
+  "output": "CMakeFiles/onestep_without_delay.dir/src/inverter.cpp.obj"
+},
+{
+  "directory": "D:/codes/GTQ_pmsm/build",
+  "command": "C:\\MinGW\\bin\\g++   -g -Wall -g -o CMakeFiles\\onestep_without_delay.dir\\src\\speed_control.cpp.obj -c D:\\codes\\GTQ_pmsm\\src\\speed_control.cpp",
+  "file": "D:/codes/GTQ_pmsm/src/speed_control.cpp",
+  "output": "CMakeFiles/onestep_without_delay.dir/src/speed_control.cpp.obj"
+},
+{
+  "directory": "D:/codes/GTQ_pmsm/build",
+  "command": "C:\\MinGW\\bin\\g++   -g -Wall -g -o CMakeFiles\\onestep_without_delay.dir\\src\\system.cpp.obj -c D:\\codes\\GTQ_pmsm\\src\\system.cpp",
+  "file": "D:/codes/GTQ_pmsm/src/system.cpp",
+  "output": "CMakeFiles/onestep_without_delay.dir/src/system.cpp.obj"
+}
+]

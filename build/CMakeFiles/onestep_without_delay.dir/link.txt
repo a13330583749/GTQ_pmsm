@@ -1,1 +1,3 @@
-/usr/bin/g++ -Wall  -g -rdynamic CMakeFiles/onestep_without_delay.dir/example/onestep_without_delay.cpp.o CMakeFiles/onestep_without_delay.dir/src/PMSM.cpp.o CMakeFiles/onestep_without_delay.dir/src/current_controller.cpp.o CMakeFiles/onestep_without_delay.dir/src/inverter.cpp.o CMakeFiles/onestep_without_delay.dir/src/speed_control.cpp.o CMakeFiles/onestep_without_delay.dir/src/system.cpp.o -o onestep_without_delay 
+"C:\Program Files\CMake\bin\cmake.exe" -E rm -f CMakeFiles\onestep_without_delay.dir/objects.a
+C:\MinGW\bin\ar.exe qc CMakeFiles\onestep_without_delay.dir/objects.a @CMakeFiles\onestep_without_delay.dir\objects1.rsp
+C:\MinGW\bin\g++ -g -Wl,--whole-archive CMakeFiles\onestep_without_delay.dir/objects.a -Wl,--no-whole-archive -o onestep_without_delay.exe -Wl,--out-implib,libonestep_without_delay.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles\onestep_without_delay.dir\linkLibs.rsp
