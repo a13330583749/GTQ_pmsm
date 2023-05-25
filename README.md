@@ -10,6 +10,11 @@
 6. 将逆变器模型更换了中点型钳位三电平逆变器，PWM的仿真支持
 7. ....
 ---
+
+在MCU与PC通讯的时候需要把防火墙关闭。
+
+---
+
 在wsl2中使用串口与控制器（单片机）通讯
 
 教程：https://learn.microsoft.com/zh-cn/windows/wsl/connect-usb

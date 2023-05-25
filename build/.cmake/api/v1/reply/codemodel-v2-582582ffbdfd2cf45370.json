@@ -6,7 +6,7 @@
 			[
 				{
 					"build" : ".",
-					"jsonFile" : "directory-.-f5ebdc15457944623624.json",
+					"jsonFile" : "directory-.-Debug-f5ebdc15457944623624.json",
 					"minimumCMakeVersion" : 
 					{
 						"string" : "3.0"
@@ -19,7 +19,7 @@
 					]
 				}
 			],
-			"name" : "",
+			"name" : "Debug",
 			"projects" : 
 			[
 				{
@@ -38,9 +38,9 @@
 			[
 				{
 					"directoryIndex" : 0,
-					"id" : "onestep_without_delay::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-onestep_without_delay-d6bd6b650c928ec76345.json",
-					"name" : "onestep_without_delay",
+					"id" : "gtq_server::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-gtq_server-Debug-a9e2132391281fb9fdff.json",
+					"name" : "gtq_server",
 					"projectIndex" : 0
 				}
 			]

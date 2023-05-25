@@ -11,6 +11,14 @@
 #include <cfloat>
 #include <memory>
 #include <algorithm>
+#include <iostream>
+#include <sys/socket.h>
+#include <netinet/in.h>
+#include <unistd.h>
+#include <arpa/inet.h>
+#include <cstring>
+#include "commincation.h"
+
 const auto abc2alpha = [](double a, double b, double c)->double{return 2.0 * (a - 0.5 *b - 0.5 * c) / 3.0;};
 const auto abc2beta = [](double a, double b, double c)->double{return 2.0 * (std::sqrt(3))/ 2.0 * (b -  c) / 3.0 ;};
 const auto alphabeta2a = [](double alpha, double beta)->double{return 2.0 /3.0 * alpha;};

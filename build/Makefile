@@ -117,48 +117,48 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named onestep_without_delay
+# Target rules for targets named gtq_server
 
 # Build rule for target.
-onestep_without_delay: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 onestep_without_delay
-.PHONY : onestep_without_delay
+gtq_server: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 gtq_server
+.PHONY : gtq_server
 
 # fast build rule for target.
-onestep_without_delay/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/onestep_without_delay.dir/build.make CMakeFiles/onestep_without_delay.dir/build
-.PHONY : onestep_without_delay/fast
+gtq_server/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/gtq_server.dir/build.make CMakeFiles/gtq_server.dir/build
+.PHONY : gtq_server/fast
 
-example/onestep_without_delay.o: example/onestep_without_delay.cpp.o
-.PHONY : example/onestep_without_delay.o
+example/gtq_server.o: example/gtq_server.cpp.o
+.PHONY : example/gtq_server.o
 
 # target to build an object file
-example/onestep_without_delay.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/onestep_without_delay.dir/build.make CMakeFiles/onestep_without_delay.dir/example/onestep_without_delay.cpp.o
-.PHONY : example/onestep_without_delay.cpp.o
+example/gtq_server.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/gtq_server.dir/build.make CMakeFiles/gtq_server.dir/example/gtq_server.cpp.o
+.PHONY : example/gtq_server.cpp.o
 
-example/onestep_without_delay.i: example/onestep_without_delay.cpp.i
-.PHONY : example/onestep_without_delay.i
+example/gtq_server.i: example/gtq_server.cpp.i
+.PHONY : example/gtq_server.i
 
 # target to preprocess a source file
-example/onestep_without_delay.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/onestep_without_delay.dir/build.make CMakeFiles/onestep_without_delay.dir/example/onestep_without_delay.cpp.i
-.PHONY : example/onestep_without_delay.cpp.i
+example/gtq_server.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/gtq_server.dir/build.make CMakeFiles/gtq_server.dir/example/gtq_server.cpp.i
+.PHONY : example/gtq_server.cpp.i
 
-example/onestep_without_delay.s: example/onestep_without_delay.cpp.s
-.PHONY : example/onestep_without_delay.s
+example/gtq_server.s: example/gtq_server.cpp.s
+.PHONY : example/gtq_server.s
 
 # target to generate assembly for a file
-example/onestep_without_delay.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/onestep_without_delay.dir/build.make CMakeFiles/onestep_without_delay.dir/example/onestep_without_delay.cpp.s
-.PHONY : example/onestep_without_delay.cpp.s
+example/gtq_server.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/gtq_server.dir/build.make CMakeFiles/gtq_server.dir/example/gtq_server.cpp.s
+.PHONY : example/gtq_server.cpp.s
 
 src/PMSM.o: src/PMSM.cpp.o
 .PHONY : src/PMSM.o
 
 # target to build an object file
 src/PMSM.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/onestep_without_delay.dir/build.make CMakeFiles/onestep_without_delay.dir/src/PMSM.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/gtq_server.dir/build.make CMakeFiles/gtq_server.dir/src/PMSM.cpp.o
 .PHONY : src/PMSM.cpp.o
 
 src/PMSM.i: src/PMSM.cpp.i
@@ -166,7 +166,7 @@ src/PMSM.i: src/PMSM.cpp.i
 
 # target to preprocess a source file
 src/PMSM.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/onestep_without_delay.dir/build.make CMakeFiles/onestep_without_delay.dir/src/PMSM.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/gtq_server.dir/build.make CMakeFiles/gtq_server.dir/src/PMSM.cpp.i
 .PHONY : src/PMSM.cpp.i
 
 src/PMSM.s: src/PMSM.cpp.s
@@ -174,15 +174,39 @@ src/PMSM.s: src/PMSM.cpp.s
 
 # target to generate assembly for a file
 src/PMSM.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/onestep_without_delay.dir/build.make CMakeFiles/onestep_without_delay.dir/src/PMSM.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/gtq_server.dir/build.make CMakeFiles/gtq_server.dir/src/PMSM.cpp.s
 .PHONY : src/PMSM.cpp.s
+
+src/client.o: src/client.cpp.o
+.PHONY : src/client.o
+
+# target to build an object file
+src/client.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/gtq_server.dir/build.make CMakeFiles/gtq_server.dir/src/client.cpp.o
+.PHONY : src/client.cpp.o
+
+src/client.i: src/client.cpp.i
+.PHONY : src/client.i
+
+# target to preprocess a source file
+src/client.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/gtq_server.dir/build.make CMakeFiles/gtq_server.dir/src/client.cpp.i
+.PHONY : src/client.cpp.i
+
+src/client.s: src/client.cpp.s
+.PHONY : src/client.s
+
+# target to generate assembly for a file
+src/client.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/gtq_server.dir/build.make CMakeFiles/gtq_server.dir/src/client.cpp.s
+.PHONY : src/client.cpp.s
 
 src/current_controller.o: src/current_controller.cpp.o
 .PHONY : src/current_controller.o
 
 # target to build an object file
 src/current_controller.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/onestep_without_delay.dir/build.make CMakeFiles/onestep_without_delay.dir/src/current_controller.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/gtq_server.dir/build.make CMakeFiles/gtq_server.dir/src/current_controller.cpp.o
 .PHONY : src/current_controller.cpp.o
 
 src/current_controller.i: src/current_controller.cpp.i
@@ -190,7 +214,7 @@ src/current_controller.i: src/current_controller.cpp.i
 
 # target to preprocess a source file
 src/current_controller.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/onestep_without_delay.dir/build.make CMakeFiles/onestep_without_delay.dir/src/current_controller.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/gtq_server.dir/build.make CMakeFiles/gtq_server.dir/src/current_controller.cpp.i
 .PHONY : src/current_controller.cpp.i
 
 src/current_controller.s: src/current_controller.cpp.s
@@ -198,7 +222,7 @@ src/current_controller.s: src/current_controller.cpp.s
 
 # target to generate assembly for a file
 src/current_controller.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/onestep_without_delay.dir/build.make CMakeFiles/onestep_without_delay.dir/src/current_controller.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/gtq_server.dir/build.make CMakeFiles/gtq_server.dir/src/current_controller.cpp.s
 .PHONY : src/current_controller.cpp.s
 
 src/inverter.o: src/inverter.cpp.o
@@ -206,7 +230,7 @@ src/inverter.o: src/inverter.cpp.o
 
 # target to build an object file
 src/inverter.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/onestep_without_delay.dir/build.make CMakeFiles/onestep_without_delay.dir/src/inverter.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/gtq_server.dir/build.make CMakeFiles/gtq_server.dir/src/inverter.cpp.o
 .PHONY : src/inverter.cpp.o
 
 src/inverter.i: src/inverter.cpp.i
@@ -214,7 +238,7 @@ src/inverter.i: src/inverter.cpp.i
 
 # target to preprocess a source file
 src/inverter.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/onestep_without_delay.dir/build.make CMakeFiles/onestep_without_delay.dir/src/inverter.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/gtq_server.dir/build.make CMakeFiles/gtq_server.dir/src/inverter.cpp.i
 .PHONY : src/inverter.cpp.i
 
 src/inverter.s: src/inverter.cpp.s
@@ -222,15 +246,39 @@ src/inverter.s: src/inverter.cpp.s
 
 # target to generate assembly for a file
 src/inverter.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/onestep_without_delay.dir/build.make CMakeFiles/onestep_without_delay.dir/src/inverter.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/gtq_server.dir/build.make CMakeFiles/gtq_server.dir/src/inverter.cpp.s
 .PHONY : src/inverter.cpp.s
+
+src/server.o: src/server.cpp.o
+.PHONY : src/server.o
+
+# target to build an object file
+src/server.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/gtq_server.dir/build.make CMakeFiles/gtq_server.dir/src/server.cpp.o
+.PHONY : src/server.cpp.o
+
+src/server.i: src/server.cpp.i
+.PHONY : src/server.i
+
+# target to preprocess a source file
+src/server.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/gtq_server.dir/build.make CMakeFiles/gtq_server.dir/src/server.cpp.i
+.PHONY : src/server.cpp.i
+
+src/server.s: src/server.cpp.s
+.PHONY : src/server.s
+
+# target to generate assembly for a file
+src/server.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/gtq_server.dir/build.make CMakeFiles/gtq_server.dir/src/server.cpp.s
+.PHONY : src/server.cpp.s
 
 src/speed_control.o: src/speed_control.cpp.o
 .PHONY : src/speed_control.o
 
 # target to build an object file
 src/speed_control.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/onestep_without_delay.dir/build.make CMakeFiles/onestep_without_delay.dir/src/speed_control.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/gtq_server.dir/build.make CMakeFiles/gtq_server.dir/src/speed_control.cpp.o
 .PHONY : src/speed_control.cpp.o
 
 src/speed_control.i: src/speed_control.cpp.i
@@ -238,7 +286,7 @@ src/speed_control.i: src/speed_control.cpp.i
 
 # target to preprocess a source file
 src/speed_control.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/onestep_without_delay.dir/build.make CMakeFiles/onestep_without_delay.dir/src/speed_control.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/gtq_server.dir/build.make CMakeFiles/gtq_server.dir/src/speed_control.cpp.i
 .PHONY : src/speed_control.cpp.i
 
 src/speed_control.s: src/speed_control.cpp.s
@@ -246,7 +294,7 @@ src/speed_control.s: src/speed_control.cpp.s
 
 # target to generate assembly for a file
 src/speed_control.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/onestep_without_delay.dir/build.make CMakeFiles/onestep_without_delay.dir/src/speed_control.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/gtq_server.dir/build.make CMakeFiles/gtq_server.dir/src/speed_control.cpp.s
 .PHONY : src/speed_control.cpp.s
 
 src/system.o: src/system.cpp.o
@@ -254,7 +302,7 @@ src/system.o: src/system.cpp.o
 
 # target to build an object file
 src/system.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/onestep_without_delay.dir/build.make CMakeFiles/onestep_without_delay.dir/src/system.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/gtq_server.dir/build.make CMakeFiles/gtq_server.dir/src/system.cpp.o
 .PHONY : src/system.cpp.o
 
 src/system.i: src/system.cpp.i
@@ -262,7 +310,7 @@ src/system.i: src/system.cpp.i
 
 # target to preprocess a source file
 src/system.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/onestep_without_delay.dir/build.make CMakeFiles/onestep_without_delay.dir/src/system.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/gtq_server.dir/build.make CMakeFiles/gtq_server.dir/src/system.cpp.i
 .PHONY : src/system.cpp.i
 
 src/system.s: src/system.cpp.s
@@ -270,7 +318,7 @@ src/system.s: src/system.cpp.s
 
 # target to generate assembly for a file
 src/system.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/onestep_without_delay.dir/build.make CMakeFiles/onestep_without_delay.dir/src/system.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/gtq_server.dir/build.make CMakeFiles/gtq_server.dir/src/system.cpp.s
 .PHONY : src/system.cpp.s
 
 # Help Target
@@ -281,19 +329,25 @@ help:
 	@echo "... depend"
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
-	@echo "... onestep_without_delay"
-	@echo "... example/onestep_without_delay.o"
-	@echo "... example/onestep_without_delay.i"
-	@echo "... example/onestep_without_delay.s"
+	@echo "... gtq_server"
+	@echo "... example/gtq_server.o"
+	@echo "... example/gtq_server.i"
+	@echo "... example/gtq_server.s"
 	@echo "... src/PMSM.o"
 	@echo "... src/PMSM.i"
 	@echo "... src/PMSM.s"
+	@echo "... src/client.o"
+	@echo "... src/client.i"
+	@echo "... src/client.s"
 	@echo "... src/current_controller.o"
 	@echo "... src/current_controller.i"
 	@echo "... src/current_controller.s"
 	@echo "... src/inverter.o"
 	@echo "... src/inverter.i"
 	@echo "... src/inverter.s"
+	@echo "... src/server.o"
+	@echo "... src/server.i"
+	@echo "... src/server.s"
 	@echo "... src/speed_control.o"
 	@echo "... src/speed_control.i"
 	@echo "... src/speed_control.s"
