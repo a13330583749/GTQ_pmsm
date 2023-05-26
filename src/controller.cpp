@@ -27,6 +27,27 @@ void CONTROLLER::Listen() {
     std::cout << "服务器已启动，正在监听端口 " << m_port << std::endl;
 }
 
+::std::vector<char> SerializeUMessage(const u_message& u) {
+    ::std::vector<char> buffer;
+
+    // 将 outputs 的大小作为前缀写入 buffer
+    size_t numOutputs = u.outputs.size();
+    buffer.insert(buffer.end(), reinterpret_cast<const char*>(&numOutputs), reinterpret_cast<const char*>(&numOutputs) + sizeof(size_t));
+
+    // 将 outputs 的数据写入 buffer
+    for (const auto& output : u.outputs) {
+        // 将每个内部向量的大小作为前缀写入 buffer
+        size_t numElements = output.size();
+        buffer.insert(buffer.end(), reinterpret_cast<const char*>(&numElements), reinterpret_cast<const char*>(&numElements) + sizeof(size_t));
+
+        // 将内部向量的数据写入 buffer
+        buffer.insert(buffer.end(), reinterpret_cast<const char*>(output.data()), reinterpret_cast<const char*>(output.data()) + numElements * sizeof(int));
+    }
+
+    return buffer;
+}
+
+
 void CONTROLLER::Accept() {
     while (true) {
         // 接受客户端连接
@@ -37,9 +58,7 @@ void CONTROLLER::Accept() {
 
         // 处理客户端请求
         HandleClient(clientSocket);
-        
-        // 关闭客户端套接字
-        close(clientSocket);
+
     }
 }
 
@@ -56,14 +75,15 @@ void CONTROLLER::HandleClient(int clientSocket) {
         if (bytesRead < sizeof(feedback_message)) {
             ::std::cerr << "接收到的数据长度不足，无法解析为 feedback_message 对象" << std::endl;
             break;
-        }       
+        }
+
         // 将 buffer 转换为 feedback_message 对象
         feedback_message message;
         char* ptr = buffer;
 
         // 解析 Id_ref
         memcpy(&message.Id_ref, ptr, sizeof(double));
-        ptr += sizeof(double);
+        ptr += sizeof(double);      
 
         // 解析 plant_wr
         memcpy(&message.plant_wr, ptr, sizeof(double));
@@ -75,9 +95,23 @@ void CONTROLLER::HandleClient(int clientSocket) {
 
         memcmp(&message.plant_u0, ptr, sizeof(double));
         ptr += sizeof(double);
+        
+        //解析Iabc
+        size_t IabcSize = bytesRead - (ptr - buffer);
+        size_t numElements = IabcSize / sizeof(double);
+        message.plant_Iabc.resize(numElements);
+        memcpy(message.plant_Iabc.data(), ptr, IabcSize);
 
-        auto result = m_callbackfunction(message);
+        if(m_callbackfunction){
+            u_message result = m_callbackfunction(message);
+            
+            // 将 u_message 对象序列化为字节序列
+            std::vector<char> serializedData = SerializeUMessage(result);
 
+            // 发送序列化后的字节序列回客户端
+            send(clientSocket, serializedData.data(), serializedData.size(), 0);
+
+        }
         // 发送相同的消息回客户端
         send(clientSocket, buffer, bytesRead, 0);
     }

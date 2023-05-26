@@ -111,10 +111,24 @@ CMakeFiles/onestep_without_delay.dir/src/client.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/onestep_without_delay.dir/src/client.cpp.s"
 	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/gtq/GTQ_pmsm/src/client.cpp -o CMakeFiles/onestep_without_delay.dir/src/client.cpp.s
 
+CMakeFiles/onestep_without_delay.dir/src/controller.cpp.o: CMakeFiles/onestep_without_delay.dir/flags.make
+CMakeFiles/onestep_without_delay.dir/src/controller.cpp.o: ../src/controller.cpp
+CMakeFiles/onestep_without_delay.dir/src/controller.cpp.o: CMakeFiles/onestep_without_delay.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/gtq/GTQ_pmsm/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/onestep_without_delay.dir/src/controller.cpp.o"
+	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/onestep_without_delay.dir/src/controller.cpp.o -MF CMakeFiles/onestep_without_delay.dir/src/controller.cpp.o.d -o CMakeFiles/onestep_without_delay.dir/src/controller.cpp.o -c /home/gtq/GTQ_pmsm/src/controller.cpp
+
+CMakeFiles/onestep_without_delay.dir/src/controller.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/onestep_without_delay.dir/src/controller.cpp.i"
+	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/gtq/GTQ_pmsm/src/controller.cpp > CMakeFiles/onestep_without_delay.dir/src/controller.cpp.i
+
+CMakeFiles/onestep_without_delay.dir/src/controller.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/onestep_without_delay.dir/src/controller.cpp.s"
+	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/gtq/GTQ_pmsm/src/controller.cpp -o CMakeFiles/onestep_without_delay.dir/src/controller.cpp.s
+
 CMakeFiles/onestep_without_delay.dir/src/current_controller.cpp.o: CMakeFiles/onestep_without_delay.dir/flags.make
 CMakeFiles/onestep_without_delay.dir/src/current_controller.cpp.o: ../src/current_controller.cpp
 CMakeFiles/onestep_without_delay.dir/src/current_controller.cpp.o: CMakeFiles/onestep_without_delay.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/gtq/GTQ_pmsm/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/onestep_without_delay.dir/src/current_controller.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/gtq/GTQ_pmsm/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/onestep_without_delay.dir/src/current_controller.cpp.o"
 	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/onestep_without_delay.dir/src/current_controller.cpp.o -MF CMakeFiles/onestep_without_delay.dir/src/current_controller.cpp.o.d -o CMakeFiles/onestep_without_delay.dir/src/current_controller.cpp.o -c /home/gtq/GTQ_pmsm/src/current_controller.cpp
 
 CMakeFiles/onestep_without_delay.dir/src/current_controller.cpp.i: cmake_force
@@ -128,7 +142,7 @@ CMakeFiles/onestep_without_delay.dir/src/current_controller.cpp.s: cmake_force
 CMakeFiles/onestep_without_delay.dir/src/inverter.cpp.o: CMakeFiles/onestep_without_delay.dir/flags.make
 CMakeFiles/onestep_without_delay.dir/src/inverter.cpp.o: ../src/inverter.cpp
 CMakeFiles/onestep_without_delay.dir/src/inverter.cpp.o: CMakeFiles/onestep_without_delay.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/gtq/GTQ_pmsm/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/onestep_without_delay.dir/src/inverter.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/gtq/GTQ_pmsm/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/onestep_without_delay.dir/src/inverter.cpp.o"
 	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/onestep_without_delay.dir/src/inverter.cpp.o -MF CMakeFiles/onestep_without_delay.dir/src/inverter.cpp.o.d -o CMakeFiles/onestep_without_delay.dir/src/inverter.cpp.o -c /home/gtq/GTQ_pmsm/src/inverter.cpp
 
 CMakeFiles/onestep_without_delay.dir/src/inverter.cpp.i: cmake_force
@@ -138,20 +152,6 @@ CMakeFiles/onestep_without_delay.dir/src/inverter.cpp.i: cmake_force
 CMakeFiles/onestep_without_delay.dir/src/inverter.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/onestep_without_delay.dir/src/inverter.cpp.s"
 	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/gtq/GTQ_pmsm/src/inverter.cpp -o CMakeFiles/onestep_without_delay.dir/src/inverter.cpp.s
-
-CMakeFiles/onestep_without_delay.dir/src/server.cpp.o: CMakeFiles/onestep_without_delay.dir/flags.make
-CMakeFiles/onestep_without_delay.dir/src/server.cpp.o: ../src/server.cpp
-CMakeFiles/onestep_without_delay.dir/src/server.cpp.o: CMakeFiles/onestep_without_delay.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/gtq/GTQ_pmsm/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/onestep_without_delay.dir/src/server.cpp.o"
-	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/onestep_without_delay.dir/src/server.cpp.o -MF CMakeFiles/onestep_without_delay.dir/src/server.cpp.o.d -o CMakeFiles/onestep_without_delay.dir/src/server.cpp.o -c /home/gtq/GTQ_pmsm/src/server.cpp
-
-CMakeFiles/onestep_without_delay.dir/src/server.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/onestep_without_delay.dir/src/server.cpp.i"
-	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/gtq/GTQ_pmsm/src/server.cpp > CMakeFiles/onestep_without_delay.dir/src/server.cpp.i
-
-CMakeFiles/onestep_without_delay.dir/src/server.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/onestep_without_delay.dir/src/server.cpp.s"
-	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/gtq/GTQ_pmsm/src/server.cpp -o CMakeFiles/onestep_without_delay.dir/src/server.cpp.s
 
 CMakeFiles/onestep_without_delay.dir/src/speed_control.cpp.o: CMakeFiles/onestep_without_delay.dir/flags.make
 CMakeFiles/onestep_without_delay.dir/src/speed_control.cpp.o: ../src/speed_control.cpp
@@ -186,9 +186,9 @@ onestep_without_delay_OBJECTS = \
 "CMakeFiles/onestep_without_delay.dir/example/onestep_without_delay.cpp.o" \
 "CMakeFiles/onestep_without_delay.dir/src/PMSM.cpp.o" \
 "CMakeFiles/onestep_without_delay.dir/src/client.cpp.o" \
+"CMakeFiles/onestep_without_delay.dir/src/controller.cpp.o" \
 "CMakeFiles/onestep_without_delay.dir/src/current_controller.cpp.o" \
 "CMakeFiles/onestep_without_delay.dir/src/inverter.cpp.o" \
-"CMakeFiles/onestep_without_delay.dir/src/server.cpp.o" \
 "CMakeFiles/onestep_without_delay.dir/src/speed_control.cpp.o" \
 "CMakeFiles/onestep_without_delay.dir/src/system.cpp.o"
 
@@ -198,9 +198,9 @@ onestep_without_delay_EXTERNAL_OBJECTS =
 onestep_without_delay: CMakeFiles/onestep_without_delay.dir/example/onestep_without_delay.cpp.o
 onestep_without_delay: CMakeFiles/onestep_without_delay.dir/src/PMSM.cpp.o
 onestep_without_delay: CMakeFiles/onestep_without_delay.dir/src/client.cpp.o
+onestep_without_delay: CMakeFiles/onestep_without_delay.dir/src/controller.cpp.o
 onestep_without_delay: CMakeFiles/onestep_without_delay.dir/src/current_controller.cpp.o
 onestep_without_delay: CMakeFiles/onestep_without_delay.dir/src/inverter.cpp.o
-onestep_without_delay: CMakeFiles/onestep_without_delay.dir/src/server.cpp.o
 onestep_without_delay: CMakeFiles/onestep_without_delay.dir/src/speed_control.cpp.o
 onestep_without_delay: CMakeFiles/onestep_without_delay.dir/src/system.cpp.o
 onestep_without_delay: CMakeFiles/onestep_without_delay.dir/build.make

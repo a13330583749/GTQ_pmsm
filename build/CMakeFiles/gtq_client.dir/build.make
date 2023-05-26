@@ -111,10 +111,24 @@ CMakeFiles/gtq_client.dir/src/client.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/gtq_client.dir/src/client.cpp.s"
 	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/gtq/GTQ_pmsm/src/client.cpp -o CMakeFiles/gtq_client.dir/src/client.cpp.s
 
+CMakeFiles/gtq_client.dir/src/controller.cpp.o: CMakeFiles/gtq_client.dir/flags.make
+CMakeFiles/gtq_client.dir/src/controller.cpp.o: ../src/controller.cpp
+CMakeFiles/gtq_client.dir/src/controller.cpp.o: CMakeFiles/gtq_client.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/gtq/GTQ_pmsm/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/gtq_client.dir/src/controller.cpp.o"
+	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/gtq_client.dir/src/controller.cpp.o -MF CMakeFiles/gtq_client.dir/src/controller.cpp.o.d -o CMakeFiles/gtq_client.dir/src/controller.cpp.o -c /home/gtq/GTQ_pmsm/src/controller.cpp
+
+CMakeFiles/gtq_client.dir/src/controller.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/gtq_client.dir/src/controller.cpp.i"
+	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/gtq/GTQ_pmsm/src/controller.cpp > CMakeFiles/gtq_client.dir/src/controller.cpp.i
+
+CMakeFiles/gtq_client.dir/src/controller.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/gtq_client.dir/src/controller.cpp.s"
+	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/gtq/GTQ_pmsm/src/controller.cpp -o CMakeFiles/gtq_client.dir/src/controller.cpp.s
+
 CMakeFiles/gtq_client.dir/src/current_controller.cpp.o: CMakeFiles/gtq_client.dir/flags.make
 CMakeFiles/gtq_client.dir/src/current_controller.cpp.o: ../src/current_controller.cpp
 CMakeFiles/gtq_client.dir/src/current_controller.cpp.o: CMakeFiles/gtq_client.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/gtq/GTQ_pmsm/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/gtq_client.dir/src/current_controller.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/gtq/GTQ_pmsm/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/gtq_client.dir/src/current_controller.cpp.o"
 	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/gtq_client.dir/src/current_controller.cpp.o -MF CMakeFiles/gtq_client.dir/src/current_controller.cpp.o.d -o CMakeFiles/gtq_client.dir/src/current_controller.cpp.o -c /home/gtq/GTQ_pmsm/src/current_controller.cpp
 
 CMakeFiles/gtq_client.dir/src/current_controller.cpp.i: cmake_force
@@ -128,7 +142,7 @@ CMakeFiles/gtq_client.dir/src/current_controller.cpp.s: cmake_force
 CMakeFiles/gtq_client.dir/src/inverter.cpp.o: CMakeFiles/gtq_client.dir/flags.make
 CMakeFiles/gtq_client.dir/src/inverter.cpp.o: ../src/inverter.cpp
 CMakeFiles/gtq_client.dir/src/inverter.cpp.o: CMakeFiles/gtq_client.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/gtq/GTQ_pmsm/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/gtq_client.dir/src/inverter.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/gtq/GTQ_pmsm/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/gtq_client.dir/src/inverter.cpp.o"
 	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/gtq_client.dir/src/inverter.cpp.o -MF CMakeFiles/gtq_client.dir/src/inverter.cpp.o.d -o CMakeFiles/gtq_client.dir/src/inverter.cpp.o -c /home/gtq/GTQ_pmsm/src/inverter.cpp
 
 CMakeFiles/gtq_client.dir/src/inverter.cpp.i: cmake_force
@@ -138,20 +152,6 @@ CMakeFiles/gtq_client.dir/src/inverter.cpp.i: cmake_force
 CMakeFiles/gtq_client.dir/src/inverter.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/gtq_client.dir/src/inverter.cpp.s"
 	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/gtq/GTQ_pmsm/src/inverter.cpp -o CMakeFiles/gtq_client.dir/src/inverter.cpp.s
-
-CMakeFiles/gtq_client.dir/src/server.cpp.o: CMakeFiles/gtq_client.dir/flags.make
-CMakeFiles/gtq_client.dir/src/server.cpp.o: ../src/server.cpp
-CMakeFiles/gtq_client.dir/src/server.cpp.o: CMakeFiles/gtq_client.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/gtq/GTQ_pmsm/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/gtq_client.dir/src/server.cpp.o"
-	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/gtq_client.dir/src/server.cpp.o -MF CMakeFiles/gtq_client.dir/src/server.cpp.o.d -o CMakeFiles/gtq_client.dir/src/server.cpp.o -c /home/gtq/GTQ_pmsm/src/server.cpp
-
-CMakeFiles/gtq_client.dir/src/server.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/gtq_client.dir/src/server.cpp.i"
-	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/gtq/GTQ_pmsm/src/server.cpp > CMakeFiles/gtq_client.dir/src/server.cpp.i
-
-CMakeFiles/gtq_client.dir/src/server.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/gtq_client.dir/src/server.cpp.s"
-	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/gtq/GTQ_pmsm/src/server.cpp -o CMakeFiles/gtq_client.dir/src/server.cpp.s
 
 CMakeFiles/gtq_client.dir/src/speed_control.cpp.o: CMakeFiles/gtq_client.dir/flags.make
 CMakeFiles/gtq_client.dir/src/speed_control.cpp.o: ../src/speed_control.cpp
@@ -186,9 +186,9 @@ gtq_client_OBJECTS = \
 "CMakeFiles/gtq_client.dir/example/gtq_client.cpp.o" \
 "CMakeFiles/gtq_client.dir/src/PMSM.cpp.o" \
 "CMakeFiles/gtq_client.dir/src/client.cpp.o" \
+"CMakeFiles/gtq_client.dir/src/controller.cpp.o" \
 "CMakeFiles/gtq_client.dir/src/current_controller.cpp.o" \
 "CMakeFiles/gtq_client.dir/src/inverter.cpp.o" \
-"CMakeFiles/gtq_client.dir/src/server.cpp.o" \
 "CMakeFiles/gtq_client.dir/src/speed_control.cpp.o" \
 "CMakeFiles/gtq_client.dir/src/system.cpp.o"
 
@@ -198,9 +198,9 @@ gtq_client_EXTERNAL_OBJECTS =
 gtq_client: CMakeFiles/gtq_client.dir/example/gtq_client.cpp.o
 gtq_client: CMakeFiles/gtq_client.dir/src/PMSM.cpp.o
 gtq_client: CMakeFiles/gtq_client.dir/src/client.cpp.o
+gtq_client: CMakeFiles/gtq_client.dir/src/controller.cpp.o
 gtq_client: CMakeFiles/gtq_client.dir/src/current_controller.cpp.o
 gtq_client: CMakeFiles/gtq_client.dir/src/inverter.cpp.o
-gtq_client: CMakeFiles/gtq_client.dir/src/server.cpp.o
 gtq_client: CMakeFiles/gtq_client.dir/src/speed_control.cpp.o
 gtq_client: CMakeFiles/gtq_client.dir/src/system.cpp.o
 gtq_client: CMakeFiles/gtq_client.dir/build.make

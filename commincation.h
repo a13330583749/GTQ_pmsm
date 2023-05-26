@@ -13,7 +13,7 @@ struct feedback_message{
     double plant_ele_theta;
     double plant_u0;
     ::std::vector<double> plant_Iabc;
-    feedback_message(const double& id_ref, const double& wr, const double& ele_theta,
+    feedback_message(const bool& flag_, const double& id_ref, const double& wr, const double& ele_theta,
         const double& u0,const ::std::vector<double>& Iabc):Id_ref(id_ref), plant_wr(wr),
         plant_ele_theta(ele_theta), plant_u0(u0), plant_Iabc(Iabc){}
     feedback_message() = default;

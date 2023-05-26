@@ -287,6 +287,36 @@ src/client.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/onestep_without_delay.dir/build.make CMakeFiles/onestep_without_delay.dir/src/client.cpp.s
 .PHONY : src/client.cpp.s
 
+src/controller.o: src/controller.cpp.o
+.PHONY : src/controller.o
+
+# target to build an object file
+src/controller.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/gtq_client.dir/build.make CMakeFiles/gtq_client.dir/src/controller.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/gtq_server.dir/build.make CMakeFiles/gtq_server.dir/src/controller.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/onestep_without_delay.dir/build.make CMakeFiles/onestep_without_delay.dir/src/controller.cpp.o
+.PHONY : src/controller.cpp.o
+
+src/controller.i: src/controller.cpp.i
+.PHONY : src/controller.i
+
+# target to preprocess a source file
+src/controller.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/gtq_client.dir/build.make CMakeFiles/gtq_client.dir/src/controller.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/gtq_server.dir/build.make CMakeFiles/gtq_server.dir/src/controller.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/onestep_without_delay.dir/build.make CMakeFiles/onestep_without_delay.dir/src/controller.cpp.i
+.PHONY : src/controller.cpp.i
+
+src/controller.s: src/controller.cpp.s
+.PHONY : src/controller.s
+
+# target to generate assembly for a file
+src/controller.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/gtq_client.dir/build.make CMakeFiles/gtq_client.dir/src/controller.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/gtq_server.dir/build.make CMakeFiles/gtq_server.dir/src/controller.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/onestep_without_delay.dir/build.make CMakeFiles/onestep_without_delay.dir/src/controller.cpp.s
+.PHONY : src/controller.cpp.s
+
 src/current_controller.o: src/current_controller.cpp.o
 .PHONY : src/current_controller.o
 
@@ -346,36 +376,6 @@ src/inverter.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/gtq_server.dir/build.make CMakeFiles/gtq_server.dir/src/inverter.cpp.s
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/onestep_without_delay.dir/build.make CMakeFiles/onestep_without_delay.dir/src/inverter.cpp.s
 .PHONY : src/inverter.cpp.s
-
-src/server.o: src/server.cpp.o
-.PHONY : src/server.o
-
-# target to build an object file
-src/server.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/gtq_client.dir/build.make CMakeFiles/gtq_client.dir/src/server.cpp.o
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/gtq_server.dir/build.make CMakeFiles/gtq_server.dir/src/server.cpp.o
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/onestep_without_delay.dir/build.make CMakeFiles/onestep_without_delay.dir/src/server.cpp.o
-.PHONY : src/server.cpp.o
-
-src/server.i: src/server.cpp.i
-.PHONY : src/server.i
-
-# target to preprocess a source file
-src/server.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/gtq_client.dir/build.make CMakeFiles/gtq_client.dir/src/server.cpp.i
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/gtq_server.dir/build.make CMakeFiles/gtq_server.dir/src/server.cpp.i
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/onestep_without_delay.dir/build.make CMakeFiles/onestep_without_delay.dir/src/server.cpp.i
-.PHONY : src/server.cpp.i
-
-src/server.s: src/server.cpp.s
-.PHONY : src/server.s
-
-# target to generate assembly for a file
-src/server.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/gtq_client.dir/build.make CMakeFiles/gtq_client.dir/src/server.cpp.s
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/gtq_server.dir/build.make CMakeFiles/gtq_server.dir/src/server.cpp.s
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/onestep_without_delay.dir/build.make CMakeFiles/onestep_without_delay.dir/src/server.cpp.s
-.PHONY : src/server.cpp.s
 
 src/speed_control.o: src/speed_control.cpp.o
 .PHONY : src/speed_control.o
@@ -463,15 +463,15 @@ help:
 	@echo "... src/client.o"
 	@echo "... src/client.i"
 	@echo "... src/client.s"
+	@echo "... src/controller.o"
+	@echo "... src/controller.i"
+	@echo "... src/controller.s"
 	@echo "... src/current_controller.o"
 	@echo "... src/current_controller.i"
 	@echo "... src/current_controller.s"
 	@echo "... src/inverter.o"
 	@echo "... src/inverter.i"
 	@echo "... src/inverter.s"
-	@echo "... src/server.o"
-	@echo "... src/server.i"
-	@echo "... src/server.s"
 	@echo "... src/speed_control.o"
 	@echo "... src/speed_control.i"
 	@echo "... src/speed_control.s"

@@ -16,6 +16,11 @@
 },
 {
   "directory": "/home/gtq/GTQ_pmsm/build",
+  "command": "/usr/bin/g++   -Wall  -g -g -o CMakeFiles/gtq_client.dir/src/controller.cpp.o -c /home/gtq/GTQ_pmsm/src/controller.cpp",
+  "file": "/home/gtq/GTQ_pmsm/src/controller.cpp"
+},
+{
+  "directory": "/home/gtq/GTQ_pmsm/build",
   "command": "/usr/bin/g++   -Wall  -g -g -o CMakeFiles/gtq_client.dir/src/current_controller.cpp.o -c /home/gtq/GTQ_pmsm/src/current_controller.cpp",
   "file": "/home/gtq/GTQ_pmsm/src/current_controller.cpp"
 },
@@ -23,11 +28,6 @@
   "directory": "/home/gtq/GTQ_pmsm/build",
   "command": "/usr/bin/g++   -Wall  -g -g -o CMakeFiles/gtq_client.dir/src/inverter.cpp.o -c /home/gtq/GTQ_pmsm/src/inverter.cpp",
   "file": "/home/gtq/GTQ_pmsm/src/inverter.cpp"
-},
-{
-  "directory": "/home/gtq/GTQ_pmsm/build",
-  "command": "/usr/bin/g++   -Wall  -g -g -o CMakeFiles/gtq_client.dir/src/server.cpp.o -c /home/gtq/GTQ_pmsm/src/server.cpp",
-  "file": "/home/gtq/GTQ_pmsm/src/server.cpp"
 },
 {
   "directory": "/home/gtq/GTQ_pmsm/build",
@@ -56,6 +56,11 @@
 },
 {
   "directory": "/home/gtq/GTQ_pmsm/build",
+  "command": "/usr/bin/g++   -Wall  -g -g -o CMakeFiles/gtq_server.dir/src/controller.cpp.o -c /home/gtq/GTQ_pmsm/src/controller.cpp",
+  "file": "/home/gtq/GTQ_pmsm/src/controller.cpp"
+},
+{
+  "directory": "/home/gtq/GTQ_pmsm/build",
   "command": "/usr/bin/g++   -Wall  -g -g -o CMakeFiles/gtq_server.dir/src/current_controller.cpp.o -c /home/gtq/GTQ_pmsm/src/current_controller.cpp",
   "file": "/home/gtq/GTQ_pmsm/src/current_controller.cpp"
 },
@@ -63,11 +68,6 @@
   "directory": "/home/gtq/GTQ_pmsm/build",
   "command": "/usr/bin/g++   -Wall  -g -g -o CMakeFiles/gtq_server.dir/src/inverter.cpp.o -c /home/gtq/GTQ_pmsm/src/inverter.cpp",
   "file": "/home/gtq/GTQ_pmsm/src/inverter.cpp"
-},
-{
-  "directory": "/home/gtq/GTQ_pmsm/build",
-  "command": "/usr/bin/g++   -Wall  -g -g -o CMakeFiles/gtq_server.dir/src/server.cpp.o -c /home/gtq/GTQ_pmsm/src/server.cpp",
-  "file": "/home/gtq/GTQ_pmsm/src/server.cpp"
 },
 {
   "directory": "/home/gtq/GTQ_pmsm/build",
@@ -96,6 +96,11 @@
 },
 {
   "directory": "/home/gtq/GTQ_pmsm/build",
+  "command": "/usr/bin/g++   -Wall  -g -g -o CMakeFiles/onestep_without_delay.dir/src/controller.cpp.o -c /home/gtq/GTQ_pmsm/src/controller.cpp",
+  "file": "/home/gtq/GTQ_pmsm/src/controller.cpp"
+},
+{
+  "directory": "/home/gtq/GTQ_pmsm/build",
   "command": "/usr/bin/g++   -Wall  -g -g -o CMakeFiles/onestep_without_delay.dir/src/current_controller.cpp.o -c /home/gtq/GTQ_pmsm/src/current_controller.cpp",
   "file": "/home/gtq/GTQ_pmsm/src/current_controller.cpp"
 },
@@ -103,11 +108,6 @@
   "directory": "/home/gtq/GTQ_pmsm/build",
   "command": "/usr/bin/g++   -Wall  -g -g -o CMakeFiles/onestep_without_delay.dir/src/inverter.cpp.o -c /home/gtq/GTQ_pmsm/src/inverter.cpp",
   "file": "/home/gtq/GTQ_pmsm/src/inverter.cpp"
-},
-{
-  "directory": "/home/gtq/GTQ_pmsm/build",
-  "command": "/usr/bin/g++   -Wall  -g -g -o CMakeFiles/onestep_without_delay.dir/src/server.cpp.o -c /home/gtq/GTQ_pmsm/src/server.cpp",
-  "file": "/home/gtq/GTQ_pmsm/src/server.cpp"
 },
 {
   "directory": "/home/gtq/GTQ_pmsm/build",
