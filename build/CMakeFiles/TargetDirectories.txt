@@ -1,3 +1,5 @@
+/home/gtq/GTQ_pmsm/build/CMakeFiles/gtq_client.dir
 /home/gtq/GTQ_pmsm/build/CMakeFiles/gtq_server.dir
+/home/gtq/GTQ_pmsm/build/CMakeFiles/onestep_without_delay.dir
 /home/gtq/GTQ_pmsm/build/CMakeFiles/edit_cache.dir
 /home/gtq/GTQ_pmsm/build/CMakeFiles/rebuild_cache.dir

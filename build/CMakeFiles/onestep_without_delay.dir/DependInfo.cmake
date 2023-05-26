@@ -10,8 +10,10 @@ set(CMAKE_DEPENDS_LANGUAGES
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
   "/home/gtq/GTQ_pmsm/example/onestep_without_delay.cpp" "CMakeFiles/onestep_without_delay.dir/example/onestep_without_delay.cpp.o" "gcc" "CMakeFiles/onestep_without_delay.dir/example/onestep_without_delay.cpp.o.d"
   "/home/gtq/GTQ_pmsm/src/PMSM.cpp" "CMakeFiles/onestep_without_delay.dir/src/PMSM.cpp.o" "gcc" "CMakeFiles/onestep_without_delay.dir/src/PMSM.cpp.o.d"
+  "/home/gtq/GTQ_pmsm/src/client.cpp" "CMakeFiles/onestep_without_delay.dir/src/client.cpp.o" "gcc" "CMakeFiles/onestep_without_delay.dir/src/client.cpp.o.d"
   "/home/gtq/GTQ_pmsm/src/current_controller.cpp" "CMakeFiles/onestep_without_delay.dir/src/current_controller.cpp.o" "gcc" "CMakeFiles/onestep_without_delay.dir/src/current_controller.cpp.o.d"
   "/home/gtq/GTQ_pmsm/src/inverter.cpp" "CMakeFiles/onestep_without_delay.dir/src/inverter.cpp.o" "gcc" "CMakeFiles/onestep_without_delay.dir/src/inverter.cpp.o.d"
+  "/home/gtq/GTQ_pmsm/src/server.cpp" "CMakeFiles/onestep_without_delay.dir/src/server.cpp.o" "gcc" "CMakeFiles/onestep_without_delay.dir/src/server.cpp.o.d"
   "/home/gtq/GTQ_pmsm/src/speed_control.cpp" "CMakeFiles/onestep_without_delay.dir/src/speed_control.cpp.o" "gcc" "CMakeFiles/onestep_without_delay.dir/src/speed_control.cpp.o.d"
   "/home/gtq/GTQ_pmsm/src/system.cpp" "CMakeFiles/onestep_without_delay.dir/src/system.cpp.o" "gcc" "CMakeFiles/onestep_without_delay.dir/src/system.cpp.o.d"
   )

@@ -2,16 +2,16 @@
 #include "../PMSM_sim.h"
 namespace PanJL{
     
-EchoServer::EchoServer(int port)
+CONTROLLER::CONTROLLER(int port)
     : m_port(port), m_socket(0) {}
 
-void EchoServer::Start() {
+void CONTROLLER::Start() {
     Bind();
     Listen();
     Accept();
 }
 
-void EchoServer::Bind() {
+void CONTROLLER::Bind() {
     // 创建套接字并绑定端口
     m_socket = socket(AF_INET, SOCK_STREAM, 0);
     sockaddr_in serverAddress{};
@@ -21,13 +21,13 @@ void EchoServer::Bind() {
     bind(m_socket, (struct sockaddr*)&serverAddress, sizeof(serverAddress));
 }
 
-void EchoServer::Listen() {
+void CONTROLLER::Listen() {
     // 监听端口
     listen(m_socket, 5);
     std::cout << "服务器已启动，正在监听端口 " << m_port << std::endl;
 }
 
-void EchoServer::Accept() {
+void CONTROLLER::Accept() {
     while (true) {
         // 接受客户端连接
         sockaddr_in clientAddress{};
@@ -43,7 +43,7 @@ void EchoServer::Accept() {
     }
 }
 
-void EchoServer::HandleClient(int clientSocket) {
+void CONTROLLER::HandleClient(int clientSocket) {
     char buffer[1024];
     while (true) {
         // 接收客户端消息
@@ -51,6 +51,32 @@ void EchoServer::HandleClient(int clientSocket) {
         if (bytesRead <= 0) {
             break;
         }
+
+        // 确保接收到的数据足够解析为 feedback_message
+        if (bytesRead < sizeof(feedback_message)) {
+            ::std::cerr << "接收到的数据长度不足，无法解析为 feedback_message 对象" << std::endl;
+            break;
+        }       
+        // 将 buffer 转换为 feedback_message 对象
+        feedback_message message;
+        char* ptr = buffer;
+
+        // 解析 Id_ref
+        memcpy(&message.Id_ref, ptr, sizeof(double));
+        ptr += sizeof(double);
+
+        // 解析 plant_wr
+        memcpy(&message.plant_wr, ptr, sizeof(double));
+        ptr += sizeof(double);
+
+        // 解析 plant_ele_theta
+        memcpy(&message.plant_ele_theta, ptr, sizeof(double));
+        ptr += sizeof(double);
+
+        memcmp(&message.plant_u0, ptr, sizeof(double));
+        ptr += sizeof(double);
+
+        auto result = m_callbackfunction(message);
 
         // 发送相同的消息回客户端
         send(clientSocket, buffer, bytesRead, 0);

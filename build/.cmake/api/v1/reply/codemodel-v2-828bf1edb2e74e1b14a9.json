@@ -15,7 +15,9 @@
 					"source" : ".",
 					"targetIndexes" : 
 					[
-						0
+						0,
+						1,
+						2
 					]
 				}
 			],
@@ -30,7 +32,9 @@
 					"name" : "pmsm",
 					"targetIndexes" : 
 					[
-						0
+						0,
+						1,
+						2
 					]
 				}
 			],
@@ -38,9 +42,23 @@
 			[
 				{
 					"directoryIndex" : 0,
+					"id" : "gtq_client::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-gtq_client-Debug-ea663d86982dd22c976a.json",
+					"name" : "gtq_client",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
 					"id" : "gtq_server::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-gtq_server-Debug-a9e2132391281fb9fdff.json",
+					"jsonFile" : "target-gtq_server-Debug-0651a47bc53e27f54073.json",
 					"name" : "gtq_server",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "onestep_without_delay::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-onestep_without_delay-Debug-1f971d196298a53db71d.json",
+					"name" : "onestep_without_delay",
 					"projectIndex" : 0
 				}
 			]
