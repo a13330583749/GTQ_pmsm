@@ -2,7 +2,7 @@
 	"artifacts" : 
 	[
 		{
-			"path" : "gtq_server"
+			"path" : "pmsm_plant"
 		}
 	],
 	"backtrace" : 1,
@@ -24,7 +24,7 @@
 			{
 				"command" : 0,
 				"file" : 0,
-				"line" : 8,
+				"line" : 12,
 				"parent" : 0
 			}
 		]
@@ -52,7 +52,7 @@
 			]
 		}
 	],
-	"id" : "gtq_server::@6890427a1f51a3e7e1df",
+	"id" : "pmsm_plant::@6890427a1f51a3e7e1df",
 	"link" : 
 	{
 		"commandFragments" : 
@@ -68,8 +68,8 @@
 		],
 		"language" : "CXX"
 	},
-	"name" : "gtq_server",
-	"nameOnDisk" : "gtq_server",
+	"name" : "pmsm_plant",
+	"nameOnDisk" : "pmsm_plant",
 	"paths" : 
 	{
 		"build" : ".",
@@ -97,7 +97,7 @@
 		{
 			"backtrace" : 1,
 			"compileGroupIndex" : 0,
-			"path" : "example/gtq_server.cpp",
+			"path" : "example/pmsm_plant.cpp",
 			"sourceGroupIndex" : 0
 		},
 		{

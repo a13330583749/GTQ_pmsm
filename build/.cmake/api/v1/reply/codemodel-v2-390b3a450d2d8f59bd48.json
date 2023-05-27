@@ -16,8 +16,7 @@
 					"targetIndexes" : 
 					[
 						0,
-						1,
-						2
+						1
 					]
 				}
 			],
@@ -33,8 +32,7 @@
 					"targetIndexes" : 
 					[
 						0,
-						1,
-						2
+						1
 					]
 				}
 			],
@@ -42,23 +40,16 @@
 			[
 				{
 					"directoryIndex" : 0,
-					"id" : "gtq_client::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-gtq_client-Debug-0b0a2edc9ef113f16e72.json",
-					"name" : "gtq_client",
+					"id" : "pmsm_controller::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-pmsm_controller-Debug-5396dae192c824171075.json",
+					"name" : "pmsm_controller",
 					"projectIndex" : 0
 				},
 				{
 					"directoryIndex" : 0,
-					"id" : "gtq_server::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-gtq_server-Debug-8152afc26add6ebc542d.json",
-					"name" : "gtq_server",
-					"projectIndex" : 0
-				},
-				{
-					"directoryIndex" : 0,
-					"id" : "onestep_without_delay::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-onestep_without_delay-Debug-003977a8e2b93db33571.json",
-					"name" : "onestep_without_delay",
+					"id" : "pmsm_plant::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-pmsm_plant-Debug-f49b69dcf20a83b2080c.json",
+					"name" : "pmsm_plant",
 					"projectIndex" : 0
 				}
 			]

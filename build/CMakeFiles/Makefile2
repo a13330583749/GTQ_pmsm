@@ -63,9 +63,8 @@ CMAKE_BINARY_DIR = /home/gtq/GTQ_pmsm/build
 # Directory level rules for the build root directory
 
 # The main recursive "all" target.
-all: CMakeFiles/gtq_client.dir/all
-all: CMakeFiles/gtq_server.dir/all
-all: CMakeFiles/onestep_without_delay.dir/all
+all: CMakeFiles/pmsm_controller.dir/all
+all: CMakeFiles/pmsm_plant.dir/all
 .PHONY : all
 
 # The main recursive "preinstall" target.
@@ -73,88 +72,61 @@ preinstall:
 .PHONY : preinstall
 
 # The main recursive "clean" target.
-clean: CMakeFiles/gtq_client.dir/clean
-clean: CMakeFiles/gtq_server.dir/clean
-clean: CMakeFiles/onestep_without_delay.dir/clean
+clean: CMakeFiles/pmsm_controller.dir/clean
+clean: CMakeFiles/pmsm_plant.dir/clean
 .PHONY : clean
 
 #=============================================================================
-# Target rules for target CMakeFiles/gtq_client.dir
+# Target rules for target CMakeFiles/pmsm_controller.dir
 
 # All Build rule for target.
-CMakeFiles/gtq_client.dir/all:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/gtq_client.dir/build.make CMakeFiles/gtq_client.dir/depend
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/gtq_client.dir/build.make CMakeFiles/gtq_client.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/gtq/GTQ_pmsm/build/CMakeFiles --progress-num=1,2,3,4,5,6,7,8,9 "Built target gtq_client"
-.PHONY : CMakeFiles/gtq_client.dir/all
+CMakeFiles/pmsm_controller.dir/all:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/pmsm_controller.dir/build.make CMakeFiles/pmsm_controller.dir/depend
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/pmsm_controller.dir/build.make CMakeFiles/pmsm_controller.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/gtq/GTQ_pmsm/build/CMakeFiles --progress-num=1,2,3,4,5,6,7,8,9 "Built target pmsm_controller"
+.PHONY : CMakeFiles/pmsm_controller.dir/all
 
 # Build rule for subdir invocation for target.
-CMakeFiles/gtq_client.dir/rule: cmake_check_build_system
+CMakeFiles/pmsm_controller.dir/rule: cmake_check_build_system
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/gtq/GTQ_pmsm/build/CMakeFiles 9
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/gtq_client.dir/all
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/pmsm_controller.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/gtq/GTQ_pmsm/build/CMakeFiles 0
-.PHONY : CMakeFiles/gtq_client.dir/rule
+.PHONY : CMakeFiles/pmsm_controller.dir/rule
 
 # Convenience name for target.
-gtq_client: CMakeFiles/gtq_client.dir/rule
-.PHONY : gtq_client
+pmsm_controller: CMakeFiles/pmsm_controller.dir/rule
+.PHONY : pmsm_controller
 
 # clean rule for target.
-CMakeFiles/gtq_client.dir/clean:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/gtq_client.dir/build.make CMakeFiles/gtq_client.dir/clean
-.PHONY : CMakeFiles/gtq_client.dir/clean
+CMakeFiles/pmsm_controller.dir/clean:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/pmsm_controller.dir/build.make CMakeFiles/pmsm_controller.dir/clean
+.PHONY : CMakeFiles/pmsm_controller.dir/clean
 
 #=============================================================================
-# Target rules for target CMakeFiles/gtq_server.dir
+# Target rules for target CMakeFiles/pmsm_plant.dir
 
 # All Build rule for target.
-CMakeFiles/gtq_server.dir/all:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/gtq_server.dir/build.make CMakeFiles/gtq_server.dir/depend
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/gtq_server.dir/build.make CMakeFiles/gtq_server.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/gtq/GTQ_pmsm/build/CMakeFiles --progress-num=10,11,12,13,14,15,16,17,18 "Built target gtq_server"
-.PHONY : CMakeFiles/gtq_server.dir/all
+CMakeFiles/pmsm_plant.dir/all:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/pmsm_plant.dir/build.make CMakeFiles/pmsm_plant.dir/depend
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/pmsm_plant.dir/build.make CMakeFiles/pmsm_plant.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/gtq/GTQ_pmsm/build/CMakeFiles --progress-num=10,11,12,13,14,15,16,17,18 "Built target pmsm_plant"
+.PHONY : CMakeFiles/pmsm_plant.dir/all
 
 # Build rule for subdir invocation for target.
-CMakeFiles/gtq_server.dir/rule: cmake_check_build_system
+CMakeFiles/pmsm_plant.dir/rule: cmake_check_build_system
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/gtq/GTQ_pmsm/build/CMakeFiles 9
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/gtq_server.dir/all
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/pmsm_plant.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/gtq/GTQ_pmsm/build/CMakeFiles 0
-.PHONY : CMakeFiles/gtq_server.dir/rule
+.PHONY : CMakeFiles/pmsm_plant.dir/rule
 
 # Convenience name for target.
-gtq_server: CMakeFiles/gtq_server.dir/rule
-.PHONY : gtq_server
+pmsm_plant: CMakeFiles/pmsm_plant.dir/rule
+.PHONY : pmsm_plant
 
 # clean rule for target.
-CMakeFiles/gtq_server.dir/clean:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/gtq_server.dir/build.make CMakeFiles/gtq_server.dir/clean
-.PHONY : CMakeFiles/gtq_server.dir/clean
-
-#=============================================================================
-# Target rules for target CMakeFiles/onestep_without_delay.dir
-
-# All Build rule for target.
-CMakeFiles/onestep_without_delay.dir/all:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/onestep_without_delay.dir/build.make CMakeFiles/onestep_without_delay.dir/depend
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/onestep_without_delay.dir/build.make CMakeFiles/onestep_without_delay.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/gtq/GTQ_pmsm/build/CMakeFiles --progress-num=19,20,21,22,23,24,25,26,27 "Built target onestep_without_delay"
-.PHONY : CMakeFiles/onestep_without_delay.dir/all
-
-# Build rule for subdir invocation for target.
-CMakeFiles/onestep_without_delay.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/gtq/GTQ_pmsm/build/CMakeFiles 9
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/onestep_without_delay.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/gtq/GTQ_pmsm/build/CMakeFiles 0
-.PHONY : CMakeFiles/onestep_without_delay.dir/rule
-
-# Convenience name for target.
-onestep_without_delay: CMakeFiles/onestep_without_delay.dir/rule
-.PHONY : onestep_without_delay
-
-# clean rule for target.
-CMakeFiles/onestep_without_delay.dir/clean:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/onestep_without_delay.dir/build.make CMakeFiles/onestep_without_delay.dir/clean
-.PHONY : CMakeFiles/onestep_without_delay.dir/clean
+CMakeFiles/pmsm_plant.dir/clean:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/pmsm_plant.dir/build.make CMakeFiles/pmsm_plant.dir/clean
+.PHONY : CMakeFiles/pmsm_plant.dir/clean
 
 #=============================================================================
 # Special targets to cleanup operation of make.

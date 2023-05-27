@@ -43,7 +43,6 @@ set(CMAKE_MAKEFILE_PRODUCTS
 
 # Dependency information for all targets:
 set(CMAKE_DEPEND_INFO_FILES
-  "CMakeFiles/gtq_client.dir/DependInfo.cmake"
-  "CMakeFiles/gtq_server.dir/DependInfo.cmake"
-  "CMakeFiles/onestep_without_delay.dir/DependInfo.cmake"
+  "CMakeFiles/pmsm_controller.dir/DependInfo.cmake"
+  "CMakeFiles/pmsm_plant.dir/DependInfo.cmake"
   )
