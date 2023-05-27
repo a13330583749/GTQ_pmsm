@@ -7,14 +7,27 @@
 #define kp  3
 #define ki  0.02//(20000 * PanJL::Ts)
 #define kd  0
+#define wr_ref 100
 
-PanJL::u_message SpeedPIDCallback(const PanJL::feedback_message& feedback) {
-    double wr_ref = feedback.plant_wr; // 获取反馈消息中的 wr_ref
-    double Iq_ref = speed_pid.update(wr_ref - plant.get_wr()); // 调用 speed_pid.update() 计算 Iq_ref
-    // 调用 current_trl.controller() 获取控制信息
-    u_message result = current_trl.controller(0, Iq_ref, plant.get_ele_theta(), plant.get_Iabc(), plant.get_wr(), PanJL::Ts, plant.get_u0());
-    return result;
-}
+// 这是整一个控制过程
+class MyClass {
+public:
+    static PanJL::u_message CallbackFunction(const PanJL::feedback_message& message, 
+        PanJL::FCSMPCer* current_trl, PanJL::Speed_controller* speed_pid) {
+        // 使用 res、speed_pid 和 current_trl 进行处理
+
+        // 调用成员函数
+        double Iq_ref = speed_pid->updata(wr_ref - message.plant_wr);
+        std::vector<std::vector<int>> inputs = current_trl->controller
+            (0, Iq_ref, message.plant_ele_theta, message.plant_Iabc, 
+            message.plant_wr, PanJL::Ts, message.plant_u0);
+
+        // 创建并返回 u_message 对象
+        PanJL::u_message result(current_trl->get_flag_control_times(), inputs);
+        return result;
+    }
+};
+
 
 int main()
 {
@@ -27,17 +40,13 @@ int main()
         return 1;
     }
 
-    PanJL::Plant plant(100, 750e-6);
-    PanJL::FCSMPCer current_trl(100, 0);
-    PanJL::Speed_controller speed_pid(kp, ki, kd, 0);
+    // 创建对象的实例
+    PanJL::FCSMPCer current_trl_instance(100, 0);
+    PanJL::Speed_controller speed_pid_instance(kp, ki, kd, 0);
+    current_trl_instance.init_PMSM(Ld_, Lq_, F_, Bm_, Rs_, TL_, Pn_, J_);
 
-    // PanJL::CallbackFunction 
-    while (true)
-    {
-        PanJL::feedback_message feedback{
-            
-        }
-    }
-    
+    controller.current_trl = &current_trl_instance;
+    controller.speed_pid = &speed_pid_instance;
 
+    controller.Start();
 }

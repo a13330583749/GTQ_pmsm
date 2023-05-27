@@ -22,6 +22,7 @@ int main()
     plant.set_state_PMSM(0, 0, 0, 0);
     current_trl.init_PMSM(Ld_, Lq_, F_, Bm_, Rs_, TL_, Pn_, J_);
     std::vector<std::vector<int>> inputs;
+
     
     double Iq_ref{0};
     double wr_ref = 100;
@@ -35,8 +36,8 @@ int main()
         if(current_trl.get_flag_control_times()){
             plant.updata(inputs[0], PanJL::Ts);
         }else{
-            plant.updata(inputs[0], PanJL::Ts/2);
-            plant.updata(inputs[1], PanJL::Ts/2);
+            plant.updata(inputs[0], PanJL::Ts/2.0);
+            plant.updata(inputs[1], PanJL::Ts/2.0);
         }
         outputFile << plant.get_wr() << "," << plant.get_u0() << std::endl;
 

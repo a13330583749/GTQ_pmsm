@@ -13,7 +13,8 @@ struct feedback_message{
     double plant_ele_theta;
     double plant_u0;
     ::std::vector<double> plant_Iabc;
-    feedback_message(const bool& flag_, const double& id_ref, const double& wr, const double& ele_theta,
+    
+    feedback_message(const double& id_ref, const double& wr, const double& ele_theta,
         const double& u0,const ::std::vector<double>& Iabc):Id_ref(id_ref), plant_wr(wr),
         plant_ele_theta(ele_theta), plant_u0(u0), plant_Iabc(Iabc){}
     feedback_message() = default;
@@ -21,16 +22,24 @@ struct feedback_message{
 
 // 控制器向对象发送的控制信息
 struct u_message{
+    bool flag;
     ::std::vector<::std::vector<int>> outputs;
-    u_message(const ::std::vector<::std::vector<int>>& u):outputs(u){}
+    u_message(const bool& times, const ::std::vector<::std::vector<int>>& u):flag(times),outputs(u){}
+    u_message() = default;
 };
 
-typedef ::std::function<u_message(const feedback_message&)> CallbackFunction;
+typedef ::std::function<u_message(const feedback_message&, PanJL::FCSMPCer* current_trl,
+ PanJL::Speed_controller* speed_pid)> CallbackFunctionCONTROLLER;
+
+typedef ::std::function<feedback_message(const u_message&, PanJL::FCSMPCer* Plant)> CallbackFunctionPLANT;
 class CONTROLLER {
 public:
     CONTROLLER(int port);
     void Start();
-    void RegisterCallback(CallbackFunction callback) {m_callbackfunction = callback;}
+    void RegisterCallback(CallbackFunctionCONTROLLER callback) {m_callbackfunction = callback;}
+    // 添加成员变量指针
+    PanJL::FCSMPCer* current_trl;
+    PanJL::Speed_controller* speed_pid;
     
 private:
     int m_port;
@@ -38,13 +47,13 @@ private:
     void Bind();
     void Listen();
     void Accept();
-    CallbackFunction m_callbackfunction;
+    CallbackFunctionCONTROLLER m_callbackfunction;
     void HandleClient(int clientSocket);  
 };
 
-class EchoClient {
+class PLANT_COM {
 public:
-    EchoClient(const std::string& serverIP, int serverPort);
+    PLANT_COM(const std::string& serverIP, int serverPort);
     void Start();
     
 private:

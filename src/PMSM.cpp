@@ -66,8 +66,8 @@ void PMSM::ode45(double& ud, double& uq, const double& times)
     struct PMSM_state_varibles& temp = state_varibles;
     for(int _=0; _< ODE45_M; _++){
         auto k1 = PMSM_differential_equation(ud, uq, temp);
-        auto k2 = PMSM_differential_equation(ud, uq, temp + (k1 *(DT/2)) );
-        auto k3 = PMSM_differential_equation(ud, uq, temp + (k2 *(DT/2)) );
+        auto k2 = PMSM_differential_equation(ud, uq, temp + (k1 *(DT/2.0)) );
+        auto k3 = PMSM_differential_equation(ud, uq, temp + (k2 *(DT/2.0)) );
         auto k4 = PMSM_differential_equation(ud, uq, temp + (k3 * DT) );
         temp = temp + (k1 + (k2 * 2) + (k3 * 2) + k4) * (DT / 6.0);
     }
@@ -112,6 +112,4 @@ std::vector<double> const PMSM::get_Iabc()
     double Ibeta = dq2beta(state_varibles.Id, state_varibles.Iq, state_varibles.theta_ele);
     return std::vector<double>{alphabeta2a(Ialpha, Ibeta), alphabeta2b(Ialpha, Ibeta), alphabeta2c(Ialpha, Ibeta)};
 }
-
-
 }

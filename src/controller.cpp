@@ -27,25 +27,24 @@ void CONTROLLER::Listen() {
     std::cout << "服务器已启动，正在监听端口 " << m_port << std::endl;
 }
 
-::std::vector<char> SerializeUMessage(const u_message& u) {
-    ::std::vector<char> buffer;
-
-    // 将 outputs 的大小作为前缀写入 buffer
-    size_t numOutputs = u.outputs.size();
-    buffer.insert(buffer.end(), reinterpret_cast<const char*>(&numOutputs), reinterpret_cast<const char*>(&numOutputs) + sizeof(size_t));
-
-    // 将 outputs 的数据写入 buffer
-    for (const auto& output : u.outputs) {
-        // 将每个内部向量的大小作为前缀写入 buffer
-        size_t numElements = output.size();
-        buffer.insert(buffer.end(), reinterpret_cast<const char*>(&numElements), reinterpret_cast<const char*>(&numElements) + sizeof(size_t));
-
-        // 将内部向量的数据写入 buffer
-        buffer.insert(buffer.end(), reinterpret_cast<const char*>(output.data()), reinterpret_cast<const char*>(output.data()) + numElements * sizeof(int));
+::std::vector<char> SerializeUMessage(const u_message& message) {
+    ::std::vector<char> serializedData;
+    
+    // 将标志 flag 序列化为字节序列
+    char flagByte = message.flag ? 1 : 0;
+    serializedData.push_back(flagByte);
+    
+    // 将 outputs 序列化为字节序列
+    for (const auto& row : message.outputs) {
+        for (int value : row) {
+            char* valueBytes = reinterpret_cast<char*>(&value);
+            serializedData.insert(serializedData.end(), valueBytes, valueBytes + sizeof(int));
+        }
     }
-
-    return buffer;
+    
+    return serializedData;
 }
+
 
 
 void CONTROLLER::Accept() {
@@ -101,19 +100,27 @@ void CONTROLLER::HandleClient(int clientSocket) {
         size_t numElements = IabcSize / sizeof(double);
         message.plant_Iabc.resize(numElements);
         memcpy(message.plant_Iabc.data(), ptr, IabcSize);
-
-        if(m_callbackfunction){
-            u_message result = m_callbackfunction(message);
-            
-            // 将 u_message 对象序列化为字节序列
+        if (m_callbackfunction) {
+            // 调用回调函数获取 result
+            u_message result = m_callbackfunction(message, current_trl, speed_pid);
+            // 将 result 序列化为字节序列
             std::vector<char> serializedData = SerializeUMessage(result);
-
             // 发送序列化后的字节序列回客户端
-            send(clientSocket, serializedData.data(), serializedData.size(), 0);
-
+            // 首先发送序列化后的数据大小（以字节为单位）
+            size_t dataSize = serializedData.size();
+            ssize_t bytesSent = send(clientSocket, reinterpret_cast<char*>(&dataSize), sizeof(size_t), 0);
+            if (bytesSent != sizeof(size_t)) {
+                std::cerr << "发送数据大小失败" << std::endl;
+                break;
+            }
+            // 然后发送序列化后的数据
+            bytesSent = send(clientSocket, serializedData.data(), serializedData.size(), 0);
+            if (bytesSent != serializedData.size()) {
+                std::cerr << "发送数据失败" << std::endl;
+                break;
+            }
         }
-        // 发送相同的消息回客户端
-        send(clientSocket, buffer, bytesRead, 0);
+
     }
 }
 
