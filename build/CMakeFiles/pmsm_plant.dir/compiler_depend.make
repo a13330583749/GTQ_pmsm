@@ -289,7 +289,22 @@ CMakeFiles/pmsm_plant.dir/example/pmsm_plant.cpp.o: ../example/pmsm_plant.cpp \
   /usr/include/c++/11/cstring \
   /usr/include/string.h \
   /usr/include/strings.h \
-  ../commincation.h
+  ../commincation.h \
+  /usr/include/c++/11/fstream \
+  /usr/include/c++/11/bits/codecvt.h \
+  /usr/include/x86_64-linux-gnu/c++/11/bits/basic_file.h \
+  /usr/include/x86_64-linux-gnu/c++/11/bits/c++io.h \
+  /usr/include/c++/11/bits/fstream.tcc \
+  /usr/include/c++/11/chrono \
+  /usr/include/c++/11/ratio \
+  /usr/include/c++/11/ctime \
+  /usr/include/c++/11/bits/parse_numbers.h \
+  /usr/include/fcntl.h \
+  /usr/include/x86_64-linux-gnu/bits/fcntl.h \
+  /usr/include/x86_64-linux-gnu/bits/fcntl-linux.h \
+  /usr/include/linux/falloc.h \
+  /usr/include/x86_64-linux-gnu/bits/stat.h \
+  /usr/include/x86_64-linux-gnu/bits/struct_stat.h
 
 CMakeFiles/pmsm_plant.dir/src/PMSM.cpp.o: ../src/PMSM.cpp \
   /usr/include/stdc-predef.h \
@@ -579,7 +594,12 @@ CMakeFiles/pmsm_plant.dir/src/PMSM.cpp.o: ../src/PMSM.cpp \
   /usr/include/c++/11/cstring \
   /usr/include/string.h \
   /usr/include/strings.h \
-  ../commincation.h
+  ../commincation.h \
+  /usr/include/c++/11/fstream \
+  /usr/include/c++/11/bits/codecvt.h \
+  /usr/include/x86_64-linux-gnu/c++/11/bits/basic_file.h \
+  /usr/include/x86_64-linux-gnu/c++/11/bits/c++io.h \
+  /usr/include/c++/11/bits/fstream.tcc
 
 CMakeFiles/pmsm_plant.dir/src/client.cpp.o: ../src/client.cpp \
   /usr/include/stdc-predef.h \
@@ -869,7 +889,12 @@ CMakeFiles/pmsm_plant.dir/src/client.cpp.o: ../src/client.cpp \
   /usr/include/c++/11/cstring \
   /usr/include/string.h \
   /usr/include/strings.h \
-  ../commincation.h
+  ../commincation.h \
+  /usr/include/c++/11/fstream \
+  /usr/include/c++/11/bits/codecvt.h \
+  /usr/include/x86_64-linux-gnu/c++/11/bits/basic_file.h \
+  /usr/include/x86_64-linux-gnu/c++/11/bits/c++io.h \
+  /usr/include/c++/11/bits/fstream.tcc
 
 CMakeFiles/pmsm_plant.dir/src/controller.cpp.o: ../src/controller.cpp \
   /usr/include/stdc-predef.h \
@@ -1159,7 +1184,12 @@ CMakeFiles/pmsm_plant.dir/src/controller.cpp.o: ../src/controller.cpp \
   /usr/include/c++/11/cstring \
   /usr/include/string.h \
   /usr/include/strings.h \
-  ../commincation.h
+  ../commincation.h \
+  /usr/include/c++/11/fstream \
+  /usr/include/c++/11/bits/codecvt.h \
+  /usr/include/x86_64-linux-gnu/c++/11/bits/basic_file.h \
+  /usr/include/x86_64-linux-gnu/c++/11/bits/c++io.h \
+  /usr/include/c++/11/bits/fstream.tcc
 
 CMakeFiles/pmsm_plant.dir/src/current_controller.cpp.o: ../src/current_controller.cpp \
   /usr/include/stdc-predef.h \
@@ -1449,7 +1479,12 @@ CMakeFiles/pmsm_plant.dir/src/current_controller.cpp.o: ../src/current_controlle
   /usr/include/c++/11/cstring \
   /usr/include/string.h \
   /usr/include/strings.h \
-  ../commincation.h
+  ../commincation.h \
+  /usr/include/c++/11/fstream \
+  /usr/include/c++/11/bits/codecvt.h \
+  /usr/include/x86_64-linux-gnu/c++/11/bits/basic_file.h \
+  /usr/include/x86_64-linux-gnu/c++/11/bits/c++io.h \
+  /usr/include/c++/11/bits/fstream.tcc
 
 CMakeFiles/pmsm_plant.dir/src/inverter.cpp.o: ../src/inverter.cpp \
   /usr/include/stdc-predef.h \
@@ -1739,7 +1774,12 @@ CMakeFiles/pmsm_plant.dir/src/inverter.cpp.o: ../src/inverter.cpp \
   /usr/include/c++/11/cstring \
   /usr/include/string.h \
   /usr/include/strings.h \
-  ../commincation.h
+  ../commincation.h \
+  /usr/include/c++/11/fstream \
+  /usr/include/c++/11/bits/codecvt.h \
+  /usr/include/x86_64-linux-gnu/c++/11/bits/basic_file.h \
+  /usr/include/x86_64-linux-gnu/c++/11/bits/c++io.h \
+  /usr/include/c++/11/bits/fstream.tcc
 
 CMakeFiles/pmsm_plant.dir/src/speed_control.cpp.o: ../src/speed_control.cpp \
   /usr/include/stdc-predef.h \
@@ -2029,7 +2069,12 @@ CMakeFiles/pmsm_plant.dir/src/speed_control.cpp.o: ../src/speed_control.cpp \
   /usr/include/c++/11/cstring \
   /usr/include/string.h \
   /usr/include/strings.h \
-  ../commincation.h
+  ../commincation.h \
+  /usr/include/c++/11/fstream \
+  /usr/include/c++/11/bits/codecvt.h \
+  /usr/include/x86_64-linux-gnu/c++/11/bits/basic_file.h \
+  /usr/include/x86_64-linux-gnu/c++/11/bits/c++io.h \
+  /usr/include/c++/11/bits/fstream.tcc
 
 CMakeFiles/pmsm_plant.dir/src/system.cpp.o: ../src/system.cpp \
   /usr/include/stdc-predef.h \
@@ -2319,14 +2364,41 @@ CMakeFiles/pmsm_plant.dir/src/system.cpp.o: ../src/system.cpp \
   /usr/include/c++/11/cstring \
   /usr/include/string.h \
   /usr/include/strings.h \
-  ../commincation.h
+  ../commincation.h \
+  /usr/include/c++/11/fstream \
+  /usr/include/c++/11/bits/codecvt.h \
+  /usr/include/x86_64-linux-gnu/c++/11/bits/basic_file.h \
+  /usr/include/x86_64-linux-gnu/c++/11/bits/c++io.h \
+  /usr/include/c++/11/bits/fstream.tcc
 
 
 ../src/system.cpp:
 
 ../src/current_controller.cpp:
 
+/usr/include/x86_64-linux-gnu/bits/struct_stat.h:
+
+/usr/include/x86_64-linux-gnu/bits/stat.h:
+
+/usr/include/x86_64-linux-gnu/bits/fcntl-linux.h:
+
+/usr/include/x86_64-linux-gnu/bits/fcntl.h:
+
+/usr/include/fcntl.h:
+
+/usr/include/c++/11/bits/parse_numbers.h:
+
+/usr/include/c++/11/ctime:
+
+/usr/include/c++/11/ratio:
+
+/usr/include/x86_64-linux-gnu/c++/11/bits/c++io.h:
+
 ../src/client.cpp:
+
+/usr/include/x86_64-linux-gnu/c++/11/bits/basic_file.h:
+
+/usr/include/c++/11/fstream:
 
 ../commincation.h:
 
@@ -2349,6 +2421,8 @@ CMakeFiles/pmsm_plant.dir/src/system.cpp.o: ../src/system.cpp \
 /usr/include/x86_64-linux-gnu/bits/types/struct_osockaddr.h:
 
 /usr/include/asm-generic/sockios.h:
+
+/usr/include/c++/11/bits/fstream.tcc:
 
 /usr/include/asm-generic/posix_types.h:
 
@@ -2535,6 +2609,8 @@ CMakeFiles/pmsm_plant.dir/src/system.cpp.o: ../src/system.cpp \
 /usr/include/c++/11/bits/stl_algobase.h:
 
 /usr/include/c++/11/bits/nested_exception.h:
+
+/usr/include/c++/11/chrono:
 
 /usr/include/x86_64-linux-gnu/bits/wordsize.h:
 
@@ -2828,6 +2904,8 @@ CMakeFiles/pmsm_plant.dir/src/system.cpp.o: ../src/system.cpp \
 
 /usr/include/c++/11/bits/hashtable_policy.h:
 
+/usr/include/c++/11/bits/codecvt.h:
+
 /usr/include/c++/11/bits/basic_ios.tcc:
 
 /usr/include/c++/11/bits/enable_special_members.h:
@@ -2883,6 +2961,8 @@ CMakeFiles/pmsm_plant.dir/src/system.cpp.o: ../src/system.cpp \
 /usr/include/x86_64-linux-gnu/bits/flt-eval-method.h:
 
 /usr/include/x86_64-linux-gnu/bits/mathcalls.h:
+
+/usr/include/linux/falloc.h:
 
 /usr/include/x86_64-linux-gnu/bits/in.h:
 

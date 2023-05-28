@@ -47,6 +47,7 @@ int main()
 
     controller.current_trl = &current_trl_instance;
     controller.speed_pid = &speed_pid_instance;
+    controller.RegisterCallback(MyClass::CallbackFunction);
 
     controller.Start();
 }

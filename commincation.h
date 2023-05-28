@@ -31,7 +31,7 @@ struct u_message{
 typedef ::std::function<u_message(const feedback_message&, PanJL::FCSMPCer* current_trl,
  PanJL::Speed_controller* speed_pid)> CallbackFunctionCONTROLLER;
 
-typedef ::std::function<feedback_message(const u_message&, PanJL::FCSMPCer* Plant)> CallbackFunctionPLANT;
+typedef ::std::function<feedback_message(const u_message&, PanJL::Plant* Plant)> CallbackFunctionPLANT;
 class CONTROLLER {
 public:
     CONTROLLER(int port);
@@ -49,16 +49,25 @@ private:
     void Accept();
     CallbackFunctionCONTROLLER m_callbackfunction;
     void HandleClient(int clientSocket);  
+    ::std::vector<char> SerializeUMessage(const u_message& message);
 };
 
 class PLANT_COM {
 public:
     PLANT_COM(const std::string& serverIP, int serverPort);
     void Start();
-    
+    void RegisterCallback(CallbackFunctionPLANT callback) {plant_m_callbackfunction = callback;}
+    PanJL::Plant* ptr_plant;
+    const inline void set_sim_time(const double& times){time = times;};
+    ::std::ofstream* reserve;
+
 private:
     std::string m_serverIP;
     int m_serverPort;
+    CallbackFunctionPLANT plant_m_callbackfunction;
+    ::std::vector<char> SerializeFeedbackMessage(const feedback_message& message);
+    double time;
+
 };
 
 }

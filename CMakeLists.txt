@@ -1,13 +1,15 @@
 cmake_minimum_required(VERSION 3.0)
 
 project(pmsm)
+set(CMAKE_BUILD_TYPE Debug)
 set(CMAKE_CXX_FLAGS "-Wall  -g")
 file(GLOB SOURCES src/*.cpp)
 
-add_executable(gtq_client ./example/gtq_client.cpp ${SOURCES})
-add_executable(gtq_server ./example/gtq_server.cpp ${SOURCES})
-add_executable(onestep_without_delay ./example/onestep_without_delay.cpp ${SOURCES})
-
+# add_executable(gtq_client ./example/gtq_client.cpp ${SOURCES})
+# add_executable(gtq_server ./example/gtq_server.cpp ${SOURCES})
+# add_executable(onestep_without_delay ./example/onestep_without_delay.cpp ${SOURCES})
+add_executable(pmsm_controller ./example/pmsm_controller.cpp ${SOURCES})
+add_executable(pmsm_plant ./example/pmsm_plant.cpp ${SOURCES})
 
 
 

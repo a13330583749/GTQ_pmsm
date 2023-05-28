@@ -18,6 +18,7 @@
 #include <arpa/inet.h>
 #include <cstring>
 #include "commincation.h"
+#include <fstream>
 
 const auto abc2alpha = [](double a, double b, double c)->double{return 2.0 * (a - 0.5 *b - 0.5 * c) / 3.0;};
 const auto abc2beta = [](double a, double b, double c)->double{return 2.0 * (std::sqrt(3))/ 2.0 * (b -  c) / 3.0 ;};

@@ -8,6 +8,7 @@ CONTROLLER::CONTROLLER(int port)
 void CONTROLLER::Start() {
     Bind();
     Listen();
+    std::cout << "Listen()结束 " << std::endl;
     Accept();
 }
 
@@ -27,12 +28,20 @@ void CONTROLLER::Listen() {
     std::cout << "服务器已启动，正在监听端口 " << m_port << std::endl;
 }
 
-::std::vector<char> SerializeUMessage(const u_message& message) {
+::std::vector<char> CONTROLLER::SerializeUMessage(const u_message& message) {
     ::std::vector<char> serializedData;
     
     // 将标志 flag 序列化为字节序列
     char flagByte = message.flag ? 1 : 0;
     serializedData.push_back(flagByte);
+    
+    // 获取 outputs 的维度信息
+    char numDimensions = static_cast<char>(message.outputs.size());
+    serializedData.push_back(numDimensions);
+    for (const auto& row : message.outputs) {
+        char dimensionSize = static_cast<char>(row.size());
+        serializedData.push_back(dimensionSize);
+    }
     
     // 将 outputs 序列化为字节序列
     for (const auto& row : message.outputs) {
@@ -41,9 +50,10 @@ void CONTROLLER::Listen() {
             serializedData.insert(serializedData.end(), valueBytes, valueBytes + sizeof(int));
         }
     }
-    
+    // std::cout << "message.outputs.size() = " << message.outputs.size() << std::endl;
     return serializedData;
 }
+
 
 
 
@@ -65,6 +75,7 @@ void CONTROLLER::HandleClient(int clientSocket) {
     char buffer[1024];
     while (true) {
         // 接收客户端消息
+        // std::cout << "开始接受反馈信息";
         ssize_t bytesRead = recv(clientSocket, buffer, sizeof(buffer), 0);
         if (bytesRead <= 0) {
             break;
@@ -100,6 +111,8 @@ void CONTROLLER::HandleClient(int clientSocket) {
         size_t numElements = IabcSize / sizeof(double);
         message.plant_Iabc.resize(numElements);
         memcpy(message.plant_Iabc.data(), ptr, IabcSize);
+        // std::cout << "   解析完成，当前的速度为：" << message.plant_wr << std::endl;
+
         if (m_callbackfunction) {
             // 调用回调函数获取 result
             u_message result = m_callbackfunction(message, current_trl, speed_pid);
@@ -122,6 +135,7 @@ void CONTROLLER::HandleClient(int clientSocket) {
         }
 
     }
+    close(clientSocket);
 }
 
 }

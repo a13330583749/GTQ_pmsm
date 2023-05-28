@@ -290,12 +290,12 @@ CMakeFiles/pmsm_controller.dir/example/pmsm_controller.cpp.o: ../example/pmsm_co
   /usr/include/string.h \
   /usr/include/strings.h \
   ../commincation.h \
-  ../system.h \
   /usr/include/c++/11/fstream \
   /usr/include/c++/11/bits/codecvt.h \
   /usr/include/x86_64-linux-gnu/c++/11/bits/basic_file.h \
   /usr/include/x86_64-linux-gnu/c++/11/bits/c++io.h \
   /usr/include/c++/11/bits/fstream.tcc \
+  ../system.h \
   /usr/include/fcntl.h \
   /usr/include/x86_64-linux-gnu/bits/fcntl.h \
   /usr/include/x86_64-linux-gnu/bits/fcntl-linux.h \
@@ -595,7 +595,12 @@ CMakeFiles/pmsm_controller.dir/src/PMSM.cpp.o: ../src/PMSM.cpp \
   /usr/include/c++/11/cstring \
   /usr/include/string.h \
   /usr/include/strings.h \
-  ../commincation.h
+  ../commincation.h \
+  /usr/include/c++/11/fstream \
+  /usr/include/c++/11/bits/codecvt.h \
+  /usr/include/x86_64-linux-gnu/c++/11/bits/basic_file.h \
+  /usr/include/x86_64-linux-gnu/c++/11/bits/c++io.h \
+  /usr/include/c++/11/bits/fstream.tcc
 
 CMakeFiles/pmsm_controller.dir/src/client.cpp.o: ../src/client.cpp \
   /usr/include/stdc-predef.h \
@@ -885,7 +890,12 @@ CMakeFiles/pmsm_controller.dir/src/client.cpp.o: ../src/client.cpp \
   /usr/include/c++/11/cstring \
   /usr/include/string.h \
   /usr/include/strings.h \
-  ../commincation.h
+  ../commincation.h \
+  /usr/include/c++/11/fstream \
+  /usr/include/c++/11/bits/codecvt.h \
+  /usr/include/x86_64-linux-gnu/c++/11/bits/basic_file.h \
+  /usr/include/x86_64-linux-gnu/c++/11/bits/c++io.h \
+  /usr/include/c++/11/bits/fstream.tcc
 
 CMakeFiles/pmsm_controller.dir/src/controller.cpp.o: ../src/controller.cpp \
   /usr/include/stdc-predef.h \
@@ -1175,7 +1185,12 @@ CMakeFiles/pmsm_controller.dir/src/controller.cpp.o: ../src/controller.cpp \
   /usr/include/c++/11/cstring \
   /usr/include/string.h \
   /usr/include/strings.h \
-  ../commincation.h
+  ../commincation.h \
+  /usr/include/c++/11/fstream \
+  /usr/include/c++/11/bits/codecvt.h \
+  /usr/include/x86_64-linux-gnu/c++/11/bits/basic_file.h \
+  /usr/include/x86_64-linux-gnu/c++/11/bits/c++io.h \
+  /usr/include/c++/11/bits/fstream.tcc
 
 CMakeFiles/pmsm_controller.dir/src/current_controller.cpp.o: ../src/current_controller.cpp \
   /usr/include/stdc-predef.h \
@@ -1465,7 +1480,12 @@ CMakeFiles/pmsm_controller.dir/src/current_controller.cpp.o: ../src/current_cont
   /usr/include/c++/11/cstring \
   /usr/include/string.h \
   /usr/include/strings.h \
-  ../commincation.h
+  ../commincation.h \
+  /usr/include/c++/11/fstream \
+  /usr/include/c++/11/bits/codecvt.h \
+  /usr/include/x86_64-linux-gnu/c++/11/bits/basic_file.h \
+  /usr/include/x86_64-linux-gnu/c++/11/bits/c++io.h \
+  /usr/include/c++/11/bits/fstream.tcc
 
 CMakeFiles/pmsm_controller.dir/src/inverter.cpp.o: ../src/inverter.cpp \
   /usr/include/stdc-predef.h \
@@ -1755,7 +1775,12 @@ CMakeFiles/pmsm_controller.dir/src/inverter.cpp.o: ../src/inverter.cpp \
   /usr/include/c++/11/cstring \
   /usr/include/string.h \
   /usr/include/strings.h \
-  ../commincation.h
+  ../commincation.h \
+  /usr/include/c++/11/fstream \
+  /usr/include/c++/11/bits/codecvt.h \
+  /usr/include/x86_64-linux-gnu/c++/11/bits/basic_file.h \
+  /usr/include/x86_64-linux-gnu/c++/11/bits/c++io.h \
+  /usr/include/c++/11/bits/fstream.tcc
 
 CMakeFiles/pmsm_controller.dir/src/speed_control.cpp.o: ../src/speed_control.cpp \
   /usr/include/stdc-predef.h \
@@ -2045,7 +2070,12 @@ CMakeFiles/pmsm_controller.dir/src/speed_control.cpp.o: ../src/speed_control.cpp
   /usr/include/c++/11/cstring \
   /usr/include/string.h \
   /usr/include/strings.h \
-  ../commincation.h
+  ../commincation.h \
+  /usr/include/c++/11/fstream \
+  /usr/include/c++/11/bits/codecvt.h \
+  /usr/include/x86_64-linux-gnu/c++/11/bits/basic_file.h \
+  /usr/include/x86_64-linux-gnu/c++/11/bits/c++io.h \
+  /usr/include/c++/11/bits/fstream.tcc
 
 CMakeFiles/pmsm_controller.dir/src/system.cpp.o: ../src/system.cpp \
   /usr/include/stdc-predef.h \
@@ -2335,7 +2365,12 @@ CMakeFiles/pmsm_controller.dir/src/system.cpp.o: ../src/system.cpp \
   /usr/include/c++/11/cstring \
   /usr/include/string.h \
   /usr/include/strings.h \
-  ../commincation.h
+  ../commincation.h \
+  /usr/include/c++/11/fstream \
+  /usr/include/c++/11/bits/codecvt.h \
+  /usr/include/x86_64-linux-gnu/c++/11/bits/basic_file.h \
+  /usr/include/x86_64-linux-gnu/c++/11/bits/c++io.h \
+  /usr/include/c++/11/bits/fstream.tcc
 
 
 ../src/system.cpp:
