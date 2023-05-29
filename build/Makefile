@@ -117,267 +117,41 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named pmsm_controller
+# Target rules for targets named test_Eigen
 
 # Build rule for target.
-pmsm_controller: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 pmsm_controller
-.PHONY : pmsm_controller
+test_Eigen: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 test_Eigen
+.PHONY : test_Eigen
 
 # fast build rule for target.
-pmsm_controller/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/pmsm_controller.dir/build.make CMakeFiles/pmsm_controller.dir/build
-.PHONY : pmsm_controller/fast
+test_Eigen/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_Eigen.dir/build.make CMakeFiles/test_Eigen.dir/build
+.PHONY : test_Eigen/fast
 
-#=============================================================================
-# Target rules for targets named pmsm_plant
-
-# Build rule for target.
-pmsm_plant: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 pmsm_plant
-.PHONY : pmsm_plant
-
-# fast build rule for target.
-pmsm_plant/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/pmsm_plant.dir/build.make CMakeFiles/pmsm_plant.dir/build
-.PHONY : pmsm_plant/fast
-
-example/pmsm_controller.o: example/pmsm_controller.cpp.o
-.PHONY : example/pmsm_controller.o
+example/test_Eigen.o: example/test_Eigen.cpp.o
+.PHONY : example/test_Eigen.o
 
 # target to build an object file
-example/pmsm_controller.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/pmsm_controller.dir/build.make CMakeFiles/pmsm_controller.dir/example/pmsm_controller.cpp.o
-.PHONY : example/pmsm_controller.cpp.o
+example/test_Eigen.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_Eigen.dir/build.make CMakeFiles/test_Eigen.dir/example/test_Eigen.cpp.o
+.PHONY : example/test_Eigen.cpp.o
 
-example/pmsm_controller.i: example/pmsm_controller.cpp.i
-.PHONY : example/pmsm_controller.i
-
-# target to preprocess a source file
-example/pmsm_controller.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/pmsm_controller.dir/build.make CMakeFiles/pmsm_controller.dir/example/pmsm_controller.cpp.i
-.PHONY : example/pmsm_controller.cpp.i
-
-example/pmsm_controller.s: example/pmsm_controller.cpp.s
-.PHONY : example/pmsm_controller.s
-
-# target to generate assembly for a file
-example/pmsm_controller.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/pmsm_controller.dir/build.make CMakeFiles/pmsm_controller.dir/example/pmsm_controller.cpp.s
-.PHONY : example/pmsm_controller.cpp.s
-
-example/pmsm_plant.o: example/pmsm_plant.cpp.o
-.PHONY : example/pmsm_plant.o
-
-# target to build an object file
-example/pmsm_plant.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/pmsm_plant.dir/build.make CMakeFiles/pmsm_plant.dir/example/pmsm_plant.cpp.o
-.PHONY : example/pmsm_plant.cpp.o
-
-example/pmsm_plant.i: example/pmsm_plant.cpp.i
-.PHONY : example/pmsm_plant.i
+example/test_Eigen.i: example/test_Eigen.cpp.i
+.PHONY : example/test_Eigen.i
 
 # target to preprocess a source file
-example/pmsm_plant.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/pmsm_plant.dir/build.make CMakeFiles/pmsm_plant.dir/example/pmsm_plant.cpp.i
-.PHONY : example/pmsm_plant.cpp.i
+example/test_Eigen.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_Eigen.dir/build.make CMakeFiles/test_Eigen.dir/example/test_Eigen.cpp.i
+.PHONY : example/test_Eigen.cpp.i
 
-example/pmsm_plant.s: example/pmsm_plant.cpp.s
-.PHONY : example/pmsm_plant.s
-
-# target to generate assembly for a file
-example/pmsm_plant.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/pmsm_plant.dir/build.make CMakeFiles/pmsm_plant.dir/example/pmsm_plant.cpp.s
-.PHONY : example/pmsm_plant.cpp.s
-
-src/PMSM.o: src/PMSM.cpp.o
-.PHONY : src/PMSM.o
-
-# target to build an object file
-src/PMSM.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/pmsm_controller.dir/build.make CMakeFiles/pmsm_controller.dir/src/PMSM.cpp.o
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/pmsm_plant.dir/build.make CMakeFiles/pmsm_plant.dir/src/PMSM.cpp.o
-.PHONY : src/PMSM.cpp.o
-
-src/PMSM.i: src/PMSM.cpp.i
-.PHONY : src/PMSM.i
-
-# target to preprocess a source file
-src/PMSM.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/pmsm_controller.dir/build.make CMakeFiles/pmsm_controller.dir/src/PMSM.cpp.i
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/pmsm_plant.dir/build.make CMakeFiles/pmsm_plant.dir/src/PMSM.cpp.i
-.PHONY : src/PMSM.cpp.i
-
-src/PMSM.s: src/PMSM.cpp.s
-.PHONY : src/PMSM.s
+example/test_Eigen.s: example/test_Eigen.cpp.s
+.PHONY : example/test_Eigen.s
 
 # target to generate assembly for a file
-src/PMSM.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/pmsm_controller.dir/build.make CMakeFiles/pmsm_controller.dir/src/PMSM.cpp.s
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/pmsm_plant.dir/build.make CMakeFiles/pmsm_plant.dir/src/PMSM.cpp.s
-.PHONY : src/PMSM.cpp.s
-
-src/client.o: src/client.cpp.o
-.PHONY : src/client.o
-
-# target to build an object file
-src/client.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/pmsm_controller.dir/build.make CMakeFiles/pmsm_controller.dir/src/client.cpp.o
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/pmsm_plant.dir/build.make CMakeFiles/pmsm_plant.dir/src/client.cpp.o
-.PHONY : src/client.cpp.o
-
-src/client.i: src/client.cpp.i
-.PHONY : src/client.i
-
-# target to preprocess a source file
-src/client.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/pmsm_controller.dir/build.make CMakeFiles/pmsm_controller.dir/src/client.cpp.i
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/pmsm_plant.dir/build.make CMakeFiles/pmsm_plant.dir/src/client.cpp.i
-.PHONY : src/client.cpp.i
-
-src/client.s: src/client.cpp.s
-.PHONY : src/client.s
-
-# target to generate assembly for a file
-src/client.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/pmsm_controller.dir/build.make CMakeFiles/pmsm_controller.dir/src/client.cpp.s
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/pmsm_plant.dir/build.make CMakeFiles/pmsm_plant.dir/src/client.cpp.s
-.PHONY : src/client.cpp.s
-
-src/controller.o: src/controller.cpp.o
-.PHONY : src/controller.o
-
-# target to build an object file
-src/controller.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/pmsm_controller.dir/build.make CMakeFiles/pmsm_controller.dir/src/controller.cpp.o
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/pmsm_plant.dir/build.make CMakeFiles/pmsm_plant.dir/src/controller.cpp.o
-.PHONY : src/controller.cpp.o
-
-src/controller.i: src/controller.cpp.i
-.PHONY : src/controller.i
-
-# target to preprocess a source file
-src/controller.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/pmsm_controller.dir/build.make CMakeFiles/pmsm_controller.dir/src/controller.cpp.i
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/pmsm_plant.dir/build.make CMakeFiles/pmsm_plant.dir/src/controller.cpp.i
-.PHONY : src/controller.cpp.i
-
-src/controller.s: src/controller.cpp.s
-.PHONY : src/controller.s
-
-# target to generate assembly for a file
-src/controller.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/pmsm_controller.dir/build.make CMakeFiles/pmsm_controller.dir/src/controller.cpp.s
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/pmsm_plant.dir/build.make CMakeFiles/pmsm_plant.dir/src/controller.cpp.s
-.PHONY : src/controller.cpp.s
-
-src/current_controller.o: src/current_controller.cpp.o
-.PHONY : src/current_controller.o
-
-# target to build an object file
-src/current_controller.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/pmsm_controller.dir/build.make CMakeFiles/pmsm_controller.dir/src/current_controller.cpp.o
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/pmsm_plant.dir/build.make CMakeFiles/pmsm_plant.dir/src/current_controller.cpp.o
-.PHONY : src/current_controller.cpp.o
-
-src/current_controller.i: src/current_controller.cpp.i
-.PHONY : src/current_controller.i
-
-# target to preprocess a source file
-src/current_controller.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/pmsm_controller.dir/build.make CMakeFiles/pmsm_controller.dir/src/current_controller.cpp.i
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/pmsm_plant.dir/build.make CMakeFiles/pmsm_plant.dir/src/current_controller.cpp.i
-.PHONY : src/current_controller.cpp.i
-
-src/current_controller.s: src/current_controller.cpp.s
-.PHONY : src/current_controller.s
-
-# target to generate assembly for a file
-src/current_controller.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/pmsm_controller.dir/build.make CMakeFiles/pmsm_controller.dir/src/current_controller.cpp.s
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/pmsm_plant.dir/build.make CMakeFiles/pmsm_plant.dir/src/current_controller.cpp.s
-.PHONY : src/current_controller.cpp.s
-
-src/inverter.o: src/inverter.cpp.o
-.PHONY : src/inverter.o
-
-# target to build an object file
-src/inverter.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/pmsm_controller.dir/build.make CMakeFiles/pmsm_controller.dir/src/inverter.cpp.o
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/pmsm_plant.dir/build.make CMakeFiles/pmsm_plant.dir/src/inverter.cpp.o
-.PHONY : src/inverter.cpp.o
-
-src/inverter.i: src/inverter.cpp.i
-.PHONY : src/inverter.i
-
-# target to preprocess a source file
-src/inverter.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/pmsm_controller.dir/build.make CMakeFiles/pmsm_controller.dir/src/inverter.cpp.i
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/pmsm_plant.dir/build.make CMakeFiles/pmsm_plant.dir/src/inverter.cpp.i
-.PHONY : src/inverter.cpp.i
-
-src/inverter.s: src/inverter.cpp.s
-.PHONY : src/inverter.s
-
-# target to generate assembly for a file
-src/inverter.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/pmsm_controller.dir/build.make CMakeFiles/pmsm_controller.dir/src/inverter.cpp.s
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/pmsm_plant.dir/build.make CMakeFiles/pmsm_plant.dir/src/inverter.cpp.s
-.PHONY : src/inverter.cpp.s
-
-src/speed_control.o: src/speed_control.cpp.o
-.PHONY : src/speed_control.o
-
-# target to build an object file
-src/speed_control.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/pmsm_controller.dir/build.make CMakeFiles/pmsm_controller.dir/src/speed_control.cpp.o
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/pmsm_plant.dir/build.make CMakeFiles/pmsm_plant.dir/src/speed_control.cpp.o
-.PHONY : src/speed_control.cpp.o
-
-src/speed_control.i: src/speed_control.cpp.i
-.PHONY : src/speed_control.i
-
-# target to preprocess a source file
-src/speed_control.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/pmsm_controller.dir/build.make CMakeFiles/pmsm_controller.dir/src/speed_control.cpp.i
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/pmsm_plant.dir/build.make CMakeFiles/pmsm_plant.dir/src/speed_control.cpp.i
-.PHONY : src/speed_control.cpp.i
-
-src/speed_control.s: src/speed_control.cpp.s
-.PHONY : src/speed_control.s
-
-# target to generate assembly for a file
-src/speed_control.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/pmsm_controller.dir/build.make CMakeFiles/pmsm_controller.dir/src/speed_control.cpp.s
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/pmsm_plant.dir/build.make CMakeFiles/pmsm_plant.dir/src/speed_control.cpp.s
-.PHONY : src/speed_control.cpp.s
-
-src/system.o: src/system.cpp.o
-.PHONY : src/system.o
-
-# target to build an object file
-src/system.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/pmsm_controller.dir/build.make CMakeFiles/pmsm_controller.dir/src/system.cpp.o
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/pmsm_plant.dir/build.make CMakeFiles/pmsm_plant.dir/src/system.cpp.o
-.PHONY : src/system.cpp.o
-
-src/system.i: src/system.cpp.i
-.PHONY : src/system.i
-
-# target to preprocess a source file
-src/system.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/pmsm_controller.dir/build.make CMakeFiles/pmsm_controller.dir/src/system.cpp.i
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/pmsm_plant.dir/build.make CMakeFiles/pmsm_plant.dir/src/system.cpp.i
-.PHONY : src/system.cpp.i
-
-src/system.s: src/system.cpp.s
-.PHONY : src/system.s
-
-# target to generate assembly for a file
-src/system.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/pmsm_controller.dir/build.make CMakeFiles/pmsm_controller.dir/src/system.cpp.s
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/pmsm_plant.dir/build.make CMakeFiles/pmsm_plant.dir/src/system.cpp.s
-.PHONY : src/system.cpp.s
+example/test_Eigen.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_Eigen.dir/build.make CMakeFiles/test_Eigen.dir/example/test_Eigen.cpp.s
+.PHONY : example/test_Eigen.cpp.s
 
 # Help Target
 help:
@@ -387,35 +161,10 @@ help:
 	@echo "... depend"
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
-	@echo "... pmsm_controller"
-	@echo "... pmsm_plant"
-	@echo "... example/pmsm_controller.o"
-	@echo "... example/pmsm_controller.i"
-	@echo "... example/pmsm_controller.s"
-	@echo "... example/pmsm_plant.o"
-	@echo "... example/pmsm_plant.i"
-	@echo "... example/pmsm_plant.s"
-	@echo "... src/PMSM.o"
-	@echo "... src/PMSM.i"
-	@echo "... src/PMSM.s"
-	@echo "... src/client.o"
-	@echo "... src/client.i"
-	@echo "... src/client.s"
-	@echo "... src/controller.o"
-	@echo "... src/controller.i"
-	@echo "... src/controller.s"
-	@echo "... src/current_controller.o"
-	@echo "... src/current_controller.i"
-	@echo "... src/current_controller.s"
-	@echo "... src/inverter.o"
-	@echo "... src/inverter.i"
-	@echo "... src/inverter.s"
-	@echo "... src/speed_control.o"
-	@echo "... src/speed_control.i"
-	@echo "... src/speed_control.s"
-	@echo "... src/system.o"
-	@echo "... src/system.i"
-	@echo "... src/system.s"
+	@echo "... test_Eigen"
+	@echo "... example/test_Eigen.o"
+	@echo "... example/test_Eigen.i"
+	@echo "... example/test_Eigen.s"
 .PHONY : help
 
 

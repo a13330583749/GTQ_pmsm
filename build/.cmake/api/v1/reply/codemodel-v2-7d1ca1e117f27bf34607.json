@@ -15,8 +15,7 @@
 					"source" : ".",
 					"targetIndexes" : 
 					[
-						0,
-						1
+						0
 					]
 				}
 			],
@@ -31,8 +30,7 @@
 					"name" : "pmsm",
 					"targetIndexes" : 
 					[
-						0,
-						1
+						0
 					]
 				}
 			],
@@ -40,16 +38,9 @@
 			[
 				{
 					"directoryIndex" : 0,
-					"id" : "pmsm_controller::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-pmsm_controller-Debug-5396dae192c824171075.json",
-					"name" : "pmsm_controller",
-					"projectIndex" : 0
-				},
-				{
-					"directoryIndex" : 0,
-					"id" : "pmsm_plant::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-pmsm_plant-Debug-f49b69dcf20a83b2080c.json",
-					"name" : "pmsm_plant",
+					"id" : "test_Eigen::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-test_Eigen-Debug-e1bcc84d2cf4b064a92a.json",
+					"name" : "test_Eigen",
 					"projectIndex" : 0
 				}
 			]
