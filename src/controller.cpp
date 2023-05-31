@@ -54,9 +54,6 @@ void CONTROLLER::Listen() {
     return serializedData;
 }
 
-
-
-
 void CONTROLLER::Accept() {
     while (true) {
         // 接受客户端连接

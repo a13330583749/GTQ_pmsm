@@ -35,16 +35,28 @@ private:
     //因为不使用无传感器的控制策略，所以暂时不用对于转速和电角度进行预测
     void predict_i_updata(const double& ualpha, const double& ubeta, const double& times);
     void updata_pmsm_model(const std::vector<double>& Iabc, const double& wr,const double& theta_ele,  const double& u0_);
+    const static int PredictionHorizon = 4; // 预测时域：对于SDA算法，或者multiplestep FCS-MPC使用
 
 public:
     FCSMPCer(double vdc, double c): Plant(vdc, c), flag(true){Idq_predict.resize(2);}   
     std::vector<std::vector<int>> controller(const double& Id_ref, const double& Iq_ref, const double& theta_ele,
                                 const std::vector<double>& Iabc, const double& wr, const double& times,
                                 const double& u0_input);
-    
+
     std::vector<int> Voltage_output_mapping(const std::vector<int>& controller_outputs);
     // true is one time, and false is two times
     inline bool get_flag_control_times() const{return flag;}
+
+    // 球型译码器算法：sda_output_u1
+    // FCSMPCer已经包含的元素：Ts, 预测时域
+    // 电机的具体运行参数已经在updata_pmsm_model()函数中更新，因此可以直接在state_varibles中调用
+    // 不考虑无感控制的情况，因此不需要传递实际的参数；
+    // 可能还需要权值矩阵，因此在private成员变量中加入权值矩阵，因此也不需要传递具体的参数
+    // 首先使用单位权重矩阵，
+    // 为了算出|Δu|，还需要保留上一个时刻的virtual_u0
+    // updata_pmsm_model()中：包含了Idq,wr,theta_ele
+    
+    std::vector<int> sda_output_u1(const double& Id_ref, const double& Iq_ref);
 
 private:
     // positive voltage vector of small/ long

@@ -15,13 +15,12 @@ public:
     static PanJL::u_message CallbackFunction(const PanJL::feedback_message& message, 
         PanJL::FCSMPCer* current_trl, PanJL::Speed_controller* speed_pid) {
         // 使用 res、speed_pid 和 current_trl 进行处理
-
+        
         // 调用成员函数
         double Iq_ref = speed_pid->updata(wr_ref - message.plant_wr);
         std::vector<std::vector<int>> inputs = current_trl->controller
             (0, Iq_ref, message.plant_ele_theta, message.plant_Iabc, 
             message.plant_wr, PanJL::Ts, message.plant_u0);
-
         // 创建并返回 u_message 对象
         PanJL::u_message result(current_trl->get_flag_control_times(), inputs);
         return result;

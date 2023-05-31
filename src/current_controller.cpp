@@ -128,11 +128,15 @@ void FCSMPCer::updata_pmsm_model(const std::vector<double>& Iabc, const double& 
     u0 = u0_;
 }
 
-
-
-// std::vector<int> FCSMPCer::Voltage_output_mapping(const std::vector<int>& controller_outputs)
-// {
+// PredictionHorizon:必须使用常量表达式（编译时就可以确定结果），否则可以动态矩阵Eigen::MatrixXd
+// 使用论文中的表达方式表达
+// 有一点就是还是不考虑使用延迟补偿的方法，还要继续的用k时刻的值
+std::vector<int> FCSMPCer::sda_output_u1(const double& Id_ref, const double& Iq_ref)
+{
+    // 首先进行矩阵的建立和初始化工作
+    Eigen::Matrix<double, FCSMPCer::PredictionHorizon * PanJL::rankA, PredictionHorizon * PanJL::rankA> Phi;
     
-// }
+
+}
 
 }
