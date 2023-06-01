@@ -10,8 +10,8 @@ file(GLOB SOURCES src/*.cpp)
 # add_executable(onestep_without_delay ./example/onestep_without_delay.cpp ${SOURCES})
 # add_executable(pmsm_controller ./example/pmsm_controller.cpp ${SOURCES})
 # add_executable(pmsm_plant ./example/pmsm_plant.cpp ${SOURCES})
-add_executable(test_Eigen ./example/test_Eigen.cpp)
-
+# add_executable(test_Eigen ./example/test_Eigen.cpp)
+add_executable(test_Eigen3 ./example/test_Eigen3.cpp)
 
 
 

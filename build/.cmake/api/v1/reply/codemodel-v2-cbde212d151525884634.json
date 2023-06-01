@@ -38,9 +38,9 @@
 			[
 				{
 					"directoryIndex" : 0,
-					"id" : "test_Eigen::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-test_Eigen-Debug-e1bcc84d2cf4b064a92a.json",
-					"name" : "test_Eigen",
+					"id" : "test_Eigen3::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-test_Eigen3-Debug-977f2ade979d7fd984d4.json",
+					"name" : "test_Eigen3",
 					"projectIndex" : 0
 				}
 			]

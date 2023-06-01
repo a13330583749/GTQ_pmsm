@@ -1,7 +1,7 @@
 [
 {
   "directory": "/home/gtq/GTQ_pmsm/build",
-  "command": "/usr/bin/g++   -Wall  -g -g -o CMakeFiles/test_Eigen.dir/example/test_Eigen.cpp.o -c /home/gtq/GTQ_pmsm/example/test_Eigen.cpp",
-  "file": "/home/gtq/GTQ_pmsm/example/test_Eigen.cpp"
+  "command": "/usr/bin/g++   -Wall  -g -g -o CMakeFiles/test_Eigen3.dir/example/test_Eigen3.cpp.o -c /home/gtq/GTQ_pmsm/example/test_Eigen3.cpp",
+  "file": "/home/gtq/GTQ_pmsm/example/test_Eigen3.cpp"
 }
 ]

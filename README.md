@@ -22,7 +22,9 @@ chol分解：[test_Eigen](./example/test_Eigen2.cpp)
 
 所用的时间的结果：![](chol用时对比.png "图片title")
 
-编译时增加了Eigen库的内容，会大大增加编译二进制文件的大小
+编译时增加了Eigen库的内容，会大大增加编译二进制文件的大小。通过连乘测试：[test_Eigen3](./example/test_Eigen3.cpp)
+
+
 
 2023/05/29 潘继良
 ---

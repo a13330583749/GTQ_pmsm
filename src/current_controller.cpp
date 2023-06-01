@@ -134,6 +134,7 @@ void FCSMPCer::updata_pmsm_model(const std::vector<double>& Iabc, const double& 
 std::vector<int> FCSMPCer::sda_output_u1(const double& Id_ref, const double& Iq_ref)
 {
     // 首先进行矩阵的建立和初始化工作
+    // Phi: Φ
     Eigen::Matrix<double, FCSMPCer::PredictionHorizon * PanJL::rankA, PredictionHorizon * PanJL::rankA> Phi;
     
 

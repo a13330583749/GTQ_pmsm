@@ -48,7 +48,7 @@ const double Bm_ = 1.1e-4;
 const double J_ = 4.7e-5;
 const int Pn_ = 2;
 
-
+const int rankA = 2;
 
 namespace PanJL{
 #define SparseInverter ture
@@ -59,7 +59,7 @@ const int ODE45_M = 5;
 
 
  // SDA 算法的维度
-const int rankA = 2;
+
 struct inputs
 {
     std::vector<std::vector<int>> inputs_real;

@@ -2,7 +2,7 @@
 	"artifacts" : 
 	[
 		{
-			"path" : "test_Eigen"
+			"path" : "test_Eigen3"
 		}
 	],
 	"backtrace" : 1,
@@ -24,7 +24,7 @@
 			{
 				"command" : 0,
 				"file" : 0,
-				"line" : 13,
+				"line" : 14,
 				"parent" : 0
 			}
 		]
@@ -45,7 +45,7 @@
 			]
 		}
 	],
-	"id" : "test_Eigen::@6890427a1f51a3e7e1df",
+	"id" : "test_Eigen3::@6890427a1f51a3e7e1df",
 	"link" : 
 	{
 		"commandFragments" : 
@@ -61,8 +61,8 @@
 		],
 		"language" : "CXX"
 	},
-	"name" : "test_Eigen",
-	"nameOnDisk" : "test_Eigen",
+	"name" : "test_Eigen3",
+	"nameOnDisk" : "test_Eigen3",
 	"paths" : 
 	{
 		"build" : ".",
@@ -83,7 +83,7 @@
 		{
 			"backtrace" : 1,
 			"compileGroupIndex" : 0,
-			"path" : "example/test_Eigen.cpp",
+			"path" : "example/test_Eigen3.cpp",
 			"sourceGroupIndex" : 0
 		}
 	],
