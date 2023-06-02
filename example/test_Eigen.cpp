@@ -21,7 +21,7 @@ int main(int argc, char **argv)
     clock_t time_stt = clock();                           //用于计时
 
     time_stt = clock();
-    std::ofstream outputFile("cholesky.txt", std::ios::out | std::ios::binary);
+    std::ofstream outputFile("../data/cholesky.txt", std::ios::out | std::ios::binary);
     if (!outputFile.is_open()) {
         std::cerr << "无法打开文件" << std::endl;
         return 1;
@@ -38,7 +38,7 @@ int main(int argc, char **argv)
        <<  (time_stt2- time_stt) / (double) CLOCKS_PER_SEC << "s" << endl;
 
     MatrixXd L = lltOfA.matrixL();
-    std::ofstream outputFile_res("cholesky_result.txt", std::ios::out | std::ios::binary);
+    std::ofstream outputFile_res("../data/cholesky_result.txt", std::ios::out | std::ios::binary);
     outputFile_res << L <<  std::endl;
     outputFile_res.close();
 

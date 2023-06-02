@@ -105,7 +105,7 @@ int main(int argc, char **argv)
 
 
     cout << "-------------------------------------------------" << endl;
-    std::ofstream outputFile("cholesky.txt", std::ios::out | std::ios::binary);
+    std::ofstream outputFile("../data/cholesky.txt", std::ios::out | std::ios::binary);
     if (!outputFile.is_open()) {
         std::cerr << "无法打开文件" << std::endl;
         return 1;

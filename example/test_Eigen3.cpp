@@ -18,7 +18,7 @@ public:
     myClass() = default;
     myClass(double A_, double C):a(A_), c(C)
     {
-        this->A = [this]() -> Eigen::Matrix<double, 2, 2>
+        this->A = [this]() -> Eigen::Matrix<double, rankA, rankA>
         {
             double A11 = 1 - Rs_ * PanJL::Ts / Ld_;
             double A12 = Pn_ * a * PanJL::Ts;
@@ -26,6 +26,16 @@ public:
             double A22 = 1 - Rs_ * PanJL::Ts / Lq_;
             Eigen::Matrix<double, rankA, rankA> result;
             result << A11 , A12 , A21 , A22;
+            return result;
+        };
+
+        this->get_Gamma = [this]() -> Eigen::Matrix<double, rankA * predictive_N, rankA * predictive_N>
+        {
+            Eigen::Matrix<double, rankA * predictive_N, rankA * predictive_N> result;
+            result.setZero();
+            for(int i=0; i<predictive_N; i++){
+                result.block(i*rankA, i*rankA, rankA, rankA) = this->MatrixPower(this->A(), i);
+            }
             return result;
         };
     }
@@ -36,7 +46,11 @@ public:
                 result *= matrix;
         return result;
     }
+/*
+    // test4：
 
+    // Gamma: is Γ
+    // 分析了一下，还是要使用std::function最好，不然每一次都来一次的话也太浪费内容了
     Eigen::Matrix<double, rankA * predictive_N, rankA * predictive_N> get_Gamma()
     {
         Eigen::Matrix<double, rankA * predictive_N, rankA * predictive_N> result;
@@ -46,6 +60,8 @@ public:
         }
         return result;
     }
+*/
+    std::function<Eigen::Matrix<double, rankA, rankA>()> get_Gamma;
 };
 
 
@@ -79,6 +95,11 @@ void test3()
     }
     std::cout << rhi << std::endl;
     std::cout << "--------------------" << std::endl;
+}
+
+void test4()
+{
+    
 }
 
 int main(int argc, char **argv)
