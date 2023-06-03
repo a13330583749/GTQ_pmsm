@@ -53,6 +53,8 @@ const int rankA = 2;
 namespace PanJL{
 #define SparseInverter ture
 
+// Vdc先放在这里，不知道会不会有什么类中成员的事情
+const double Vdc = 100;
 const double Ts = 25e-6;
 const int ODE45_M = 5;
     // const double DT = Ts/ODE45_M;

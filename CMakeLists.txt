@@ -11,6 +11,7 @@ file(GLOB SOURCES src/*.cpp)
 # add_executable(pmsm_controller ./example/pmsm_controller.cpp ${SOURCES})
 # add_executable(pmsm_plant ./example/pmsm_plant.cpp ${SOURCES})
 # add_executable(test_Eigen ./example/test_Eigen.cpp)
+# add_executable(test_Eigen2 ./example/test_Eigen2.cpp)
 add_executable(test_Eigen3 ./example/test_Eigen3.cpp)
 
 

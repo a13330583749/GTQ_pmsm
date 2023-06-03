@@ -10,9 +10,9 @@ using namespace std;
 using namespace Eigen;
 #define MATRIX_SEZE 50
 
-int main(int argc, char **argv)
+void test1()
 {
-    //声明一个2*3的矩阵，eigen中所有的向量矩阵均为Eigen::Matrix，是一个模板类。
+        //声明一个2*3的矩阵，eigen中所有的向量矩阵均为Eigen::Matrix，是一个模板类。
     //三个参数分别为数据类型、行数、列数
     Matrix<float, 2, 3> matrix_23;
 
@@ -108,7 +108,6 @@ int main(int argc, char **argv)
     std::ofstream outputFile("../data/cholesky.txt", std::ios::out | std::ios::binary);
     if (!outputFile.is_open()) {
         std::cerr << "无法打开文件" << std::endl;
-        return 1;
     }
     outputFile << matrix_NN << endl;
 
@@ -118,6 +117,29 @@ int main(int argc, char **argv)
     auto y = matrix_NN.ldlt();
     cout << "time of ldlt decomposition is "
        << 1000 * (clock() - time_stt) / (double) CLOCKS_PER_SEC << "ms" << endl;
+}
 
-    return 0;
+
+void test2()
+{
+    cout << " --------------------------------- " << endl;
+    // 测试矩阵的乘法和除法
+    // 利用{{}{}}这种形式进行初始化
+    Eigen::Matrix<double, 3, 3> result3{{2, -1, -1}, {-1, 2, -1}, {-1, -1, 2}};
+    cout  << result3 << endl << " 除以3之后的结果: "  << result3/3.0 << endl;
+}
+
+void test3()
+{
+    cout << " --------------------------------- " << endl;
+    // 测试矩阵的乘法和除法
+    // 利用{{}{}}这种形式进行初始化
+    Eigen::Matrix<double, 2, 3> result3;
+    result3 << 1,2,3,4,5,6;
+    cout  << result3 << endl << " 除以3之后的结果: " << endl  << result3/3.0 << endl;
+}
+
+int main(int argc, char **argv)
+{
+    test3();    
 }
