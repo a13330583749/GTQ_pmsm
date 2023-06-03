@@ -13,9 +13,28 @@ const static int predictive_N = 4;
 // 这个类主要采用Eigen作为运算单元，而不是使用一般的计算方式
 class myClass
 {
+private:
+    // 此处假设是SPMSM，所以不变了，因此在此处之间使用const变量，如何需要更改可以使用mutual关键字
+    // 加入此处应该设计接口让MPCC控制器使用
+    const double Id_ref = 0;
+    double Iq_ref;
+
 public:
+    // 这种就直接暴露出来就好了
     double a; // a := state_varibles.wr
     double c; // b := state_varibles.theta_ele
+    double Id;
+    double Iq;
+    const double Id_ref = 0;
+    double Iq_ref;
+
+    // 保留的接口
+    // 更改为：
+    // mutual double Id_ref = 0;
+    // const void inline set_Id_ref(const double& Id){Id_ref = Id;}
+    std::function<Eigen::Vector<double, rankA * predictive_N>()> Vector_Iref;
+    std::function<Eigen::Vector<double, rankA * predictive_N>()> Vector_Idq;
+
     const Eigen::Matrix<double, rankA, rankA> B = 
      Eigen::Matrix<double, rankA, rankA>{{PanJL::Ts/Ld_, 0}, {0, PanJL::Ts/Lq_}};
 
@@ -32,6 +51,8 @@ public:
     // 因为park矩阵需要实时获得
     // 而clack矩阵是不会变的
 
+
+
     // Park变换所需要的矩阵
     std::function<Eigen::Matrix<double, 2, 2>()> Park_Matrix;
     
@@ -42,11 +63,27 @@ public:
     std::function<Eigen::Matrix<double, rankA * predictive_N, rankA * predictive_N>()> get_Phi;
     // γ  3代表abc三相电的输入
     std::function<Eigen::Matrix<double, rankA * predictive_N, 3 * predictive_N>()> get_gamma;
+    //
+
+    //Θ： 二次矩阵
+    // std::function<Eigen::Matrix<double, >> 
+
     myClass() = default;
     myClass(double A_, double C) : a(A_), c(C)
     {
-        // 注意这里的B矩阵是对于SPMSM的，对于有凸性的电机来说。这里的B矩阵需要变换
+        // 获得I_ref向量：
+        this->Vector_Iref = [this]() -> Eigen::Vector<double, rankA * predictive_N>
+        {
+            return Eigen::Vector2d(this->Id_ref, this->Iq_ref).replicate(predictive_N, 1);
+        };
 
+        // 获得Idq向量：
+        this->Vector_Idq = [this]() -> Eigen::Vector<double, rankA * predictive_N>
+        {
+            return Eigen::Vector2d(this->Id, this->Iq).replicate(predictive_N, 1);
+        };
+
+        // 注意这里的B矩阵是对于SPMSM的，对于有凸性的电机来说。这里的B矩阵需要变换
         this->Park_Matrix = [this]() -> Eigen::Matrix<double, 2, 2>
         {
             Eigen::Matrix<double, 2, 2> T;
