@@ -51,7 +51,7 @@ public:
     // 因为park矩阵需要实时获得
     // 而clack矩阵是不会变的
 
-
+    const Eigen::Matrix<double, 3 * predictive_N, 3 * predictive_N> S;
 
     // Park变换所需要的矩阵
     std::function<Eigen::Matrix<double, 2, 2>()> Park_Matrix;
