@@ -139,7 +139,20 @@ void test3()
     cout  << result3 << endl << " 除以3之后的结果: " << endl  << result3/3.0 << endl;
 }
 
+void test4()
+{
+    cout << " --------------------------------- " << endl;
+    // 测试矩阵的乘法和除法
+    // 利用{{}{}}这种形式进行初始化
+    Eigen::Matrix<double, 2, 3> result3;
+    result3 << 1,2,3,4,5,6;
+    Eigen::Vector3d a;
+    a << 1,1,1;
+    cout << "a = " << a <<std::endl;
+    cout  << result3 << endl << " chengyi以a之后的结果: " << endl  << result3 * a << endl;
+}
+
 int main(int argc, char **argv)
 {
-    test3();    
+    test4();    
 }
