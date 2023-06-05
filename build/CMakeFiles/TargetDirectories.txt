@@ -1,3 +1,0 @@
-/home/gtq/GTQ_pmsm/build/CMakeFiles/test_Eigen3.dir
-/home/gtq/GTQ_pmsm/build/CMakeFiles/edit_cache.dir
-/home/gtq/GTQ_pmsm/build/CMakeFiles/rebuild_cache.dir
