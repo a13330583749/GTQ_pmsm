@@ -23,6 +23,7 @@ public:
     const double Id_ref = 0;
     double Iq_ref;
     Eigen::Matrix<int, rank_abc * predictive_N, 1> Uopts;
+    // std::vector<int> Uopts;
     // 考虑到FCSMPCer使用的是vector容器作为输入，因此在此处vector将这个类最终计算的结果输出，
     // 同时保留该状态下的输入，以便下一个时刻的使用
     std::vector<int> virtual_outpus;
@@ -83,6 +84,7 @@ public:
         virtual_outpus = {0,0,0};
         virtual_outpus.resize(3);
         Uopts.setZero();
+        // Uopts = std::vector<int>{9, 0};
         // 获得I_ref向量：
         this->Vector_Iref = [this]() -> Eigen::Vector<double, rankA * predictive_N>
         {
@@ -217,22 +219,23 @@ public:
     // double rho = std::numeric_limits<double>::max(); // Initialize rho with a large value
     // Eigen::VectorXd Uopt(UoptSize);
     // Uopt.setZero(); // Initialize Uopt with zeros
+    
     void MSPHDEC_Recursion(const Eigen::Matrix<double, rank_abc * predictive_N, 1>& U_hat_unc, 
             const Eigen::Matrix<double, rank_abc * predictive_N, rank_abc * predictive_N>& H,
-             int i, double d2, double& rho, Eigen::Matrix<int, rank_abc * predictive_N, 1>* Uopts,
+             int i, double d2, double& rho, Eigen::Matrix<int, rank_abc * predictive_N, 1> &Uopts,
              Eigen::Matrix<int, rank_abc * predictive_N, 1> U)
     {
         // Base case: i reaches the maximum value
         if (i >= rank_abc * predictive_N) {
-            *Uopts = U;
-            std::cout << (*Uopts).transpose() << std::endl;
+            Uopts = U;
+            std::cout << Uopts.transpose() << std::endl;
             rho = d2;
             return;
         }
     // Iterate over the candidate input values
         for (int u = -1; u <= 1; u++) {
             U(i) = u;
-            double d2_new = (U_hat_unc.segment(0, i).transpose() * H.block(i, 0, 1, i).transpose()).norm() + d2;
+            double d2_new = (U_hat_unc.segment(0, i)-H.block(i, 0, i, 1) * U.segment(0, i).transpose()).norm() + d2;
             if (d2_new < rho) {
                 int previousUi = U(i);
                 MSPHDEC_Recursion(U_hat_unc, H, i + 1, d2_new, rho, Uopts, U);
@@ -241,6 +244,26 @@ public:
             }
         }        
     }
+    
+
+//    std::tuple<std::vector<int>, double> MSPHDEC_Recursion(const Eigen::Matrix<double, rank_abc * predictive_N, 1>& U_hat_unc, 
+//             const Eigen::Matrix<double, rank_abc * predictive_N, rank_abc * predictive_N>& H, int i, double d2,
+//             double rho, std::vector<int> U, std::vector<int> Uopt)
+//     {
+//         for(int j=-1; j<=1; j++){
+//             U.push_back(j);
+//             double d2_new = (U_hat_unc.segment(0, i).transpose() * H.block(i, 0, 1, i).transpose()).norm() + d2;
+//             if (d2_new < rho){
+//                 if(i < predictive_N* rank_abc)
+//                     std::tie(Uopt, rho) = MSPHDEC_Recursion(U_hat_unc, H, i+1, d2_new, rho, U, Uopt);
+//                 else{
+//                     Uopt = U;
+//                     rho = d2_new;
+//                 }
+//             }
+//         }
+//         return std::make_tuple(Uopt, rho);
+//     }
 
     // 实现完成的SDA和矩阵变换接口的实现，需要将虚拟输入送出去
     // 按理来说这里的传入参数应该是系统的参数更新情况
@@ -254,7 +277,9 @@ public:
         auto H = llt.matrixL();
         Eigen::Matrix<int, rank_abc*predictive_N, 1> U;
         U.setZero();
-        MSPHDEC_Recursion(U_hat_unc, H, 0, 0.0, rho, &Uopts, U);
+        // std::vector<int> U;
+        // U.resize(0);
+        MSPHDEC_Recursion(U_hat_unc, H, 0, 0.0, rho, U, Uopts);
         
         std::vector<int> result;
         result.resize(3);
@@ -263,8 +288,8 @@ public:
         result[2] = Uopts[2];
         std::cout << result[0] << "  " << result[1] << "  " << result[2]<< std::endl;
         // std::cout <<U_hat_unc.transpose() << std::endl;
-        Uopts.segment(0, rank_abc*(predictive_N - 1)) = Uopts.segment(rank_abc, rank_abc*(predictive_N - 1));
-        Uopts.segment(rank_abc*(predictive_N - 1), rank_abc) = Uopts.segment(rank_abc*(predictive_N - 2), rank_abc);
+        // Uopts.segment(0, rank_abc*(predictive_N - 1)) = Uopts.segment(rank_abc, rank_abc*(predictive_N - 1));
+        // Uopts.segment(rank_abc*(predictive_N - 1), rank_abc) = Uopts.segment(rank_abc*(predictive_N - 2), rank_abc);
         return result;
     }
 };
