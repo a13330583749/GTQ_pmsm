@@ -6,7 +6,7 @@
 #include <Eigen/Dense>
 #include <functional>
 #include "../PMSM_sim.h"
-const static int predictive_N = 4;
+const static int predictive_N = 3;
 const static int rank_abc     = 3;
 // const static int rankA = 2;
 
@@ -22,7 +22,7 @@ public:
     double Iq;
     const double Id_ref = 0;
     double Iq_ref;
-
+    Eigen::Matrix<int, rank_abc * predictive_N, 1> Uopts;
     // 考虑到FCSMPCer使用的是vector容器作为输入，因此在此处vector将这个类最终计算的结果输出，
     // 同时保留该状态下的输入，以便下一个时刻的使用
     std::vector<int> virtual_outpus;
@@ -35,7 +35,7 @@ public:
     std::function<Eigen::Vector<double, rankA * predictive_N>()> Vector_Iref;
     std::function<Eigen::Vector<double, rankA * predictive_N>()> Vector_Idq;
     std::function<Eigen::Vector<double, rankA * predictive_N>()> Vector_D;
-    std::function<Eigen::Vector<double, rank_abc * predictive_N>()> Vector_v_abc;
+    std::function<Eigen::Vector<double, rank_abc>()> Vector_v_abc;
 
     const Eigen::Matrix<double, rankA, rankA> B = 
      Eigen::Matrix<double, rankA, rankA>{{PanJL::Ts/Ld_, 0}, {0, PanJL::Ts/Lq_}};
@@ -82,6 +82,7 @@ public:
     {
         virtual_outpus = {0,0,0};
         virtual_outpus.resize(3);
+        Uopts.setZero();
         // 获得I_ref向量：
         this->Vector_Iref = [this]() -> Eigen::Vector<double, rankA * predictive_N>
         {
@@ -102,11 +103,11 @@ public:
         };
 
         // 获得Vector_v_abc向量：
-        this->Vector_v_abc = [this]() -> Eigen::Vector<double, rank_abc * predictive_N>
+        this->Vector_v_abc = [this]() -> Eigen::Vector<double, rank_abc>
         {
             // 这里的常数处理要注意，因为转速和磁链都是不一定相同的，移植的时候要注意正确性
             return Eigen::Vector3d(static_cast<double>(virtual_outpus[0]), static_cast<double>(virtual_outpus[1]),
-                    static_cast<double>(virtual_outpus[2])).replicate(predictive_N, 1);
+                    static_cast<double>(virtual_outpus[2]));
         };
 
 
@@ -180,6 +181,7 @@ public:
         }
         // R和Θ矩阵需要通过S和E来获取，所以放在后面来写
         // std::function<Eigen::Matrix<double, rank_abc*predictive_N, rank_abc*predictive_N>()> get_R;
+        // 二次项系数：R
         this -> get_R = [this]() -> Eigen::Matrix<double, rank_abc*predictive_N, rank_abc*predictive_N>
         {
             // 这里还没有引入权重矩阵，所以就先放在这里测试，之后再正式的写友元类的时候再考虑加入
@@ -192,8 +194,8 @@ public:
         {
             Eigen::Matrix<double, rank_abc*predictive_N, 1> result;
             // 这里的P权重矩阵也还是没有放进入一起计算！！！Γ
-            result = ((this -> get_Gamma() * (this->Vector_Idq())) + (this->get_Phi() * (this->Vector_D())) + this->Vector_Iref())
-                     * (this->get_gamma());// - (-this->E * this->Vector_v_abc()).transpose() * this->S;
+            result = (((this -> get_Gamma() * (this->Vector_Idq())) + (this->get_Phi() * (this->Vector_D())) - this->Vector_Iref()).transpose()
+                     * (this->get_gamma())).transpose() - ((-this->E * this->Vector_v_abc()).transpose() * this->S).transpose();
             return result;
         };
 
@@ -207,6 +209,62 @@ public:
         Eigen::Matrix<double, rankA, rankA> result = Eigen::Matrix<double, rankA, rankA>::Identity();
         for (int i = 0; i < n; ++i)
             result *= matrix;
+        return result;
+    }
+
+    // 递归SDA算法
+    // 应该把ρ（rho）设置为无限大 ：
+    // double rho = std::numeric_limits<double>::max(); // Initialize rho with a large value
+    // Eigen::VectorXd Uopt(UoptSize);
+    // Uopt.setZero(); // Initialize Uopt with zeros
+    void MSPHDEC_Recursion(const Eigen::Matrix<double, rank_abc * predictive_N, 1>& U_hat_unc, 
+            const Eigen::Matrix<double, rank_abc * predictive_N, rank_abc * predictive_N>& H,
+             int i, double d2, double& rho, Eigen::Matrix<int, rank_abc * predictive_N, 1>* Uopts,
+             Eigen::Matrix<int, rank_abc * predictive_N, 1> U)
+    {
+        // Base case: i reaches the maximum value
+        if (i >= rank_abc * predictive_N) {
+            *Uopts = U;
+            std::cout << (*Uopts).transpose() << std::endl;
+            rho = d2;
+            return;
+        }
+    // Iterate over the candidate input values
+        for (int u = -1; u <= 1; u++) {
+            U(i) = u;
+            double d2_new = (U_hat_unc.segment(0, i).transpose() * H.block(i, 0, 1, i).transpose()).norm() + d2;
+            if (d2_new < rho) {
+                int previousUi = U(i);
+                MSPHDEC_Recursion(U_hat_unc, H, i + 1, d2_new, rho, Uopts, U);
+                // std::cout << U.transpose() << std::endl;
+                U(i) = previousUi;
+            }
+        }        
+    }
+
+    // 实现完成的SDA和矩阵变换接口的实现，需要将虚拟输入送出去
+    // 按理来说这里的传入参数应该是系统的参数更新情况
+    // 也是等到最后正式写入友元类的时候在做完善
+    std::vector<int> updata()
+    {
+        double rho = std::numeric_limits<double>::max();
+        Eigen::Matrix<double, rank_abc*predictive_N, 1> U_hat_unc = -1 * this->get_R().inverse() * this->get_Theta();
+        Eigen::LLT<Eigen::Matrix<double, rank_abc*predictive_N, rank_abc*predictive_N>> llt;
+        llt.compute(this->get_R());
+        auto H = llt.matrixL();
+        Eigen::Matrix<int, rank_abc*predictive_N, 1> U;
+        U.setZero();
+        MSPHDEC_Recursion(U_hat_unc, H, 0, 0.0, rho, &Uopts, U);
+        
+        std::vector<int> result;
+        result.resize(3);
+        result[0] = Uopts[0];
+        result[1] = Uopts[1];
+        result[2] = Uopts[2];
+        std::cout << result[0] << "  " << result[1] << "  " << result[2]<< std::endl;
+        // std::cout <<U_hat_unc.transpose() << std::endl;
+        Uopts.segment(0, rank_abc*(predictive_N - 1)) = Uopts.segment(rank_abc, rank_abc*(predictive_N - 1));
+        Uopts.segment(rank_abc*(predictive_N - 1), rank_abc) = Uopts.segment(rank_abc*(predictive_N - 2), rank_abc);
         return result;
     }
 };
@@ -244,21 +302,43 @@ void test3()
     std::cout << "--------------------" << std::endl;
 }
 
+// test4说明算法的矩阵支持已经完成，现在还需要的就是SDA迭代本身计算的过程
 void test4()
 {
     myClass x(2.0, 1.2);
-    std::cout << x.Park_Matrix() << std::endl;
-    std::cout << "*********************" << std::endl;
-    std::cout << x.get_Gamma() << std::endl;
-    std::cout << "*********************" << std::endl;
-    std::cout << x.get_Phi() << std::endl;
-    std::cout << "*********************" << std::endl;
-    std::cout << x.get_gamma() << std::endl;
-    std::cout << "*********************" << std::endl;
+    // std::cout << x.Park_Matrix() << std::endl;
+    // std::cout << "*********************" << std::endl;
+    // std::cout << x.get_Gamma() << std::endl;
+    // std::cout << "*********************" << std::endl;
+    // std::cout << x.get_Phi() << std::endl;
+    // std::cout << "*********************" << std::endl;
+    // std::cout << x.get_gamma() << std::endl;
+    // std::cout << "*********************" << std::endl;
     x.a = 1.0;
     x.c = 3.4;
-    std::cout << x.get_gamma() << std::endl;
-    std::cout << "*********************" << std::endl;
+    x.Id = 0.1;
+    x.Iq = 4;
+    x.Iq_ref = 5;
+    // std::cout << x.get_gamma() << std::endl;
+    // std::cout << "*********************" << std::endl;
+    // std::cout << "二次型矩阵：" << std::endl;
+    // std::cout << x.get_R() << std::endl;
+    // std::cout << "*********************" << std::endl;
+    // std::cout << "一次型矩阵：" << std::endl;
+    // std::cout << x.get_Theta() << std::endl;
+    // std::cout << "*********************" << std::endl;
+    // std::cout << "无约束的最优解为：" << std::endl; 
+    // std::cout << -1 * x.get_R().inverse() * x.get_Theta() << std::endl;
+    auto y = x.updata();
+    for (double j=2; j< 10; j=j+0.1){
+        x.a = 1.0 * j;
+        x.c = -0.4 * j;
+        x.Id = 0;
+        x.Iq = j;
+        x.Iq_ref = 7;
+        auto y = x.updata();
+    }
+
 }
 
 int main(int argc, char **argv)

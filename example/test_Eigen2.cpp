@@ -152,7 +152,14 @@ void test4()
     cout  << result3 << endl << " chengyi以a之后的结果: " << endl  << result3 * a << endl;
 }
 
+void test5()
+{
+    Eigen::Matrix<int, 9, 1> x;
+    x << 1,2,3,4,5,6,7,8,9;
+    std::cout << x.segment(0,4) << std::endl;
+}
+
 int main(int argc, char **argv)
 {
-    test4();    
+    test5();    
 }

@@ -41,17 +41,5 @@ int main(int argc, char **argv)
     std::ofstream outputFile_res("../data/cholesky_result.txt", std::ios::out | std::ios::binary);
     outputFile_res << L <<  std::endl;
     outputFile_res.close();
-
-
-    // Eigen::LDLT<Eigen::Matrix<double, MATRIX_SEZE, MATRIX_SEZE>> y = matrix_NN.ldlt();
-    // cout << "time of ldlt decomposition is "
-    //    <<  (clock() - time_stt) / (double) CLOCKS_PER_SEC << "s" << endl;
-    // std::ofstream outputFile_res("cholesky_result.txt", std::ios::out | std::ios::binary);
-    // // Format the output using Eigen::IOFormat
-    // Eigen::IOFormat format(Eigen::FullPrecision, Eigen::DontAlignCols, "\t", "\n");
-    // // Write the formatted output to the file
-    // outputFile_res << static_cast<Eigen::Matrix<double, MATRIX_SEZE, MATRIX_SEZE>>(y.matrixU()) <<  std::endl;
-    // // outputFile_res << static_cast<Eigen::Matrix<double, MATRIX_SEZE, MATRIX_SEZE>>(y.matrixU()) <<  std::endl;
-    // outputFile_res.close();
     return 0;
 }
