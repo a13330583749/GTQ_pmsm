@@ -235,7 +235,9 @@ public:
     // Iterate over the candidate input values
         for (int u = -1; u <= 1; u++) {
             U(i) = u;
-            double d2_new = (U_hat_unc.segment(0, i)-H.block(i, 0, i, 1) * U.segment(0, i).transpose()).norm() + d2;
+            auto scalar_product = (H.row(i).head(i).cast<double>() * U.segment(0, i).cast<double>()).sum();
+            double d2_new = (U_hat_unc(i) - scalar_product) * (U_hat_unc(i) - scalar_product) + d2;
+            // double d2_new = (U_hat_unc(i) - (H.row(i).head(i) * U.segment(0, i).transpose())) + d2;
             if (d2_new < rho) {
                 int previousUi = U(i);
                 MSPHDEC_Recursion(U_hat_unc, H, i + 1, d2_new, rho, Uopts, U);
@@ -274,12 +276,13 @@ public:
         Eigen::Matrix<double, rank_abc*predictive_N, 1> U_hat_unc = -1 * this->get_R().inverse() * this->get_Theta();
         Eigen::LLT<Eigen::Matrix<double, rank_abc*predictive_N, rank_abc*predictive_N>> llt;
         llt.compute(this->get_R());
-        auto H = llt.matrixL();
+        Eigen::Matrix<double, rank_abc*predictive_N, rank_abc*predictive_N> H = llt.matrixL();
         Eigen::Matrix<int, rank_abc*predictive_N, 1> U;
         U.setZero();
         // std::vector<int> U;
         // U.resize(0);
-        MSPHDEC_Recursion(U_hat_unc, H, 0, 0.0, rho, U, Uopts);
+        // Uopts:保留上一次优化的最优值
+        MSPHDEC_Recursion(U_hat_unc, H, 0, 0.0, rho, Uopts, U);
         
         std::vector<int> result;
         result.resize(3);
@@ -344,16 +347,26 @@ void test4()
     x.Id = 0.1;
     x.Iq = 4;
     x.Iq_ref = 5;
-    // std::cout << x.get_gamma() << std::endl;
-    // std::cout << "*********************" << std::endl;
-    // std::cout << "二次型矩阵：" << std::endl;
-    // std::cout << x.get_R() << std::endl;
-    // std::cout << "*********************" << std::endl;
-    // std::cout << "一次型矩阵：" << std::endl;
-    // std::cout << x.get_Theta() << std::endl;
-    // std::cout << "*********************" << std::endl;
-    // std::cout << "无约束的最优解为：" << std::endl; 
-    // std::cout << -1 * x.get_R().inverse() * x.get_Theta() << std::endl;
+    std::cout << x.get_gamma() << std::endl;
+    std::cout << "*********************" << std::endl;
+    std::cout << "二次型矩阵：" << std::endl;
+    std::cout << x.get_R() << std::endl;
+    std::cout << "*********************" << std::endl;
+    std::cout << "一次型矩阵：" << std::endl;
+    std::cout << x.get_Theta() << std::endl;
+    std::cout << "*********************" << std::endl;
+    std::cout << "无约束的最优解为：" << std::endl; 
+    std::cout << -1 * x.get_R().inverse() * x.get_Theta() << std::endl;
+}
+
+void test5()
+{
+    myClass x(2.0, 1.2);
+    x.a = 1.0;
+    x.c = 3.4;
+    x.Id = 0.1;
+    x.Iq = 4;
+    x.Iq_ref = 5;
     auto y = x.updata();
     for (double j=2; j< 10; j=j+0.1){
         x.a = 1.0 * j;
@@ -363,11 +376,10 @@ void test4()
         x.Iq_ref = 7;
         auto y = x.updata();
     }
-
 }
 
 int main(int argc, char **argv)
 {
-    test4();
+    test5();
     return 0;
 }
