@@ -1,0 +1,47 @@
+[
+{
+  "directory": "/home/gtq/GTQ_pmsm/build",
+  "command": "/usr/bin/g++   -Wall  -g -g -o CMakeFiles/onestep_without_delay.dir/example/onestep_without_delay.cpp.o -c /home/gtq/GTQ_pmsm/example/onestep_without_delay.cpp",
+  "file": "/home/gtq/GTQ_pmsm/example/onestep_without_delay.cpp"
+},
+{
+  "directory": "/home/gtq/GTQ_pmsm/build",
+  "command": "/usr/bin/g++   -Wall  -g -g -o CMakeFiles/onestep_without_delay.dir/src/PMSM.cpp.o -c /home/gtq/GTQ_pmsm/src/PMSM.cpp",
+  "file": "/home/gtq/GTQ_pmsm/src/PMSM.cpp"
+},
+{
+  "directory": "/home/gtq/GTQ_pmsm/build",
+  "command": "/usr/bin/g++   -Wall  -g -g -o CMakeFiles/onestep_without_delay.dir/src/client.cpp.o -c /home/gtq/GTQ_pmsm/src/client.cpp",
+  "file": "/home/gtq/GTQ_pmsm/src/client.cpp"
+},
+{
+  "directory": "/home/gtq/GTQ_pmsm/build",
+  "command": "/usr/bin/g++   -Wall  -g -g -o CMakeFiles/onestep_without_delay.dir/src/controller.cpp.o -c /home/gtq/GTQ_pmsm/src/controller.cpp",
+  "file": "/home/gtq/GTQ_pmsm/src/controller.cpp"
+},
+{
+  "directory": "/home/gtq/GTQ_pmsm/build",
+  "command": "/usr/bin/g++   -Wall  -g -g -o CMakeFiles/onestep_without_delay.dir/src/current_controller.cpp.o -c /home/gtq/GTQ_pmsm/src/current_controller.cpp",
+  "file": "/home/gtq/GTQ_pmsm/src/current_controller.cpp"
+},
+{
+  "directory": "/home/gtq/GTQ_pmsm/build",
+  "command": "/usr/bin/g++   -Wall  -g -g -o CMakeFiles/onestep_without_delay.dir/src/inverter.cpp.o -c /home/gtq/GTQ_pmsm/src/inverter.cpp",
+  "file": "/home/gtq/GTQ_pmsm/src/inverter.cpp"
+},
+{
+  "directory": "/home/gtq/GTQ_pmsm/build",
+  "command": "/usr/bin/g++   -Wall  -g -g -o CMakeFiles/onestep_without_delay.dir/src/speed_control.cpp.o -c /home/gtq/GTQ_pmsm/src/speed_control.cpp",
+  "file": "/home/gtq/GTQ_pmsm/src/speed_control.cpp"
+},
+{
+  "directory": "/home/gtq/GTQ_pmsm/build",
+  "command": "/usr/bin/g++   -Wall  -g -g -o CMakeFiles/onestep_without_delay.dir/src/system.cpp.o -c /home/gtq/GTQ_pmsm/src/system.cpp",
+  "file": "/home/gtq/GTQ_pmsm/src/system.cpp"
+},
+{
+  "directory": "/home/gtq/GTQ_pmsm/build",
+  "command": "/usr/bin/g++   -Wall  -g -g -o CMakeFiles/test_Eigen3.dir/example/test_Eigen3.cpp.o -c /home/gtq/GTQ_pmsm/example/test_Eigen3.cpp",
+  "file": "/home/gtq/GTQ_pmsm/example/test_Eigen3.cpp"
+}
+]

@@ -7,7 +7,7 @@ file(GLOB SOURCES src/*.cpp)
 
 # add_executable(gtq_client ./example/gtq_client.cpp ${SOURCES})
 # add_executable(gtq_server ./example/gtq_server.cpp ${SOURCES})
-# add_executable(onestep_without_delay ./example/onestep_without_delay.cpp ${SOURCES})
+add_executable(onestep_without_delay ./example/onestep_without_delay.cpp ${SOURCES})
 # add_executable(pmsm_controller ./example/pmsm_controller.cpp ${SOURCES})
 # add_executable(pmsm_plant ./example/pmsm_plant.cpp ${SOURCES})
 # add_executable(test_Eigen ./example/test_Eigen.cpp)

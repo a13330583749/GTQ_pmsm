@@ -135,7 +135,7 @@ std::vector<int> FCSMPCer::sda_output_u1(const double& Id_ref, const double& Iq_
 {
     // 首先进行矩阵的建立和初始化工作
     // Phi: Φ
-    Eigen::Matrix<double, FCSMPCer::PredictionHorizon * PanJL::rankA, PredictionHorizon * PanJL::rankA> Phi;
+    Eigen::Matrix<double, FCSMPCer::PredictionHorizon * rankA, PredictionHorizon * rankA> Phi;
     
 
 }

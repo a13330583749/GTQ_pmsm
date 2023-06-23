@@ -6,7 +6,7 @@
 #include <Eigen/Dense>
 #include <functional>
 #include "../PMSM_sim.h"
-const static int predictive_N = 3;
+const static int predictive_N = 5;
 const static int rank_abc     = 3;
 // const static int rankA = 2;
 
