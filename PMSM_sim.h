@@ -19,7 +19,7 @@
 #include <cstring>
 #include "commincation.h"
 #include <fstream>
-
+#include <functional>
 //eigen核心部分
 #include <Eigen/Core>
 //稠密矩阵的代数运算（逆、特征值等）

@@ -187,7 +187,7 @@ public:
         this -> get_R = [this]() -> Eigen::Matrix<double, rank_abc*predictive_N, rank_abc*predictive_N>
         {
             // 这里还没有引入权重矩阵，所以就先放在这里测试，之后再正式的写友元类的时候再考虑加入
-            Eigen::Matrix<double, rank_abc*predictive_N, rank_abc*predictive_N> result = (this->get_gamma()).transpose() * this->get_gamma() + (this->S).transpose() * (this->S);
+            Eigen::Matrix<double, rank_abc*predictive_N, rank_abc*predictive_N> result = (this->get_gamma()).transpose() * this->get_gamma() + 0.01 * (this->S).transpose() * (this->S);
             return result;
         };
         // std::function<Eigen::Matrix<double, rank_abc*predictive_N, rank_abc*predictive_N>()> get_Theta;
