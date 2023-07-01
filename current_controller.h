@@ -31,6 +31,7 @@ private:
     // if flag is true, control is once, else(false) control two times
     bool flag;//need one or two times control
     std::vector<double> Idq_predict;
+    bool Long_horizon_sda_flag;  // 是否使用长时域
     //这个采用单步预测，直接输出预测得到的电流
     //因为不使用无传感器的控制策略，所以暂时不用对于转速和电角度进行预测
     void predict_i_updata(const double& ualpha, const double& ubeta, const double& times);

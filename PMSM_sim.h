@@ -62,6 +62,7 @@ const int ODE45_M = 5;
 
  // SDA 算法的维度
 
+//  用于输出映射时使用
 struct inputs
 {
     std::vector<std::vector<int>> inputs_real;

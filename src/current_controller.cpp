@@ -22,10 +22,12 @@ std::vector<std::vector<int>> FCSMPCer::controller(const double &Id_ref, const d
     double Ialpha = dq2alpha(Id_ref, Iq_ref, theta_ele);
     double Ibeta  = dq2beta(Id_ref, Iq_ref, theta_ele);
     */
-    std::vector<std::vector<int>> ptr;
-    std::vector<int> result_vir_output{0,0,0};
-    double result_value = DBL_MAX ;
-    updata_pmsm_model(Iabc, wr, theta_ele, u0_input);
+    std::vector<std::vector<int>> ptr;  // 返回值结果
+    std::vector<int> result_vir_output{0,0,0};  // 最后优化的结果就放在这个地方
+    updata_pmsm_model(Iabc, wr, theta_ele, u0_input);  // 将控制器中的电机最新状态更新
+
+    
+    double result_value = DBL_MAX ;     // 最优值用于单步的判断 
     for (int i = -1; i < 2; i++){
         for (int j = -1; j < 2; j++){
             for (int k = -1; k < 2; k++){

@@ -10,9 +10,11 @@ const static int predictive_N = 5;
 const static int rank_abc     = 3;
 
 namespace PanJL{
-    class myClass
+class myClass
 {
 public:
+    friend class FCSMPCer;
+
     // 这种就直接暴露出来就好了
     double a; // a := state_varibles.wr
     double c; // b := state_varibles.theta_ele
@@ -102,7 +104,7 @@ public:
         this->Vector_D = [this]() -> Eigen::Vector<double, rankA * predictive_N>
         {
             // 这里的常数处理要注意，因为转速和磁链都是不一定相同的，移植的时候要注意正确性
-            return Eigen::Vector2d(0, -a * PanJL::Ts * F_).replicate(predictive_N, 1);
+            return Eigen::Vector2d(0, -a * PanJL::Ts * F_ * Pn_).replicate(predictive_N, 1);
         };
 
         // 获得Vector_v_abc向量：
@@ -237,6 +239,7 @@ public:
              int i, double d2, double& rho, Eigen::Matrix<int, rank_abc * predictive_N, 1> &Uopts,
              Eigen::Matrix<int, rank_abc * predictive_N, 1> U)
     {
+        // i：到达了最大的深度
         // Base case: i reaches the maximum value
         if (i >= rank_abc * predictive_N) {
             Uopts = U;
@@ -247,10 +250,13 @@ public:
     // Iterate over the candidate input values
         for (int u = -1; u <= 1; u++) {
             U(i) = u;
+            // 计算出每一维的值
             auto scalar_product = (H.row(i).head(i).cast<double>() * U.segment(0, i).cast<double>()).sum();
+            // 继续二次型
             double d2_new = (U_hat_unc(i) - scalar_product) * (U_hat_unc(i) - scalar_product) + d2;
             // double d2_new = (U_hat_unc(i) - (H.row(i).head(i) * U.segment(0, i).transpose())) + d2;
             if (d2_new < rho) {
+                // 保留这一个维度的i
                 int previousUi = U(i);
                 MSPHDEC_Recursion(U_hat_unc, H, i + 1, d2_new, rho, Uopts, U);
                 // std::cout << U.transpose() << std::endl;
@@ -259,36 +265,24 @@ public:
         }        
     }
     
-
-//    std::tuple<std::vector<int>, double> MSPHDEC_Recursion(const Eigen::Matrix<double, rank_abc * predictive_N, 1>& U_hat_unc, 
-//             const Eigen::Matrix<double, rank_abc * predictive_N, rank_abc * predictive_N>& H, int i, double d2,
-//             double rho, std::vector<int> U, std::vector<int> Uopt)
-//     {
-//         for(int j=-1; j<=1; j++){
-//             U.push_back(j);
-//             double d2_new = (U_hat_unc.segment(0, i).transpose() * H.block(i, 0, 1, i).transpose()).norm() + d2;
-//             if (d2_new < rho){
-//                 if(i < predictive_N* rank_abc)
-//                     std::tie(Uopt, rho) = MSPHDEC_Recursion(U_hat_unc, H, i+1, d2_new, rho, U, Uopt);
-//                 else{
-//                     Uopt = U;
-//                     rho = d2_new;
-//                 }
-//             }
-//         }
-//         return std::make_tuple(Uopt, rho);
-//     }
-
     // 实现完成的SDA和矩阵变换接口的实现，需要将虚拟输入送出去
     // 按理来说这里的传入参数应该是系统的参数更新情况
-    // 也是等到最后正式写入友元类的时候在做完善
+    // 这就是一个总的接口！！！
     std::vector<int> updata()
     {
+        // 在更新之前需要先把参数传递进来，用于计算的需要
+
+        // 设置最大值的半径，包括所有可能的情况
         double rho = std::numeric_limits<double>::max();
+        // 获得无约束最优解
         Eigen::Matrix<double, rank_abc*predictive_N, 1> U_hat_unc = -1 * this->get_R().inverse() * this->get_Theta();
+        // Cholesky分解，得到下三角矩阵
         Eigen::LLT<Eigen::Matrix<double, rank_abc*predictive_N, rank_abc*predictive_N>> llt;
         llt.compute(this->get_R());
         Eigen::Matrix<double, rank_abc*predictive_N, rank_abc*predictive_N> H = llt.matrixL();
+        
+        // U：是返回的最后的结果？
+        // 还是需要的一个引用量
         Eigen::Matrix<int, rank_abc*predictive_N, 1> U;
         U.setZero();
         // std::vector<int> U;
