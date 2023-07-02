@@ -26,21 +26,25 @@ std::vector<std::vector<int>> FCSMPCer::controller(const double &Id_ref, const d
     std::vector<int> result_vir_output{0,0,0};  // 最后优化的结果就放在这个地方
     updata_pmsm_model(Iabc, wr, theta_ele, u0_input);  // 将控制器中的电机最新状态更新
 
-    
-    double result_value = DBL_MAX ;     // 最优值用于单步的判断 
-    for (int i = -1; i < 2; i++){
-        for (int j = -1; j < 2; j++){
-            for (int k = -1; k < 2; k++){
-                // The alpha&beta of the parameter can be optimized here to establish direct contact with abc
-                predict_i_updata(abc2alpha(i*Vdc/2,j*Vdc/2,k*Vdc/2), abc2beta(i*Vdc/2,j*Vdc/2,k*Vdc/2), times);
-                if( result_value > ((Id_ref - Idq_predict[0])*(Id_ref - Idq_predict[0]) +  (Iq_ref - Idq_predict[1])*(Iq_ref - Idq_predict[1]))){
-                    result_vir_output = {i, j, k};
-                    result_value = ((Id_ref - Idq_predict[0])*(Id_ref - Idq_predict[0]) +  (Iq_ref - Idq_predict[1])*(Iq_ref - Idq_predict[1]));
+    // 使用短时域
+    if (!Long_horizon_sda_flag){
+        double result_value = DBL_MAX ;     // 最优值用于单步的判断 
+        for (int i = -1; i < 2; i++){
+            for (int j = -1; j < 2; j++){
+                for (int k = -1; k < 2; k++){
+                    // The alpha&beta of the parameter can be optimized here to establish direct contact with abc
+                    predict_i_updata(abc2alpha(i*Vdc/2,j*Vdc/2,k*Vdc/2), abc2beta(i*Vdc/2,j*Vdc/2,k*Vdc/2), times);
+                    if( result_value > ((Id_ref - Idq_predict[0])*(Id_ref - Idq_predict[0]) +  (Iq_ref - Idq_predict[1])*(Iq_ref - Idq_predict[1]))){
+                        result_vir_output = {i, j, k};
+                        result_value = ((Id_ref - Idq_predict[0])*(Id_ref - Idq_predict[0]) +  (Iq_ref - Idq_predict[1])*(Iq_ref - Idq_predict[1]));
+                    }
                 }
             }
         }
+    }else{ // 使用长时域 SDA 控制
+        
+
     }
-    
     // std::cout << result_vir_output[0] << " "<< result_vir_output[1] << " "<< result_vir_output[2] << std::endl;
     // 电压输出映射
     if(result_vir_output[0] + result_vir_output[1] + result_vir_output[2] == 0){

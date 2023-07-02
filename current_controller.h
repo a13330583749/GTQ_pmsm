@@ -37,9 +37,14 @@ private:
     void predict_i_updata(const double& ualpha, const double& ubeta, const double& times);
     void updata_pmsm_model(const std::vector<double>& Iabc, const double& wr,const double& theta_ele,  const double& u0_);
     const static int PredictionHorizon = 4; // 预测时域：对于SDA算法，或者multiplestep FCS-MPC使用
+    //  算法器，需要计算的时候就直接更新里面的参数，并且得到结果
+    sda Solvingalgorithms;
+
 
 public:
-    FCSMPCer(double vdc, double c): Plant(vdc, c), flag(true){Idq_predict.resize(2);}   
+    FCSMPCer(double vdc, double c): Plant(vdc, c), flag(true),Long_horizon_sda_flag(false){
+        Idq_predict.resize(2);
+    }   
     std::vector<std::vector<int>> controller(const double& Id_ref, const double& Iq_ref, const double& theta_ele,
                                 const std::vector<double>& Iabc, const double& wr, const double& times,
                                 const double& u0_input);
@@ -47,7 +52,7 @@ public:
     std::vector<int> Voltage_output_mapping(const std::vector<int>& controller_outputs);
     // true is one time, and false is two times
     inline bool get_flag_control_times() const{return flag;}
-
+    inline void set_Long_horizon_sda_flag(const bool& flag){Long_horizon_sda_flag = flag;}
     // 球型译码器算法：sda_output_u1
     // FCSMPCer已经包含的元素：Ts, 预测时域
     // 电机的具体运行参数已经在updata_pmsm_model()函数中更新，因此可以直接在state_varibles中调用

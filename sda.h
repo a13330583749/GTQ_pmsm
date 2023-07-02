@@ -10,10 +10,10 @@ const static int predictive_N = 5;
 const static int rank_abc     = 3;
 
 namespace PanJL{
-class myClass
+class sda
 {
 public:
-    friend class FCSMPCer;
+     
 
     // 这种就直接暴露出来就好了
     double a; // a := state_varibles.wr
@@ -81,8 +81,8 @@ public:
     //R： 二次矩阵
     std::function<Eigen::Matrix<double, rank_abc*predictive_N, rank_abc*predictive_N>()> get_R;
 
-    myClass() = default;
-    myClass(double A_, double C) : a(A_), c(C)
+    sda() = default;
+    sda(double A_, double C) : a(A_), c(C)
     {
         virtual_outpus = {0,0,0};
         virtual_outpus.resize(3);
