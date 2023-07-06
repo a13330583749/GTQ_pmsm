@@ -42,6 +42,10 @@ std::vector<std::vector<int>> FCSMPCer::controller(const double &Id_ref, const d
             }
         }
     }else{ // 使用长时域 SDA 控制
+        Solvingalgorithms.a = wr;
+        Solvingalgorithms.c = theta_ele;
+        auto Ialpha = abc2alpha(Iabc[0], Iabc[1], Iabc[2]);
+        auto Ibeta  = abc2beta(Iabc[0], Iabc[1], Iabc[2]);
         
 
     }

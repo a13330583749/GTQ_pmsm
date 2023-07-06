@@ -3,6 +3,7 @@
 
 #define ONESTEPFCSMPC true
 #include "system.h"
+#include "sda.h"
 #include <unordered_map>
 #include <memory>
 namespace PanJL{
@@ -38,12 +39,13 @@ private:
     void updata_pmsm_model(const std::vector<double>& Iabc, const double& wr,const double& theta_ele,  const double& u0_);
     const static int PredictionHorizon = 4; // 预测时域：对于SDA算法，或者multiplestep FCS-MPC使用
     //  算法器，需要计算的时候就直接更新里面的参数，并且得到结果
-    sda Solvingalgorithms;
+    class sda Solvingalgorithms;
 
 
 public:
-    FCSMPCer(double vdc, double c): Plant(vdc, c), flag(true),Long_horizon_sda_flag(false){
+    FCSMPCer(double vdc, double c): Plant(vdc, c), flag(true),Long_horizon_sda_flag(false), Solvingalgorithms(0.0, 0.0){
         Idq_predict.resize(2);
+        
     }   
     std::vector<std::vector<int>> controller(const double& Id_ref, const double& Iq_ref, const double& theta_ele,
                                 const std::vector<double>& Iabc, const double& wr, const double& times,

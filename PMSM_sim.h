@@ -38,25 +38,23 @@ const auto dq2beta = [](double d, double q, double theta)->double{return std::si
 // const auto abc2d = [](const double&a, const double&b, const double& c, const double& theta)
 //                     {}
 
-    // pmsm参数：
-const double Ld_ = 7e-3;
-const double Lq_ = 7e-3;
-const double F_ = 0.125;
-const double Rs_ = 2.98;
-const double TL_ = 0;
-const double Bm_ = 1.1e-4;
-const double J_ = 4.7e-5;
-const int Pn_ = 2;
-
-const int rankA = 2;
+// pmsm参数：
+const static double Ld_ = 7e-3;
+const static double Lq_ = 7e-3;
+const static double F_ = 0.125;
+const static double Rs_ = 2.98;
+const static double TL_ = 0;
+const static double Bm_ = 1.1e-4;
+const static double J_ = 4.7e-5;
+const static int Pn_ = 2;
 
 namespace PanJL{
 #define SparseInverter ture
 
 // Vdc先放在这里，不知道会不会有什么类中成员的事情
-const double Vdc = 100;
-const double Ts = 25e-6;
-const int ODE45_M = 5;
+const static double Vdc = 100;
+const static double Ts = 25e-6;
+const static int ODE45_M = 5;
     // const double DT = Ts/ODE45_M;
 
 
