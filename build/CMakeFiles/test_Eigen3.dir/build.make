@@ -83,17 +83,145 @@ CMakeFiles/test_Eigen3.dir/example/test_Eigen3.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/test_Eigen3.dir/example/test_Eigen3.cpp.s"
 	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/gtq/GTQ_pmsm/example/test_Eigen3.cpp -o CMakeFiles/test_Eigen3.dir/example/test_Eigen3.cpp.s
 
+CMakeFiles/test_Eigen3.dir/src/PMSM.cpp.o: CMakeFiles/test_Eigen3.dir/flags.make
+CMakeFiles/test_Eigen3.dir/src/PMSM.cpp.o: ../src/PMSM.cpp
+CMakeFiles/test_Eigen3.dir/src/PMSM.cpp.o: CMakeFiles/test_Eigen3.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/gtq/GTQ_pmsm/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/test_Eigen3.dir/src/PMSM.cpp.o"
+	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/test_Eigen3.dir/src/PMSM.cpp.o -MF CMakeFiles/test_Eigen3.dir/src/PMSM.cpp.o.d -o CMakeFiles/test_Eigen3.dir/src/PMSM.cpp.o -c /home/gtq/GTQ_pmsm/src/PMSM.cpp
+
+CMakeFiles/test_Eigen3.dir/src/PMSM.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/test_Eigen3.dir/src/PMSM.cpp.i"
+	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/gtq/GTQ_pmsm/src/PMSM.cpp > CMakeFiles/test_Eigen3.dir/src/PMSM.cpp.i
+
+CMakeFiles/test_Eigen3.dir/src/PMSM.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/test_Eigen3.dir/src/PMSM.cpp.s"
+	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/gtq/GTQ_pmsm/src/PMSM.cpp -o CMakeFiles/test_Eigen3.dir/src/PMSM.cpp.s
+
+CMakeFiles/test_Eigen3.dir/src/PMSM_sim.cpp.o: CMakeFiles/test_Eigen3.dir/flags.make
+CMakeFiles/test_Eigen3.dir/src/PMSM_sim.cpp.o: ../src/PMSM_sim.cpp
+CMakeFiles/test_Eigen3.dir/src/PMSM_sim.cpp.o: CMakeFiles/test_Eigen3.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/gtq/GTQ_pmsm/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/test_Eigen3.dir/src/PMSM_sim.cpp.o"
+	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/test_Eigen3.dir/src/PMSM_sim.cpp.o -MF CMakeFiles/test_Eigen3.dir/src/PMSM_sim.cpp.o.d -o CMakeFiles/test_Eigen3.dir/src/PMSM_sim.cpp.o -c /home/gtq/GTQ_pmsm/src/PMSM_sim.cpp
+
+CMakeFiles/test_Eigen3.dir/src/PMSM_sim.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/test_Eigen3.dir/src/PMSM_sim.cpp.i"
+	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/gtq/GTQ_pmsm/src/PMSM_sim.cpp > CMakeFiles/test_Eigen3.dir/src/PMSM_sim.cpp.i
+
+CMakeFiles/test_Eigen3.dir/src/PMSM_sim.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/test_Eigen3.dir/src/PMSM_sim.cpp.s"
+	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/gtq/GTQ_pmsm/src/PMSM_sim.cpp -o CMakeFiles/test_Eigen3.dir/src/PMSM_sim.cpp.s
+
+CMakeFiles/test_Eigen3.dir/src/client.cpp.o: CMakeFiles/test_Eigen3.dir/flags.make
+CMakeFiles/test_Eigen3.dir/src/client.cpp.o: ../src/client.cpp
+CMakeFiles/test_Eigen3.dir/src/client.cpp.o: CMakeFiles/test_Eigen3.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/gtq/GTQ_pmsm/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/test_Eigen3.dir/src/client.cpp.o"
+	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/test_Eigen3.dir/src/client.cpp.o -MF CMakeFiles/test_Eigen3.dir/src/client.cpp.o.d -o CMakeFiles/test_Eigen3.dir/src/client.cpp.o -c /home/gtq/GTQ_pmsm/src/client.cpp
+
+CMakeFiles/test_Eigen3.dir/src/client.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/test_Eigen3.dir/src/client.cpp.i"
+	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/gtq/GTQ_pmsm/src/client.cpp > CMakeFiles/test_Eigen3.dir/src/client.cpp.i
+
+CMakeFiles/test_Eigen3.dir/src/client.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/test_Eigen3.dir/src/client.cpp.s"
+	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/gtq/GTQ_pmsm/src/client.cpp -o CMakeFiles/test_Eigen3.dir/src/client.cpp.s
+
+CMakeFiles/test_Eigen3.dir/src/controller.cpp.o: CMakeFiles/test_Eigen3.dir/flags.make
+CMakeFiles/test_Eigen3.dir/src/controller.cpp.o: ../src/controller.cpp
+CMakeFiles/test_Eigen3.dir/src/controller.cpp.o: CMakeFiles/test_Eigen3.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/gtq/GTQ_pmsm/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/test_Eigen3.dir/src/controller.cpp.o"
+	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/test_Eigen3.dir/src/controller.cpp.o -MF CMakeFiles/test_Eigen3.dir/src/controller.cpp.o.d -o CMakeFiles/test_Eigen3.dir/src/controller.cpp.o -c /home/gtq/GTQ_pmsm/src/controller.cpp
+
+CMakeFiles/test_Eigen3.dir/src/controller.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/test_Eigen3.dir/src/controller.cpp.i"
+	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/gtq/GTQ_pmsm/src/controller.cpp > CMakeFiles/test_Eigen3.dir/src/controller.cpp.i
+
+CMakeFiles/test_Eigen3.dir/src/controller.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/test_Eigen3.dir/src/controller.cpp.s"
+	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/gtq/GTQ_pmsm/src/controller.cpp -o CMakeFiles/test_Eigen3.dir/src/controller.cpp.s
+
+CMakeFiles/test_Eigen3.dir/src/current_controller.cpp.o: CMakeFiles/test_Eigen3.dir/flags.make
+CMakeFiles/test_Eigen3.dir/src/current_controller.cpp.o: ../src/current_controller.cpp
+CMakeFiles/test_Eigen3.dir/src/current_controller.cpp.o: CMakeFiles/test_Eigen3.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/gtq/GTQ_pmsm/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/test_Eigen3.dir/src/current_controller.cpp.o"
+	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/test_Eigen3.dir/src/current_controller.cpp.o -MF CMakeFiles/test_Eigen3.dir/src/current_controller.cpp.o.d -o CMakeFiles/test_Eigen3.dir/src/current_controller.cpp.o -c /home/gtq/GTQ_pmsm/src/current_controller.cpp
+
+CMakeFiles/test_Eigen3.dir/src/current_controller.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/test_Eigen3.dir/src/current_controller.cpp.i"
+	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/gtq/GTQ_pmsm/src/current_controller.cpp > CMakeFiles/test_Eigen3.dir/src/current_controller.cpp.i
+
+CMakeFiles/test_Eigen3.dir/src/current_controller.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/test_Eigen3.dir/src/current_controller.cpp.s"
+	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/gtq/GTQ_pmsm/src/current_controller.cpp -o CMakeFiles/test_Eigen3.dir/src/current_controller.cpp.s
+
+CMakeFiles/test_Eigen3.dir/src/inverter.cpp.o: CMakeFiles/test_Eigen3.dir/flags.make
+CMakeFiles/test_Eigen3.dir/src/inverter.cpp.o: ../src/inverter.cpp
+CMakeFiles/test_Eigen3.dir/src/inverter.cpp.o: CMakeFiles/test_Eigen3.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/gtq/GTQ_pmsm/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/test_Eigen3.dir/src/inverter.cpp.o"
+	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/test_Eigen3.dir/src/inverter.cpp.o -MF CMakeFiles/test_Eigen3.dir/src/inverter.cpp.o.d -o CMakeFiles/test_Eigen3.dir/src/inverter.cpp.o -c /home/gtq/GTQ_pmsm/src/inverter.cpp
+
+CMakeFiles/test_Eigen3.dir/src/inverter.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/test_Eigen3.dir/src/inverter.cpp.i"
+	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/gtq/GTQ_pmsm/src/inverter.cpp > CMakeFiles/test_Eigen3.dir/src/inverter.cpp.i
+
+CMakeFiles/test_Eigen3.dir/src/inverter.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/test_Eigen3.dir/src/inverter.cpp.s"
+	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/gtq/GTQ_pmsm/src/inverter.cpp -o CMakeFiles/test_Eigen3.dir/src/inverter.cpp.s
+
+CMakeFiles/test_Eigen3.dir/src/speed_control.cpp.o: CMakeFiles/test_Eigen3.dir/flags.make
+CMakeFiles/test_Eigen3.dir/src/speed_control.cpp.o: ../src/speed_control.cpp
+CMakeFiles/test_Eigen3.dir/src/speed_control.cpp.o: CMakeFiles/test_Eigen3.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/gtq/GTQ_pmsm/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/test_Eigen3.dir/src/speed_control.cpp.o"
+	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/test_Eigen3.dir/src/speed_control.cpp.o -MF CMakeFiles/test_Eigen3.dir/src/speed_control.cpp.o.d -o CMakeFiles/test_Eigen3.dir/src/speed_control.cpp.o -c /home/gtq/GTQ_pmsm/src/speed_control.cpp
+
+CMakeFiles/test_Eigen3.dir/src/speed_control.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/test_Eigen3.dir/src/speed_control.cpp.i"
+	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/gtq/GTQ_pmsm/src/speed_control.cpp > CMakeFiles/test_Eigen3.dir/src/speed_control.cpp.i
+
+CMakeFiles/test_Eigen3.dir/src/speed_control.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/test_Eigen3.dir/src/speed_control.cpp.s"
+	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/gtq/GTQ_pmsm/src/speed_control.cpp -o CMakeFiles/test_Eigen3.dir/src/speed_control.cpp.s
+
+CMakeFiles/test_Eigen3.dir/src/system.cpp.o: CMakeFiles/test_Eigen3.dir/flags.make
+CMakeFiles/test_Eigen3.dir/src/system.cpp.o: ../src/system.cpp
+CMakeFiles/test_Eigen3.dir/src/system.cpp.o: CMakeFiles/test_Eigen3.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/gtq/GTQ_pmsm/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object CMakeFiles/test_Eigen3.dir/src/system.cpp.o"
+	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/test_Eigen3.dir/src/system.cpp.o -MF CMakeFiles/test_Eigen3.dir/src/system.cpp.o.d -o CMakeFiles/test_Eigen3.dir/src/system.cpp.o -c /home/gtq/GTQ_pmsm/src/system.cpp
+
+CMakeFiles/test_Eigen3.dir/src/system.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/test_Eigen3.dir/src/system.cpp.i"
+	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/gtq/GTQ_pmsm/src/system.cpp > CMakeFiles/test_Eigen3.dir/src/system.cpp.i
+
+CMakeFiles/test_Eigen3.dir/src/system.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/test_Eigen3.dir/src/system.cpp.s"
+	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/gtq/GTQ_pmsm/src/system.cpp -o CMakeFiles/test_Eigen3.dir/src/system.cpp.s
+
 # Object files for target test_Eigen3
 test_Eigen3_OBJECTS = \
-"CMakeFiles/test_Eigen3.dir/example/test_Eigen3.cpp.o"
+"CMakeFiles/test_Eigen3.dir/example/test_Eigen3.cpp.o" \
+"CMakeFiles/test_Eigen3.dir/src/PMSM.cpp.o" \
+"CMakeFiles/test_Eigen3.dir/src/PMSM_sim.cpp.o" \
+"CMakeFiles/test_Eigen3.dir/src/client.cpp.o" \
+"CMakeFiles/test_Eigen3.dir/src/controller.cpp.o" \
+"CMakeFiles/test_Eigen3.dir/src/current_controller.cpp.o" \
+"CMakeFiles/test_Eigen3.dir/src/inverter.cpp.o" \
+"CMakeFiles/test_Eigen3.dir/src/speed_control.cpp.o" \
+"CMakeFiles/test_Eigen3.dir/src/system.cpp.o"
 
 # External object files for target test_Eigen3
 test_Eigen3_EXTERNAL_OBJECTS =
 
 test_Eigen3: CMakeFiles/test_Eigen3.dir/example/test_Eigen3.cpp.o
+test_Eigen3: CMakeFiles/test_Eigen3.dir/src/PMSM.cpp.o
+test_Eigen3: CMakeFiles/test_Eigen3.dir/src/PMSM_sim.cpp.o
+test_Eigen3: CMakeFiles/test_Eigen3.dir/src/client.cpp.o
+test_Eigen3: CMakeFiles/test_Eigen3.dir/src/controller.cpp.o
+test_Eigen3: CMakeFiles/test_Eigen3.dir/src/current_controller.cpp.o
+test_Eigen3: CMakeFiles/test_Eigen3.dir/src/inverter.cpp.o
+test_Eigen3: CMakeFiles/test_Eigen3.dir/src/speed_control.cpp.o
+test_Eigen3: CMakeFiles/test_Eigen3.dir/src/system.cpp.o
 test_Eigen3: CMakeFiles/test_Eigen3.dir/build.make
 test_Eigen3: CMakeFiles/test_Eigen3.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/gtq/GTQ_pmsm/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX executable test_Eigen3"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/gtq/GTQ_pmsm/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Linking CXX executable test_Eigen3"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/test_Eigen3.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

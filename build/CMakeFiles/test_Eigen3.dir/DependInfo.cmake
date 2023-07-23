@@ -9,6 +9,14 @@ set(CMAKE_DEPENDS_LANGUAGES
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
   "/home/gtq/GTQ_pmsm/example/test_Eigen3.cpp" "CMakeFiles/test_Eigen3.dir/example/test_Eigen3.cpp.o" "gcc" "CMakeFiles/test_Eigen3.dir/example/test_Eigen3.cpp.o.d"
+  "/home/gtq/GTQ_pmsm/src/PMSM.cpp" "CMakeFiles/test_Eigen3.dir/src/PMSM.cpp.o" "gcc" "CMakeFiles/test_Eigen3.dir/src/PMSM.cpp.o.d"
+  "/home/gtq/GTQ_pmsm/src/PMSM_sim.cpp" "CMakeFiles/test_Eigen3.dir/src/PMSM_sim.cpp.o" "gcc" "CMakeFiles/test_Eigen3.dir/src/PMSM_sim.cpp.o.d"
+  "/home/gtq/GTQ_pmsm/src/client.cpp" "CMakeFiles/test_Eigen3.dir/src/client.cpp.o" "gcc" "CMakeFiles/test_Eigen3.dir/src/client.cpp.o.d"
+  "/home/gtq/GTQ_pmsm/src/controller.cpp" "CMakeFiles/test_Eigen3.dir/src/controller.cpp.o" "gcc" "CMakeFiles/test_Eigen3.dir/src/controller.cpp.o.d"
+  "/home/gtq/GTQ_pmsm/src/current_controller.cpp" "CMakeFiles/test_Eigen3.dir/src/current_controller.cpp.o" "gcc" "CMakeFiles/test_Eigen3.dir/src/current_controller.cpp.o.d"
+  "/home/gtq/GTQ_pmsm/src/inverter.cpp" "CMakeFiles/test_Eigen3.dir/src/inverter.cpp.o" "gcc" "CMakeFiles/test_Eigen3.dir/src/inverter.cpp.o.d"
+  "/home/gtq/GTQ_pmsm/src/speed_control.cpp" "CMakeFiles/test_Eigen3.dir/src/speed_control.cpp.o" "gcc" "CMakeFiles/test_Eigen3.dir/src/speed_control.cpp.o.d"
+  "/home/gtq/GTQ_pmsm/src/system.cpp" "CMakeFiles/test_Eigen3.dir/src/system.cpp.o" "gcc" "CMakeFiles/test_Eigen3.dir/src/system.cpp.o.d"
   )
 
 # Targets to which this target links.

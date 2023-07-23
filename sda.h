@@ -1,11 +1,6 @@
 // 这是一个SDA的友元计算类
-// 
-#ifndef SDA
-#define SDA
-#include <iostream>
-// 稠密矩阵的代数运算（逆、特征值等）
-
-#include "./PMSM_sim.h"
+#ifndef SDA_h
+#define SDA_h
 //eigen核心部分
 #include <Eigen/Core>
 //稠密矩阵的代数运算（逆、特征值等）
@@ -13,7 +8,20 @@
 const static int predictive_N = 5;
 const static int rank_abc     = 3;
 const static int rankA = 2;
+
 namespace PanJL{
+extern const double Vdc;
+extern const double Ts;
+
+// pmsm参数：
+extern const double Ld_;
+extern const double Lq_;
+extern const double F_;
+extern const double Rs_;
+extern const double TL_;
+extern const double Bm_;
+extern const double J_;
+extern const int Pn_;
 class sda
 {
 public:
@@ -46,7 +54,7 @@ public:
     std::function<Eigen::Vector<double, rank_abc>()> Vector_v_abc;
 
     const Eigen::Matrix<double, rankA, rankA> B = 
-     Eigen::Matrix<double, rankA, rankA>{{::PanJL::Ts/::Ld_, 0}, {0, ::PanJL::Ts/::Lq_}};
+     Eigen::Matrix<double, rankA, rankA>{{::PanJL::Ts/PanJL::Ld_, 0}, {0, ::PanJL::Ts/PanJL::Lq_}};
 
     // Clarke变换所需要的矩阵
     const Eigen::Matrix<double, 2, 3> Clarke_Matrix
@@ -108,7 +116,7 @@ public:
         this->Vector_D = [this]() -> Eigen::Vector<double, rankA * predictive_N>
         {
             // 这里的常数处理要注意，因为转速和磁链都是不一定相同的，移植的时候要注意正确性
-            return Eigen::Vector2d(0, -a * ::PanJL::Ts * F_ * Pn_).replicate(predictive_N, 1);
+            return Eigen::Vector2d(0, -a * PanJL::Ts * F_ * Pn_).replicate(predictive_N, 1);
         };
 
         // 获得Vector_v_abc向量：
@@ -131,10 +139,10 @@ public:
         // 获得A矩阵，也就是离散之后的那个两维的A矩阵
         this->A = [this]() -> Eigen::Matrix<double, 2, 2>
         {
-            double A11 = 1 - Rs_ * ::PanJL::Ts / Ld_;
-            double A12 = Pn_ * a * ::PanJL::Ts;
-            double A21 = -a * Pn_ * ::PanJL::Ts;
-            double A22 = 1 - Rs_ * ::PanJL::Ts / Lq_;
+            double A11 = 1 - PanJL::Rs_ * PanJL::Ts / PanJL::Ld_;
+            double A12 = PanJL::Pn_ * a * PanJL::Ts;
+            double A21 = -a * PanJL::Pn_ * PanJL::Ts;
+            double A22 = 1 - PanJL::Rs_ * Ts / Lq_;
             Eigen::Matrix<double, rankA, rankA> result;
             result << A11, A12, A21, A22;
             return result;
@@ -180,7 +188,7 @@ public:
             for (int i = 0; i < predictive_N; i++){ // 行
                 for (int j = 0; j <= i; j++){ // 列
                     gamma.block(i * rankA, j * rank_abc, rankA, rank_abc) =
-                        Vdc / 2.0 *
+                        PanJL::Vdc / 2.0 *
                         B * this->MatrixPower(this->A(), i - j - 1) * (this->Park_Matrix() * this->Clarke_Matrix )  * T_ground2phase;
                 }
             }

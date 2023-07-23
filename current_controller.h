@@ -3,11 +3,12 @@
 
 #define ONESTEPFCSMPC true
 #include "system.h"
-#include "sda.h"
+#include "./sda.h"
 #include <unordered_map>
 #include <memory>
 namespace PanJL{
 #ifdef ONESTEPFCSMPC
+    class sda;
 // 这里需要继承，需要使用PMSM的模型参数
 
 struct VectorHash {
