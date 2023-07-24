@@ -22,8 +22,9 @@ protected:
     double u0_differential_equation(const double&, const double&, const double&);
     void updata_u0(const double&, const double&, const double&, const double& times);
 public:
-    std::function<int(int)> Sm = [this](int Sabc){return Sc1 * Sabc + (Sabc - 1) * Sc2;};
-    std::function<double(int)> Uabc = [this](int Sabc) -> double {return Sm(Sabc) * Vdc / 2 - Sm(Sabc) * Sm(Sabc) * u0;};
+    std::function<int(int)> Sm = [this](int Sabc){return this->Sc1 * Sabc + (Sabc - 1) * this->Sc2;};
+    // 这里有一个间接的调用Sm(Sabc)，其中使用再一次的调用
+    std::function<double(int)> Uabc = [this](int Sabc) -> double {return Sm(Sabc) * this->Vdc / 2 - Sm(Sabc) * Sm(Sabc) * this->u0;};
     sparse_inverter(double vdc, double c): C(c), Vdc(vdc), u0(0){}
     void set_igbt(const std::vector<int>&);
     inline const int& get_Sta(){return Sta;}

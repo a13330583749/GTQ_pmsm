@@ -77,58 +77,13 @@ private:
         {std::vector<int>{-1,1,1},  std::vector<std::vector<int>>{{1,1,0,1,1}}},  // V4
         {std::vector<int>{-1,-1,1}, std::vector<std::vector<int>>{{1,1,0,0,1}}}, // V5
         {std::vector<int>{1,-1,1},  std::vector<std::vector<int>>{{1,1,1,0,1}}},  // V6
-    // v_small 1
-        {std::vector<int>{1,0,0}, std::vector<std::vector<int>>{{0,1,1,0,0}}},
-        {std::vector<int>{0,-1,-1}, std::vector<std::vector<int>>{{0,1,1,0,0}}},
-    // v_small 2
-        {std::vector<int>{1,1,0}, std::vector<std::vector<int>>{{1,0,1,1,0}}},
-        {std::vector<int>{0,0,-1}, std::vector<std::vector<int>>{{1,0,1,1,0}}},
-    // v_small 3
-        {std::vector<int>{0,1,0}, std::vector<std::vector<int>>{{0,1,0,1,0}}},
-        {std::vector<int>{-1,0,-1}, std::vector<std::vector<int>>{{0,1,0,1,0}}},
-    // v_small 4
-        {std::vector<int>{0,1,1}, std::vector<std::vector<int>>{{0,1,0,1,0}}},
-        {std::vector<int>{-1,0,0}, std::vector<std::vector<int>>{{0,1,0,1,0}}},
-    // v_small 5
-        {std::vector<int>{0,0,1}, std::vector<std::vector<int>>{{0,1,0,0,1}}},
-        {std::vector<int>{-1,-1,0},std::vector<std::vector<int>>{{0,1,0,0,1}}},
-    // v_small 6
-        {std::vector<int>{0,-1,0}, std::vector<std::vector<int>>{{1,0,1,0,1}}},
-        {std::vector<int>{1,0,1}, std::vector<std::vector<int>>{{1,0,1,0,1}}},
 
-        {std::vector<int>{0,0,0}, std::vector<std::vector<int>>{{1,0,1,1,1}}},
-        {std::vector<int>{1,1,1}, std::vector<std::vector<int>>{{1,0,1,1,1}}},
-        {std::vector<int>{-1,-1,-1}, std::vector<std::vector<int>>{{1,0,1,1,1}}},
-    };
-    // negative voltage vector of small/ long
-    std::unordered_map<std::vector<int>, std::vector<std::vector<int>>, VectorHash> outputs_mapping_negative = {
-    // 长矢量
-        {std::vector<int>{1,-1,-1}, std::vector<std::vector<int>>{{1,1,1,0,0}}}, // V1
-        {std::vector<int>{1,1,-1},  std::vector<std::vector<int>>{{1,1,1,1,0}}},  // V2
-        {std::vector<int>{-1,1,-1}, std::vector<std::vector<int>>{{1,1,0,1,0}}}, // V3
-        {std::vector<int>{-1,1,1},  std::vector<std::vector<int>>{{1,1,0,1,1}}},  // V4
-        {std::vector<int>{-1,-1,1}, std::vector<std::vector<int>>{{1,1,0,0,1}}}, // V5
-        {std::vector<int>{1,-1,1},  std::vector<std::vector<int>>{{1,1,1,0,1}}},  // V6
-    // v_small 1
-        {std::vector<int>{1,0,0},   std::vector<std::vector<int>>{{1,0,1,0,0}}},
-        {std::vector<int>{0,-1,-1}, std::vector<std::vector<int>>{{1,0,1,0,0}}},
-    // v_small 2
-        {std::vector<int>{1,1,0},   std::vector<std::vector<int>>{{0,1,1,1,0}}},
-        {std::vector<int>{0,0,-1},  std::vector<std::vector<int>>{{0,1,1,1,0}}},
-    // v_small 3
-        {std::vector<int>{0,1,0},   std::vector<std::vector<int>>{{1,0,0,1,0}}},
-        {std::vector<int>{-1,0,-1}, std::vector<std::vector<int>>{{1,0,0,1,0}}},
-    // v_small 4
-        {std::vector<int>{0,1,1},   std::vector<std::vector<int>>{{1,0,0,1,0}}},
-        {std::vector<int>{-1,0,0}, std::vector<std::vector<int>>{{1,0,0,1,0}}},
-    // v_small 5
-        {std::vector<int>{0,0,1},   std::vector<std::vector<int>>{{1,0,0,0,1}}},
-        {std::vector<int>{-1,-1,0}, std::vector<std::vector<int>>{{1,0,0,0,1}}},
-    // v_small 6
-        {std::vector<int>{0,-1,0},  std::vector<std::vector<int>>{{0,1,1,0,1}}},
-        {std::vector<int>{1,0,1},   std::vector<std::vector<int>>{{0,1,1,0,1}}},
+        {std::vector<int>{0,0,0}, std::vector<std::vector<int>>{{0,0,1,1,1}}},
+        {std::vector<int>{1,1,1}, std::vector<std::vector<int>>{{0,0,1,1,1}}},
+        {std::vector<int>{-1,-1,-1}, std::vector<std::vector<int>>{{0,0,1,1,1}}},
     };
 
+    // 这里有一个问题，应该是使用大矢量才对的
     std::unordered_map<std::vector<int>, std::vector<std::vector<int>>, VectorHash > outputs_mapping_mediem = {
         {std::vector<int>{1,0,-1}, std::vector<std::vector<int>>{{1,1,1,0,0},{1,1,1,1,0}}},// section 1
         {std::vector<int>{0,1,-1}, std::vector<std::vector<int>>{{1,1,1,1,0},{1,1,0,1,0}}},// section 2

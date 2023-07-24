@@ -38,7 +38,7 @@ extern const double Ld_;
 extern const double Lq_;
 extern const double F_;
 extern const double Rs_;
-extern const double TL_;
+extern double TL_;
 extern const double Bm_;
 extern const double J_;
 extern const int Pn_;
@@ -60,15 +60,15 @@ const auto abc2beta = [](double a, double b, double c) -> double {
 };
 
 const auto alphabeta2a = [](double alpha, double beta) -> double {
-    return 2.0 / 3.0 * alpha;
+    return  beta;
 };
 
 const auto alphabeta2b = [](double alpha, double beta) -> double {
-    return 2.0 / 3.0 * (-0.5 * alpha + (std::sqrt(3.0)) / 2.0 * beta);
+    return  (-0.5 * alpha + (std::sqrt(3.0)) / 2.0 * beta);
 };
 
 const auto alphabeta2c = [](double alpha, double beta) -> double {
-    return 2.0 / 3.0 * (-0.5 * alpha - (std::sqrt(3.0)) / 2.0 * beta);
+    return  (-0.5 * alpha - (std::sqrt(3.0)) / 2.0 * beta);
 };
 
 const auto alphabeta2d = [](double alpha, double beta, double theta) -> double {
@@ -84,7 +84,20 @@ const auto dq2alpha = [](double d, double q, double theta) -> double {
 };
 
 const auto dq2beta = [](double d, double q, double theta) -> double {
-    return std::sin(theta) * d - std::cos(theta) * q;
+    return std::sin(theta) * d + std::cos(theta) * q;
+};
+
+// 将abc变换为uvw
+const auto abc2u = [](const double& a, const double& b, const double& c) -> double{
+    return (1.0 / 3.0 * (2.0 * a - b - c ));
+};
+
+const auto abc2v = [](const double& a, const double& b, const double& c) -> double{
+    return (1.0 / 3.0 * (- a + 2.0 * b - c ));
+};
+
+const auto abc2w = [](const double& a, const double& b, const double& c) -> double{
+    return (1.0 / 3.0 * (- a - b + 2.0 * c ));
 };
 
 } // namespace PanJL

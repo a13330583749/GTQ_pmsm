@@ -9,21 +9,40 @@ struct PMSM_state_varibles
     double Iq;
     double wr;
     double theta_ele;
-    //play a trick, the result is operator* of 'struct PMSM_state_dvaribles'
-    struct PMSM_state_varibles operator+(const struct PMSM_state_varibles& rhs);
+    // play a trick, the result is operator* of 'struct PMSM_state_dvaribles'
+    // struct PMSM_state_varibles operator+(const struct PMSM_state_varibles& rhs);
     PMSM_state_varibles():wr(0){}
+
+
+    PMSM_state_varibles operator+(const PMSM_state_varibles& rhs) const {
+        PMSM_state_varibles result;
+        result.Id = rhs.Id + Id;
+        result.Iq = rhs.Iq + Iq;
+        result.wr = rhs.wr + wr;
+        result.theta_ele = rhs.theta_ele + theta_ele;
+        return result;
+    }
+
+    PMSM_state_varibles operator*(const double& samlpe_times) const {
+        PMSM_state_varibles increments;
+        increments.Id = Id * samlpe_times;
+        increments.Iq = Iq * samlpe_times;
+        increments.theta_ele = theta_ele * samlpe_times;
+        increments.wr = wr * samlpe_times;
+        return increments;
+    }
 };
 
-struct PMSM_state_dvaribles
-{
-    double dId;
-    double dIq;
-    double dwr;
-    double dtheta_ele;
-    struct PMSM_state_varibles operator*(const double& samlpe_times);
-    struct PMSM_state_dvaribles& operator*(const int& times);
-    struct PMSM_state_dvaribles& operator+(const struct PMSM_state_dvaribles&rhs);
-};
+// struct PMSM_state_dvaribles
+// {
+//     double dId;
+//     double dIq;
+//     double dwr;
+//     double dtheta_ele;
+//     struct PMSM_state_varibles operator*(const double& samlpe_times);
+//     struct PMSM_state_dvaribles operator*(const int& times);
+//     const struct PMSM_state_dvaribles operator+(const struct PMSM_state_dvaribles&rhs);
+// };
 
 class PMSM
 {
@@ -42,8 +61,10 @@ protected:
     double Bm;
 
 protected:
-    struct PMSM_state_dvaribles PMSM_differential_equation(double& ud, double& uq, 
-                    const struct PMSM_state_varibles& states);
+    // struct PMSM_state_dvaribles PMSM_differential_equation(double& ud, double& uq, 
+    //                 const struct PMSM_state_varibles& states);
+    struct PMSM_state_varibles PMSM_differential_equation(double& ud, double& uq, 
+                                            const struct PMSM_state_varibles& states);
     void ode45(double& ud, double& uq, const double& times);
     struct PMSM_state_varibles state_varibles;  
 public:

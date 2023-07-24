@@ -18,7 +18,7 @@ extern const double Ld_;
 extern const double Lq_;
 extern const double F_;
 extern const double Rs_;
-extern const double TL_;
+// extern const double TL_;
 extern const double Bm_;
 extern const double J_;
 extern const int Pn_;

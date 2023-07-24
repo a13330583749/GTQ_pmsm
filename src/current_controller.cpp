@@ -6,8 +6,8 @@ void FCSMPCer::predict_i_updata(const double& ualpha, const double& ubeta, const
     // std::vector<double> Idq_predict(2);
     auto ud = alphabeta2d(ualpha, ubeta, get_ele_theta());
     auto uq = alphabeta2q(ualpha, ubeta, get_ele_theta());
-    double did = (-Rs * get_id() + get_wr() * Pn * Lq + ud)/ Ld;
-    double diq = (-Rs * get_iq() - get_wr() * Pn * Ld 
+    double did = (-Rs * get_id() + get_wr() * Pn * Lq * get_iq() + ud)/ Ld;
+    double diq = (-Rs * get_iq() - get_wr() * Pn * Ld * get_id()
                     - get_wr() * Pn * F + uq)/ Lq;
     Idq_predict[0] = (did * times) + get_id();
     Idq_predict[1] = (diq * times) + get_iq(); 
@@ -70,57 +70,56 @@ std::vector<std::vector<int>> FCSMPCer::controller(const double &Id_ref, const d
                 // (outputs_mapping_positive.at((result_vir_output)));
                 return outputs_mapping_positive.at((result_vir_output));
         }else{ // 使用短矢量
-            ptr = outputs_mapping_positive.at((result_vir_output));
-
-            // v 1
-            if( ptr[0] == std::vector<int>{0,1,1,0,0}){
-                if( Iabc[0] * u0 < 0){
-                    // ptr = std::make_shared<std::vector<std::vector<int>>>
-                    // (outputs_mapping_negative.at((result_vir_output)));
-                    return outputs_mapping_negative.at((result_vir_output));
+            // 中点电压映射
+            // v1
+            if( result_vir_output == std::vector<int>{1,0,0} || result_vir_output == std::vector<int>{0,-1,-1}){
+                if( Iabc[0] * u0 > 0){
+                    return std::vector<std::vector<int>>{{0,1,1,0,0}};
                 }else
-                    return ptr;
+                    return std::vector<std::vector<int>>{{1,0,1,0,0}};
             }
-            // v 2
-            if( ptr[0] == std::vector<int>{1,0,1,1,0} ){
+            // v2
+            if( result_vir_output == std::vector<int>{1,1,0} || result_vir_output == std::vector<int>{0,0,-1}){
                 if( Iabc[2] * u0 < 0){
                     // ptr = std::make_shared<std::vector<std::vector<int>>>
-                    return outputs_mapping_negative.at((result_vir_output));
+                    return std::vector<std::vector<int>>{{0,1,1,1,0}};
                 }else
-                    return ptr;
+                    return std::vector<std::vector<int>>{{1,0,1,1,0}};;
             }
             // v 3
-            if( ptr[0] == std::vector<int>{0,1,0,1,0} ){
-                if( Iabc[1] * u0 < 0){
+            if( result_vir_output == std::vector<int>{0,1,0} || result_vir_output == std::vector<int>{-1,0,-1} ){
+                if( Iabc[1] * u0 > 0){
                     // ptr = std::make_shared<std::vector<std::vector<int>>>
-                    return outputs_mapping_negative.at((result_vir_output));
+                    return std::vector<std::vector<int>>{{0,1,0,1,0}};
                 }else
-                    return ptr;
+                    return std::vector<std::vector<int>>{{1,0,0,1,0}};
             }
-            // v 4
-            if( ptr[0] == std::vector<int>{0,1,0,1,0} ){
+            // v4
+            if( result_vir_output == std::vector<int>{0,1,1} || result_vir_output == std::vector<int>{-1,0,0}){
                 if( Iabc[0] * u0 < 0){
                     //ptr = std::make_shared<std::vector<std::vector<int>>>
-                    return outputs_mapping_negative.at((result_vir_output));
+                    return std::vector<std::vector<int>>{{0,1,0,1,1}};
                 }else
-                    return ptr;
+                    return std::vector<std::vector<int>>{{1,0,0,1,1}};
             }
             // v 5
-            if( ptr[0] == std::vector<int>{0,1,0,0,1} ){
-                if( Iabc[2] * u0 < 0){
+            if(result_vir_output == std::vector<int>{0,0,1} || result_vir_output == std::vector<int>{-1,-1,0}){
+                if( Iabc[2] * u0 > 0){
                     // ptr = std::make_shared<std::vector<std::vector<int>>>
-                    return outputs_mapping_negative.at((result_vir_output));
+                    return std::vector<std::vector<int>>{{0,1,0,0,1}};
                 }else
-                    return ptr;
+                    return std::vector<std::vector<int>>{{1,0,0,0,1}};
             }
             // v 6
-            if( ptr[0] == std::vector<int>{1,0,1,0,1} ){
+            if(result_vir_output == std::vector<int>{1,0,1} || result_vir_output == std::vector<int>{0,-1,0}){
                 if( Iabc[1] * u0 < 0){
                     //ptr = std::make_shared<std::vector<std::vector<int>>>
-                    return outputs_mapping_negative.at((result_vir_output));
+                    return std::vector<std::vector<int>>{{0,1,1,0,1}};
                 }else
-                    return ptr;
+                    return std::vector<std::vector<int>>{{1,0,1,0,1}};
             }
+            else
+                return std::vector<std::vector<int>>{{1,1,1,1,1}};
 
         }
     }
@@ -138,16 +137,16 @@ void FCSMPCer::updata_pmsm_model(const std::vector<double>& Iabc, const double& 
     u0 = u0_;
 }
 
-// PredictionHorizon:必须使用常量表达式（编译时就可以确定结果），否则可以动态矩阵Eigen::MatrixXd
-// 使用论文中的表达方式表达
-// 有一点就是还是不考虑使用延迟补偿的方法，还要继续的用k时刻的值
-std::vector<int> FCSMPCer::sda_output_u1(const double& Id_ref, const double& Iq_ref)
-{
-    // 首先进行矩阵的建立和初始化工作
-    // Phi: Φ
-    Eigen::Matrix<double, FCSMPCer::PredictionHorizon * rankA, PredictionHorizon * rankA> Phi;
+// // PredictionHorizon:必须使用常量表达式（编译时就可以确定结果），否则可以动态矩阵Eigen::MatrixXd
+// // 使用论文中的表达方式表达
+// // 有一点就是还是不考虑使用延迟补偿的方法，还要继续的用k时刻的值
+// std::vector<int> FCSMPCer::sda_output_u1(const double& Id_ref, const double& Iq_ref)
+// {
+//     // 首先进行矩阵的建立和初始化工作
+//     // Phi: Φ
+//     Eigen::Matrix<double, FCSMPCer::PredictionHorizon * rankA, PredictionHorizon * rankA> Phi;
     
 
-}
+// }
 
 }

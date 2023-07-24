@@ -117,19 +117,6 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named test_Eigen3
-
-# Build rule for target.
-test_Eigen3: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 test_Eigen3
-.PHONY : test_Eigen3
-
-# fast build rule for target.
-test_Eigen3/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_Eigen3.dir/build.make CMakeFiles/test_Eigen3.dir/build
-.PHONY : test_Eigen3/fast
-
-#=============================================================================
 # Target rules for targets named sda_pmsm
 
 # Build rule for target.
@@ -166,36 +153,11 @@ example/sda_pmsm.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/sda_pmsm.dir/build.make CMakeFiles/sda_pmsm.dir/example/sda_pmsm.cpp.s
 .PHONY : example/sda_pmsm.cpp.s
 
-example/test_Eigen3.o: example/test_Eigen3.cpp.o
-.PHONY : example/test_Eigen3.o
-
-# target to build an object file
-example/test_Eigen3.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_Eigen3.dir/build.make CMakeFiles/test_Eigen3.dir/example/test_Eigen3.cpp.o
-.PHONY : example/test_Eigen3.cpp.o
-
-example/test_Eigen3.i: example/test_Eigen3.cpp.i
-.PHONY : example/test_Eigen3.i
-
-# target to preprocess a source file
-example/test_Eigen3.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_Eigen3.dir/build.make CMakeFiles/test_Eigen3.dir/example/test_Eigen3.cpp.i
-.PHONY : example/test_Eigen3.cpp.i
-
-example/test_Eigen3.s: example/test_Eigen3.cpp.s
-.PHONY : example/test_Eigen3.s
-
-# target to generate assembly for a file
-example/test_Eigen3.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_Eigen3.dir/build.make CMakeFiles/test_Eigen3.dir/example/test_Eigen3.cpp.s
-.PHONY : example/test_Eigen3.cpp.s
-
 src/PMSM.o: src/PMSM.cpp.o
 .PHONY : src/PMSM.o
 
 # target to build an object file
 src/PMSM.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_Eigen3.dir/build.make CMakeFiles/test_Eigen3.dir/src/PMSM.cpp.o
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/sda_pmsm.dir/build.make CMakeFiles/sda_pmsm.dir/src/PMSM.cpp.o
 .PHONY : src/PMSM.cpp.o
 
@@ -204,7 +166,6 @@ src/PMSM.i: src/PMSM.cpp.i
 
 # target to preprocess a source file
 src/PMSM.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_Eigen3.dir/build.make CMakeFiles/test_Eigen3.dir/src/PMSM.cpp.i
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/sda_pmsm.dir/build.make CMakeFiles/sda_pmsm.dir/src/PMSM.cpp.i
 .PHONY : src/PMSM.cpp.i
 
@@ -213,7 +174,6 @@ src/PMSM.s: src/PMSM.cpp.s
 
 # target to generate assembly for a file
 src/PMSM.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_Eigen3.dir/build.make CMakeFiles/test_Eigen3.dir/src/PMSM.cpp.s
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/sda_pmsm.dir/build.make CMakeFiles/sda_pmsm.dir/src/PMSM.cpp.s
 .PHONY : src/PMSM.cpp.s
 
@@ -222,7 +182,6 @@ src/PMSM_sim.o: src/PMSM_sim.cpp.o
 
 # target to build an object file
 src/PMSM_sim.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_Eigen3.dir/build.make CMakeFiles/test_Eigen3.dir/src/PMSM_sim.cpp.o
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/sda_pmsm.dir/build.make CMakeFiles/sda_pmsm.dir/src/PMSM_sim.cpp.o
 .PHONY : src/PMSM_sim.cpp.o
 
@@ -231,7 +190,6 @@ src/PMSM_sim.i: src/PMSM_sim.cpp.i
 
 # target to preprocess a source file
 src/PMSM_sim.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_Eigen3.dir/build.make CMakeFiles/test_Eigen3.dir/src/PMSM_sim.cpp.i
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/sda_pmsm.dir/build.make CMakeFiles/sda_pmsm.dir/src/PMSM_sim.cpp.i
 .PHONY : src/PMSM_sim.cpp.i
 
@@ -240,7 +198,6 @@ src/PMSM_sim.s: src/PMSM_sim.cpp.s
 
 # target to generate assembly for a file
 src/PMSM_sim.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_Eigen3.dir/build.make CMakeFiles/test_Eigen3.dir/src/PMSM_sim.cpp.s
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/sda_pmsm.dir/build.make CMakeFiles/sda_pmsm.dir/src/PMSM_sim.cpp.s
 .PHONY : src/PMSM_sim.cpp.s
 
@@ -249,7 +206,6 @@ src/client.o: src/client.cpp.o
 
 # target to build an object file
 src/client.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_Eigen3.dir/build.make CMakeFiles/test_Eigen3.dir/src/client.cpp.o
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/sda_pmsm.dir/build.make CMakeFiles/sda_pmsm.dir/src/client.cpp.o
 .PHONY : src/client.cpp.o
 
@@ -258,7 +214,6 @@ src/client.i: src/client.cpp.i
 
 # target to preprocess a source file
 src/client.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_Eigen3.dir/build.make CMakeFiles/test_Eigen3.dir/src/client.cpp.i
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/sda_pmsm.dir/build.make CMakeFiles/sda_pmsm.dir/src/client.cpp.i
 .PHONY : src/client.cpp.i
 
@@ -267,7 +222,6 @@ src/client.s: src/client.cpp.s
 
 # target to generate assembly for a file
 src/client.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_Eigen3.dir/build.make CMakeFiles/test_Eigen3.dir/src/client.cpp.s
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/sda_pmsm.dir/build.make CMakeFiles/sda_pmsm.dir/src/client.cpp.s
 .PHONY : src/client.cpp.s
 
@@ -276,7 +230,6 @@ src/controller.o: src/controller.cpp.o
 
 # target to build an object file
 src/controller.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_Eigen3.dir/build.make CMakeFiles/test_Eigen3.dir/src/controller.cpp.o
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/sda_pmsm.dir/build.make CMakeFiles/sda_pmsm.dir/src/controller.cpp.o
 .PHONY : src/controller.cpp.o
 
@@ -285,7 +238,6 @@ src/controller.i: src/controller.cpp.i
 
 # target to preprocess a source file
 src/controller.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_Eigen3.dir/build.make CMakeFiles/test_Eigen3.dir/src/controller.cpp.i
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/sda_pmsm.dir/build.make CMakeFiles/sda_pmsm.dir/src/controller.cpp.i
 .PHONY : src/controller.cpp.i
 
@@ -294,7 +246,6 @@ src/controller.s: src/controller.cpp.s
 
 # target to generate assembly for a file
 src/controller.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_Eigen3.dir/build.make CMakeFiles/test_Eigen3.dir/src/controller.cpp.s
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/sda_pmsm.dir/build.make CMakeFiles/sda_pmsm.dir/src/controller.cpp.s
 .PHONY : src/controller.cpp.s
 
@@ -303,7 +254,6 @@ src/current_controller.o: src/current_controller.cpp.o
 
 # target to build an object file
 src/current_controller.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_Eigen3.dir/build.make CMakeFiles/test_Eigen3.dir/src/current_controller.cpp.o
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/sda_pmsm.dir/build.make CMakeFiles/sda_pmsm.dir/src/current_controller.cpp.o
 .PHONY : src/current_controller.cpp.o
 
@@ -312,7 +262,6 @@ src/current_controller.i: src/current_controller.cpp.i
 
 # target to preprocess a source file
 src/current_controller.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_Eigen3.dir/build.make CMakeFiles/test_Eigen3.dir/src/current_controller.cpp.i
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/sda_pmsm.dir/build.make CMakeFiles/sda_pmsm.dir/src/current_controller.cpp.i
 .PHONY : src/current_controller.cpp.i
 
@@ -321,7 +270,6 @@ src/current_controller.s: src/current_controller.cpp.s
 
 # target to generate assembly for a file
 src/current_controller.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_Eigen3.dir/build.make CMakeFiles/test_Eigen3.dir/src/current_controller.cpp.s
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/sda_pmsm.dir/build.make CMakeFiles/sda_pmsm.dir/src/current_controller.cpp.s
 .PHONY : src/current_controller.cpp.s
 
@@ -330,7 +278,6 @@ src/inverter.o: src/inverter.cpp.o
 
 # target to build an object file
 src/inverter.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_Eigen3.dir/build.make CMakeFiles/test_Eigen3.dir/src/inverter.cpp.o
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/sda_pmsm.dir/build.make CMakeFiles/sda_pmsm.dir/src/inverter.cpp.o
 .PHONY : src/inverter.cpp.o
 
@@ -339,7 +286,6 @@ src/inverter.i: src/inverter.cpp.i
 
 # target to preprocess a source file
 src/inverter.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_Eigen3.dir/build.make CMakeFiles/test_Eigen3.dir/src/inverter.cpp.i
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/sda_pmsm.dir/build.make CMakeFiles/sda_pmsm.dir/src/inverter.cpp.i
 .PHONY : src/inverter.cpp.i
 
@@ -348,7 +294,6 @@ src/inverter.s: src/inverter.cpp.s
 
 # target to generate assembly for a file
 src/inverter.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_Eigen3.dir/build.make CMakeFiles/test_Eigen3.dir/src/inverter.cpp.s
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/sda_pmsm.dir/build.make CMakeFiles/sda_pmsm.dir/src/inverter.cpp.s
 .PHONY : src/inverter.cpp.s
 
@@ -357,7 +302,6 @@ src/speed_control.o: src/speed_control.cpp.o
 
 # target to build an object file
 src/speed_control.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_Eigen3.dir/build.make CMakeFiles/test_Eigen3.dir/src/speed_control.cpp.o
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/sda_pmsm.dir/build.make CMakeFiles/sda_pmsm.dir/src/speed_control.cpp.o
 .PHONY : src/speed_control.cpp.o
 
@@ -366,7 +310,6 @@ src/speed_control.i: src/speed_control.cpp.i
 
 # target to preprocess a source file
 src/speed_control.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_Eigen3.dir/build.make CMakeFiles/test_Eigen3.dir/src/speed_control.cpp.i
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/sda_pmsm.dir/build.make CMakeFiles/sda_pmsm.dir/src/speed_control.cpp.i
 .PHONY : src/speed_control.cpp.i
 
@@ -375,7 +318,6 @@ src/speed_control.s: src/speed_control.cpp.s
 
 # target to generate assembly for a file
 src/speed_control.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_Eigen3.dir/build.make CMakeFiles/test_Eigen3.dir/src/speed_control.cpp.s
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/sda_pmsm.dir/build.make CMakeFiles/sda_pmsm.dir/src/speed_control.cpp.s
 .PHONY : src/speed_control.cpp.s
 
@@ -384,7 +326,6 @@ src/system.o: src/system.cpp.o
 
 # target to build an object file
 src/system.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_Eigen3.dir/build.make CMakeFiles/test_Eigen3.dir/src/system.cpp.o
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/sda_pmsm.dir/build.make CMakeFiles/sda_pmsm.dir/src/system.cpp.o
 .PHONY : src/system.cpp.o
 
@@ -393,7 +334,6 @@ src/system.i: src/system.cpp.i
 
 # target to preprocess a source file
 src/system.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_Eigen3.dir/build.make CMakeFiles/test_Eigen3.dir/src/system.cpp.i
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/sda_pmsm.dir/build.make CMakeFiles/sda_pmsm.dir/src/system.cpp.i
 .PHONY : src/system.cpp.i
 
@@ -402,7 +342,6 @@ src/system.s: src/system.cpp.s
 
 # target to generate assembly for a file
 src/system.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_Eigen3.dir/build.make CMakeFiles/test_Eigen3.dir/src/system.cpp.s
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/sda_pmsm.dir/build.make CMakeFiles/sda_pmsm.dir/src/system.cpp.s
 .PHONY : src/system.cpp.s
 
@@ -415,13 +354,9 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... sda_pmsm"
-	@echo "... test_Eigen3"
 	@echo "... example/sda_pmsm.o"
 	@echo "... example/sda_pmsm.i"
 	@echo "... example/sda_pmsm.s"
-	@echo "... example/test_Eigen3.o"
-	@echo "... example/test_Eigen3.i"
-	@echo "... example/test_Eigen3.s"
 	@echo "... src/PMSM.o"
 	@echo "... src/PMSM.i"
 	@echo "... src/PMSM.s"

@@ -1,51 +1,6 @@
 [
 {
   "directory": "/home/gtq/GTQ_pmsm/build",
-  "command": "/usr/bin/g++   -Wall  -g -g -o CMakeFiles/test_Eigen3.dir/example/test_Eigen3.cpp.o -c /home/gtq/GTQ_pmsm/example/test_Eigen3.cpp",
-  "file": "/home/gtq/GTQ_pmsm/example/test_Eigen3.cpp"
-},
-{
-  "directory": "/home/gtq/GTQ_pmsm/build",
-  "command": "/usr/bin/g++   -Wall  -g -g -o CMakeFiles/test_Eigen3.dir/src/PMSM.cpp.o -c /home/gtq/GTQ_pmsm/src/PMSM.cpp",
-  "file": "/home/gtq/GTQ_pmsm/src/PMSM.cpp"
-},
-{
-  "directory": "/home/gtq/GTQ_pmsm/build",
-  "command": "/usr/bin/g++   -Wall  -g -g -o CMakeFiles/test_Eigen3.dir/src/PMSM_sim.cpp.o -c /home/gtq/GTQ_pmsm/src/PMSM_sim.cpp",
-  "file": "/home/gtq/GTQ_pmsm/src/PMSM_sim.cpp"
-},
-{
-  "directory": "/home/gtq/GTQ_pmsm/build",
-  "command": "/usr/bin/g++   -Wall  -g -g -o CMakeFiles/test_Eigen3.dir/src/client.cpp.o -c /home/gtq/GTQ_pmsm/src/client.cpp",
-  "file": "/home/gtq/GTQ_pmsm/src/client.cpp"
-},
-{
-  "directory": "/home/gtq/GTQ_pmsm/build",
-  "command": "/usr/bin/g++   -Wall  -g -g -o CMakeFiles/test_Eigen3.dir/src/controller.cpp.o -c /home/gtq/GTQ_pmsm/src/controller.cpp",
-  "file": "/home/gtq/GTQ_pmsm/src/controller.cpp"
-},
-{
-  "directory": "/home/gtq/GTQ_pmsm/build",
-  "command": "/usr/bin/g++   -Wall  -g -g -o CMakeFiles/test_Eigen3.dir/src/current_controller.cpp.o -c /home/gtq/GTQ_pmsm/src/current_controller.cpp",
-  "file": "/home/gtq/GTQ_pmsm/src/current_controller.cpp"
-},
-{
-  "directory": "/home/gtq/GTQ_pmsm/build",
-  "command": "/usr/bin/g++   -Wall  -g -g -o CMakeFiles/test_Eigen3.dir/src/inverter.cpp.o -c /home/gtq/GTQ_pmsm/src/inverter.cpp",
-  "file": "/home/gtq/GTQ_pmsm/src/inverter.cpp"
-},
-{
-  "directory": "/home/gtq/GTQ_pmsm/build",
-  "command": "/usr/bin/g++   -Wall  -g -g -o CMakeFiles/test_Eigen3.dir/src/speed_control.cpp.o -c /home/gtq/GTQ_pmsm/src/speed_control.cpp",
-  "file": "/home/gtq/GTQ_pmsm/src/speed_control.cpp"
-},
-{
-  "directory": "/home/gtq/GTQ_pmsm/build",
-  "command": "/usr/bin/g++   -Wall  -g -g -o CMakeFiles/test_Eigen3.dir/src/system.cpp.o -c /home/gtq/GTQ_pmsm/src/system.cpp",
-  "file": "/home/gtq/GTQ_pmsm/src/system.cpp"
-},
-{
-  "directory": "/home/gtq/GTQ_pmsm/build",
   "command": "/usr/bin/g++   -Wall  -g -g -o CMakeFiles/sda_pmsm.dir/example/sda_pmsm.cpp.o -c /home/gtq/GTQ_pmsm/example/sda_pmsm.cpp",
   "file": "/home/gtq/GTQ_pmsm/example/sda_pmsm.cpp"
 },

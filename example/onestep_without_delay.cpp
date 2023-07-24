@@ -7,7 +7,14 @@
 #define ki  0.02//(20000 * PanJL::Ts)
 #define kd  0
 
-
+extern const double PanJL::Ld_;
+extern const double PanJL::Lq_;
+extern const double PanJL::F_;
+extern const double PanJL::Rs_;
+extern const double PanJL::TL_;
+extern const double PanJL::Bm_;
+extern const double PanJL::J_;
+extern const int PanJL::Pn_;
 
 int main()
 {
@@ -20,9 +27,9 @@ int main()
     PanJL::Plant plant(100, 750e-6);
     PanJL::FCSMPCer current_trl(100, 0);
     PanJL::Speed_controller speed_pid(kp, ki, kd, 0);
-    plant.init_PMSM(Ld_, Lq_, F_, Bm_, Rs_, TL_, Pn_, J_);
+    plant.init_PMSM(PanJL::Ld_, PanJL::Lq_, PanJL::F_, PanJL::Bm_, PanJL::Rs_, PanJL::TL_, PanJL::Pn_, PanJL::J_);
     plant.set_state_PMSM(0, 0, 0, 0);
-    current_trl.init_PMSM(Ld_, Lq_, F_, Bm_, Rs_, TL_, Pn_, J_);
+    current_trl.init_PMSM(PanJL::Ld_, PanJL::Lq_, PanJL::F_, PanJL::Bm_, PanJL::Rs_, PanJL::TL_, PanJL::Pn_, PanJL::J_);
     std::vector<std::vector<int>> inputs;
 
     
