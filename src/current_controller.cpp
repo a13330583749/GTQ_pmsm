@@ -46,8 +46,10 @@ std::vector<std::vector<int>> FCSMPCer::controller(const double &Id_ref, const d
         Solvingalgorithms.c = theta_ele;
         auto Ialpha = abc2alpha(Iabc[0], Iabc[1], Iabc[2]);
         auto Ibeta  = abc2beta(Iabc[0], Iabc[1], Iabc[2]);
-        
-
+        Solvingalgorithms.Id = alphabeta2d(Ialpha, Ibeta, theta_ele);
+        Solvingalgorithms.Iq = alphabeta2d(Ialpha, Ibeta, theta_ele);
+        Solvingalgorithms.Iq_ref = Iq_ref;
+        result_vir_output = Solvingalgorithms.updata();        
     }
     // std::cout << result_vir_output[0] << " "<< result_vir_output[1] << " "<< result_vir_output[2] << std::endl;
     // 电压输出映射

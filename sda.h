@@ -5,7 +5,7 @@
 #include <Eigen/Core>
 //稠密矩阵的代数运算（逆、特征值等）
 #include <Eigen/Dense>
-const static int predictive_N = 5;
+const static int predictive_N = 3;
 const static int rank_abc     = 3;
 const static int rankA = 2;
 
@@ -255,7 +255,7 @@ public:
         // Base case: i reaches the maximum value
         if (i >= rank_abc * predictive_N) {
             Uopts = U;
-            std::cout << Uopts.transpose() << std::endl;
+            // std::cout << Uopts.transpose() << std::endl;
             rho = d2;
             return;
         }
@@ -283,6 +283,8 @@ public:
     std::vector<int> updata()
     {
         // 在更新之前需要先把参数传递进来，用于计算的需要
+        // 需要更新的sda的参数有哪些呢？
+
 
         // 设置最大值的半径，包括所有可能的情况
         double rho = std::numeric_limits<double>::max();

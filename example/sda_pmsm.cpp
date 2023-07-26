@@ -56,7 +56,11 @@ int main(int argc, char *argv[])
     }
 
     PanJL::Plant plant(PanJL::Vdc, 750e-6);
+    
+    // 创建电流控制器并选择是否使用SDA
     PanJL::FCSMPCer current_trl(PanJL::Vdc, 0);
+    current_trl.set_Long_horizon_sda_flag(true);
+
     PanJL::Speed_controller speed_pid(KP, KI, KD, 0);
     plant.init_PMSM(PanJL::Ld_, PanJL::Lq_, PanJL::F_, PanJL::Bm_, PanJL::Rs_, PanJL::TL_, PanJL::Pn_, PanJL::J_);
     plant.set_state_PMSM(0, 0, 0, 0);// 设置wr, id, iq, ele_theta
