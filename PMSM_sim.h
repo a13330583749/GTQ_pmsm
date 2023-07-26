@@ -42,6 +42,7 @@ extern double TL_;
 extern const double Bm_;
 extern const double J_;
 extern const int Pn_;
+extern const double PI;
 
 // SDA 算法的维度
 // 用于输出映射时使用

@@ -6,9 +6,12 @@
 #include "./sda.h"
 #include <unordered_map>
 #include <memory>
+
+extern const double PI;
 namespace PanJL{
 #ifdef ONESTEPFCSMPC
     class sda;
+    extern const double Vdc;
 // 这里需要继承，需要使用PMSM的模型参数
 
 struct VectorHash {
@@ -33,7 +36,11 @@ private:
     // if flag is true, control is once, else(false) control two times
     bool flag;//need one or two times control
     std::vector<double> Idq_predict;
-    bool Long_horizon_sda_flag;  // 是否使用长时域
+    int Long_horizon_sda_flag;  // 是否使用长时域
+
+    // 现在在高铁上就不选择使用enum规范了，到时候直接选择使用指定就可以了
+    // enum control_methods = {};  // 选择使用什么控制方式
+
     //这个采用单步预测，直接输出预测得到的电流
     //因为不使用无传感器的控制策略，所以暂时不用对于转速和电角度进行预测
     void predict_i_updata(const double& ualpha, const double& ubeta, const double& times);
@@ -44,7 +51,7 @@ private:
 
 
 public:
-    FCSMPCer(double vdc, double c): Plant(vdc, c), flag(true),Long_horizon_sda_flag(false), Solvingalgorithms(0.0, 0.0){
+    FCSMPCer(double vdc, double c): Plant(vdc, c), flag(true),Long_horizon_sda_flag(0), Solvingalgorithms(0.0, 0.0){
         Idq_predict.resize(2);
         
     }   
@@ -55,7 +62,7 @@ public:
     std::vector<int> Voltage_output_mapping(const std::vector<int>& controller_outputs);
     // true is one time, and false is two times
     inline bool get_flag_control_times() const{return flag;}
-    inline void set_Long_horizon_sda_flag(const bool& flag){Long_horizon_sda_flag = flag;}
+    inline void set_control_method(const int& flag){Long_horizon_sda_flag = flag;}
     // 球型译码器算法：sda_output_u1
     // FCSMPCer已经包含的元素：Ts, 预测时域
     // 电机的具体运行参数已经在updata_pmsm_model()函数中更新，因此可以直接在state_varibles中调用

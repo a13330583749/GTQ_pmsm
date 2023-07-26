@@ -25,9 +25,98 @@ std::vector<std::vector<int>> FCSMPCer::controller(const double &Id_ref, const d
     std::vector<std::vector<int>> ptr;  // 返回值结果
     std::vector<int> result_vir_output{0,0,0};  // 最后优化的结果就放在这个地方
     updata_pmsm_model(Iabc, wr, theta_ele, u0_input);  // 将控制器中的电机最新状态更新
-
+    auto Ialpha = abc2alpha(Iabc[0], Iabc[1], Iabc[2]);
+    auto Ibeta  = abc2beta(Iabc[0], Iabc[1], Iabc[2]);
     // 使用短时域
-    if (!Long_horizon_sda_flag){
+    switch (Long_horizon_sda_flag)
+    {
+    case 1: // 选择使用SDA控制方案
+        Solvingalgorithms.a = wr;
+        Solvingalgorithms.c = theta_ele;
+        Solvingalgorithms.Id = alphabeta2d(Ialpha, Ibeta, theta_ele);
+        Solvingalgorithms.Iq = alphabeta2d(Ialpha, Ibeta, theta_ele);
+        Solvingalgorithms.Iq_ref = Iq_ref;
+        result_vir_output = Solvingalgorithms.updata();     
+        break;
+
+    case 2:{ // 选择使用无拍差的控制方案
+        // 获得无拍差电压
+        auto Id     = alphabeta2d(Ialpha, Ibeta, theta_ele);
+        auto Iq     = alphabeta2q(Ialpha, Ibeta, theta_ele);
+        double ud_ref = Rs * Id + Ld * (Id_ref - Id) / Ts - Pn * wr * Lq * Iq;
+        double uq_ref = Rs * Iq + Lq * (Iq_ref - Iq) / Ts + Pn * wr * (Ld * Id + F);
+        // 变换到αβ轴无拍差电压
+        auto u_alpha_ref = dq2alpha(ud_ref, uq_ref, theta_ele);
+        auto u_beta_ref  = dq2beta (ud_ref, uq_ref, theta_ele);
+        auto u_theta = std::atan(u_beta_ref/u_alpha_ref);
+        int section_judge = -1;  // 扇区判断
+        if(u_alpha_ref > 0){
+            if(u_theta < -PI/6)
+                section_judge = 6;
+            else if(u_theta > PI/6)
+                section_judge = 2;
+            else
+                section_judge = 1;
+        }else{
+            if(u_theta < -PI/6)
+                section_judge = 3;
+            else if(u_theta > PI/6) 
+                section_judge = 5;
+            else
+                section_judge = 4;
+        }
+        double Magnitude = std::sqrt(ud_ref * ud_ref + uq_ref * uq_ref);
+        if(Magnitude > Vdc / 2){
+            switch (section_judge)
+            {
+            case 1:
+                return std::vector<std::vector<int>>{{1,1,1,0,0}};
+            case 2:
+                return std::vector<std::vector<int>>{{1,1,1,1,0}};
+            case 3:
+                return std::vector<std::vector<int>>{{1,1,0,1,0}};
+            case 4:
+                return std::vector<std::vector<int>>{{1,1,0,1,1}};
+            case 5:
+                return std::vector<std::vector<int>>{{1,1,0,0,1}};
+            case 6:
+                return std::vector<std::vector<int>>{{1,1,1,0,1}};
+            default:
+                std::cerr << "Ummm, the u_deadbeat is fault.\n\r";
+                break;
+            }
+        }else if(Magnitude < Vdc/6)
+            return std::vector<std::vector<int>>{{1,1,1,1,1}};
+        else {
+            switch (section_judge)
+            {
+            case 1:
+                result_vir_output = {1,0,0};
+                break;
+            case 2:
+                result_vir_output = {1,1,0};
+                break;
+            case 3:
+                result_vir_output = {0,1,0};
+                break;
+            case 4:
+                result_vir_output = {0,1,1};
+                break;
+            case 5:
+                result_vir_output = {0,0,1};
+                break;
+            case 6:
+                result_vir_output = {1,0,1};
+                break;
+            default:
+                std::cerr << "Ummm, the u_deadbeat is fault.\n\r";
+                break;
+            }
+        }
+        break; // deadbeat control end
+    }
+    default: 
+        { // 默认使用单矢量的控制方案
         double result_value = DBL_MAX ;     // 最优值用于单步的判断 
         for (int i = -1; i < 2; i++){
             for (int j = -1; j < 2; j++){
@@ -41,16 +130,10 @@ std::vector<std::vector<int>> FCSMPCer::controller(const double &Id_ref, const d
                 }
             }
         }
-    }else{ // 使用长时域 SDA 控制
-        Solvingalgorithms.a = wr;
-        Solvingalgorithms.c = theta_ele;
-        auto Ialpha = abc2alpha(Iabc[0], Iabc[1], Iabc[2]);
-        auto Ibeta  = abc2beta(Iabc[0], Iabc[1], Iabc[2]);
-        Solvingalgorithms.Id = alphabeta2d(Ialpha, Ibeta, theta_ele);
-        Solvingalgorithms.Iq = alphabeta2d(Ialpha, Ibeta, theta_ele);
-        Solvingalgorithms.Iq_ref = Iq_ref;
-        result_vir_output = Solvingalgorithms.updata();        
-    }
+        break;
+        }
+    } 
+
     // std::cout << result_vir_output[0] << " "<< result_vir_output[1] << " "<< result_vir_output[2] << std::endl;
     // 电压输出映射
     if(result_vir_output[0] + result_vir_output[1] + result_vir_output[2] == 0){

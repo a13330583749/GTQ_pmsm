@@ -15,4 +15,6 @@ namespace PanJL {
     const double Bm_ = 1.1e-4;
     const double J_ = 4.7e-5;
     const int Pn_ = 2;
+
+    const double PI = 3.1415926536;
 }
