@@ -25,12 +25,13 @@ std::vector<std::vector<int>> FCSMPCer::controller(const double &Id_ref, const d
     std::vector<std::vector<int>> ptr;  // 返回值结果
     std::vector<int> result_vir_output{0,0,0};  // 最后优化的结果就放在这个地方
     updata_pmsm_model(Iabc, wr, theta_ele, u0_input);  // 将控制器中的电机最新状态更新
-    auto Ialpha = abc2alpha(Iabc[0], Iabc[1], Iabc[2]);
-    auto Ibeta  = abc2beta(Iabc[0], Iabc[1], Iabc[2]);
+
     // 使用短时域
     switch (Long_horizon_sda_flag)
     {
-    case 1: // 选择使用SDA控制方案
+    case 1:{ // 选择使用SDA控制方案
+        auto Ialpha = abc2alpha(Iabc[0], Iabc[1], Iabc[2]);
+        auto Ibeta  = abc2beta(Iabc[0], Iabc[1], Iabc[2]);
         Solvingalgorithms.a = wr;
         Solvingalgorithms.c = theta_ele;
         Solvingalgorithms.Id = alphabeta2d(Ialpha, Ibeta, theta_ele);
@@ -38,9 +39,11 @@ std::vector<std::vector<int>> FCSMPCer::controller(const double &Id_ref, const d
         Solvingalgorithms.Iq_ref = Iq_ref;
         result_vir_output = Solvingalgorithms.updata();     
         break;
-
+    }
     case 2:{ // 选择使用无拍差的控制方案
         // 获得无拍差电压
+        auto Ialpha = abc2alpha(Iabc[0], Iabc[1], Iabc[2]);
+        auto Ibeta  = abc2beta(Iabc[0], Iabc[1], Iabc[2]);
         auto Id     = alphabeta2d(Ialpha, Ibeta, theta_ele);
         auto Iq     = alphabeta2q(Ialpha, Ibeta, theta_ele);
         double ud_ref = Rs * Id + Ld * (Id_ref - Id) / Ts - Pn * wr * Lq * Iq;

@@ -44,6 +44,12 @@ extern const double J_;
 extern const int Pn_;
 extern const double PI;
 
+
+extern double Ld_estimated;
+extern double Lq_estimated;
+extern double Rs_estimated;
+extern double F_estimated;
+
 // SDA 算法的维度
 // 用于输出映射时使用
 struct inputs {

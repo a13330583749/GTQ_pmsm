@@ -14,13 +14,8 @@ file(GLOB SOURCES src/*.cpp)
 # add_executable(test_Eigen2 ./example/test_Eigen2.cpp)
 # add_executable(test_Eigen3 ./example/test_Eigen3.cpp ${SOURCES})
 
-add_executable(sda_pmsm ./example/sda_pmsm.cpp ${SOURCES})
-
-
-
-
-
-
+# add_executable(sda_pmsm ./example/sda_pmsm.cpp ${SOURCES})
+add_executable(parameter_identification_IRLS ./example/parameter_identification_IRLS.cc ${SOURCES})
 
 # add_executable(PMSM ./example/test_PMSM_model.cpp current_controller.cpp PMSM.cpp system.cpp inverter.cpp)
 # add_executable(bool_test ./example/bool_test.cpp)

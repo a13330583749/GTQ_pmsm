@@ -38,16 +38,13 @@ private:
     std::vector<double> Idq_predict;
     int Long_horizon_sda_flag;  // 是否使用长时域
 
-    // 现在在高铁上就不选择使用enum规范了，到时候直接选择使用指定就可以了
-    // enum control_methods = {};  // 选择使用什么控制方式
 
     //这个采用单步预测，直接输出预测得到的电流
     //因为不使用无传感器的控制策略，所以暂时不用对于转速和电角度进行预测
     void predict_i_updata(const double& ualpha, const double& ubeta, const double& times);
     void updata_pmsm_model(const std::vector<double>& Iabc, const double& wr,const double& theta_ele,  const double& u0_);
-    const static int PredictionHorizon = 4; // 预测时域：对于SDA算法，或者multiplestep FCS-MPC使用
     //  算法器，需要计算的时候就直接更新里面的参数，并且得到结果
-    class sda Solvingalgorithms;
+    sda Solvingalgorithms;
 
 
 public:

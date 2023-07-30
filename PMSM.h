@@ -79,7 +79,7 @@ public:
     bool init_PMSM(const double& ld, const double& lq, const double& f, const double& Bm,
                     const double& rs, const double& tl, const int& pn, const double& j);
     void set_state_PMSM(const double& id_, const double& iq_, const double& wr_, const double& theta_ele_);
-
+    void set_parameter_pmsm(const double& ld, const double& lq, const double& f, const double& rs);
     struct PMSM_state_varibles& get_PMSM_state_varibles()  {return state_varibles;}
     const std::vector<double> out_iabc();
 };

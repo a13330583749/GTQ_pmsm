@@ -67,4 +67,12 @@ std::vector<double> const PMSM::get_Iabc()
     double Ibeta = dq2beta(state_varibles.Id, state_varibles.Iq, state_varibles.theta_ele);
     return std::vector<double>{alphabeta2a(Ialpha, Ibeta), alphabeta2b(Ialpha, Ibeta), alphabeta2c(Ialpha, Ibeta)};
 }
+
+void PMSM::set_parameter_pmsm(const double& ld, const double& lq, const double& f, const double& rs)
+{
+    Ld = ld;
+    Lq = lq;
+    F = f;
+    Rs = rs;
+}
 }

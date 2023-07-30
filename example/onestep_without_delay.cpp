@@ -11,7 +11,7 @@ extern const double PanJL::Ld_;
 extern const double PanJL::Lq_;
 extern const double PanJL::F_;
 extern const double PanJL::Rs_;
-extern const double PanJL::TL_;
+extern double PanJL::TL_;
 extern const double PanJL::Bm_;
 extern const double PanJL::J_;
 extern const int PanJL::Pn_;
@@ -29,6 +29,11 @@ int main()
     PanJL::Speed_controller speed_pid(kp, ki, kd, 0);
     plant.init_PMSM(PanJL::Ld_, PanJL::Lq_, PanJL::F_, PanJL::Bm_, PanJL::Rs_, PanJL::TL_, PanJL::Pn_, PanJL::J_);
     plant.set_state_PMSM(0, 0, 0, 0);
+
+    // 设定不匹配参数：
+    double Rs_plant = PanJL::Rs_ * 0.7;
+
+
     current_trl.init_PMSM(PanJL::Ld_, PanJL::Lq_, PanJL::F_, PanJL::Bm_, PanJL::Rs_, PanJL::TL_, PanJL::Pn_, PanJL::J_);
     std::vector<std::vector<int>> inputs;
 
@@ -37,7 +42,8 @@ int main()
     double wr_ref = 100;
      // 获取程序开始执行的时间点
     auto start = std::chrono::high_resolution_clock::now();
-    for(int i_=0; i_< 1/ PanJL::Ts; i_++){
+    // 仿真时间1s
+    for(int i_=0; i_< 1.0/ PanJL::Ts; i_++){
         Iq_ref = speed_pid.updata(wr_ref - plant.get_wr());
         inputs = current_trl.controller(0, Iq_ref, plant.get_ele_theta(), plant.get_Iabc(), plant.get_wr(), PanJL::Ts, plant.get_u0());
         // plant.updata(inputs, PanJL::Ts);

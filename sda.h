@@ -5,6 +5,7 @@
 #include <Eigen/Core>
 //稠密矩阵的代数运算（逆、特征值等）
 #include <Eigen/Dense>
+// 预测时域：对于SDA算法，或者multiplestep FCS-MPC使用
 const static int predictive_N = 3;
 const static int rank_abc     = 3;
 const static int rankA = 2;
@@ -22,11 +23,14 @@ extern const double Rs_;
 extern const double Bm_;
 extern const double J_;
 extern const int Pn_;
+
+extern double Ld_estimated;
+extern double Lq_estimated;
+extern double F_estimated;
+extern double Rs_estimated;
 class sda
 {
 public:
-     
-
     // 这种就直接暴露出来就好了
     double a; // a := state_varibles.wr
     double c; // b := state_varibles.theta_ele
@@ -54,7 +58,7 @@ public:
     std::function<Eigen::Vector<double, rank_abc>()> Vector_v_abc;
 
     const Eigen::Matrix<double, rankA, rankA> B = 
-     Eigen::Matrix<double, rankA, rankA>{{::PanJL::Ts/PanJL::Ld_, 0}, {0, ::PanJL::Ts/PanJL::Lq_}};
+     Eigen::Matrix<double, rankA, rankA>{{::PanJL::Ts/PanJL::Ld_estimated, 0}, {0, ::PanJL::Ts/PanJL::Lq_estimated}};
 
     // Clarke变换所需要的矩阵
     const Eigen::Matrix<double, 2, 3> Clarke_Matrix
@@ -116,7 +120,7 @@ public:
         this->Vector_D = [this]() -> Eigen::Vector<double, rankA * predictive_N>
         {
             // 这里的常数处理要注意，因为转速和磁链都是不一定相同的，移植的时候要注意正确性
-            return Eigen::Vector2d(0, -a * PanJL::Ts * F_ * Pn_).replicate(predictive_N, 1);
+            return Eigen::Vector2d(0, -a * PanJL::Ts * F_estimated * Pn_).replicate(predictive_N, 1);
         };
 
         // 获得Vector_v_abc向量：
@@ -139,10 +143,10 @@ public:
         // 获得A矩阵，也就是离散之后的那个两维的A矩阵
         this->A = [this]() -> Eigen::Matrix<double, 2, 2>
         {
-            double A11 = 1 - PanJL::Rs_ * PanJL::Ts / PanJL::Ld_;
+            double A11 = 1 - PanJL::Rs_estimated * PanJL::Ts / PanJL::Ld_estimated;
             double A12 = PanJL::Pn_ * a * PanJL::Ts;
             double A21 = -a * PanJL::Pn_ * PanJL::Ts;
-            double A22 = 1 - PanJL::Rs_ * Ts / Lq_;
+            double A22 = 1 - PanJL::Rs_estimated * Ts / PanJL::Lq_estimated;
             Eigen::Matrix<double, rankA, rankA> result;
             result << A11, A12, A21, A22;
             return result;

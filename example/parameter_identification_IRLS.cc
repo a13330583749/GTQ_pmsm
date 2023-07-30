@@ -13,6 +13,11 @@ extern const double PanJL::J_;
 extern const int PanJL::Pn_;
 extern const double PanJL::Vdc;
 
+extern double PanJL::Ld_estimated;
+extern double PanJL::Lq_estimated;
+extern double PanJL::F_estimated;
+extern double PanJL::Rs_estimated;
+
 int main(int argc, char *argv[])
 {
     const double wr_ref = 100; // 设定速度；
@@ -58,14 +63,16 @@ int main(int argc, char *argv[])
 
     PanJL::Plant plant(PanJL::Vdc, 750e-6);
     
-    // 创建电流控制器并选择是否使用SDA
+    // 创建电流控制器并选择控制策略
     PanJL::FCSMPCer current_trl(PanJL::Vdc, 0);
-    current_trl.set_control_method(2);
+    current_trl.set_control_method(1);
 
     PanJL::Speed_controller speed_pid(KP, KI, KD, 0);
     plant.init_PMSM(PanJL::Ld_, PanJL::Lq_, PanJL::F_, PanJL::Bm_, PanJL::Rs_, PanJL::TL_, PanJL::Pn_, PanJL::J_);
     plant.set_state_PMSM(0, 0, 0, 0);// 设置wr, id, iq, ele_theta
-    current_trl.init_PMSM(PanJL::Ld_, PanJL::Lq_, PanJL::F_, PanJL::Bm_, PanJL::Rs_, PanJL::TL_, PanJL::Pn_, PanJL::J_);
+    if(current_trl.init_PMSM(PanJL::Ld_estimated, PanJL::Lq_estimated, PanJL::F_estimated, 
+                            PanJL::Bm_, PanJL::Rs_estimated, PanJL::TL_, PanJL::Pn_, PanJL::J_) < 1);
+        std::cerr << "initial fail\n\r";
     std::vector<std::vector<int>> inputs;
 
     double Iq_ref{0};
@@ -85,6 +92,10 @@ int main(int argc, char *argv[])
             plant.updata(inputs[0], PanJL::Ts / 2.0);
             plant.updata(inputs[1], PanJL::Ts / 2.0);
         }
+        // 进行参数辨识：
+
+        current_trl.set_parameter_pmsm(PanJL::Ld_estimated,PanJL::Lq_estimated, PanJL::F_estimated, PanJL::Rs_estimated);
+
         outputFile << plant.get_wr() << "," << plant.get_u0() << std::endl;
         if (i_ == static_cast<int>(1 / PanJL::Ts / 2))
         {
