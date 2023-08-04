@@ -28,12 +28,12 @@ private:
     double Iq_last_moment;
     std::function<Eigen::Matrix<double, rankA,  3>(const double& Id)> get_Rho;
     std::function<Eigen::Vector2<double>(const double& Ud, const double& Uq)> get_Y;
-
+    std::function<Eigen::Vector2<double>()> get_theta;
 
 public:
     // 作为对外接口，返回的结果直接存放在Rs_estimated Ls_estimated中了
     void update(const std::vector<double>& Iabc, const std::vector<std::vector<int>>& U);
-
+    
 };
 }
 
