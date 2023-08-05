@@ -18,18 +18,21 @@ extern double F_estimated;
 
 
 const static int rankA = 2;
-const double lambda = 0.98; // 遗忘因子
 class IRLS_parameter_identify
 {
 private:
     Eigen::Matrix<double, rankA, rankA> P;
-    Eigen::Matrix<double, rankA, rankA> get_K(Eigen::Matrix<double, rankA, 3>, Eigen::Matrix<double, rankA, rankA>);
     double Id_last_moment;
     double Iq_last_moment;
-    std::function<Eigen::Matrix<double, rankA,  3>(const double& Id)> get_Rho;
+    std::function<Eigen::Vector2<double>(const std::vector<double>& Idq, const std::vector<std::vector<int>>& Udq,
+                        const double& we, const double& Ts)> get_K;
+    std::function<Eigen::Matrix<double, rankA,  3>(const std::vector<double>& Idq, const std::vector<std::vector<int>>& Udq,
+                                                    const double& we, const double& Ts)> get_Rho;
     std::function<Eigen::Vector2<double>(const double& Ud, const double& Uq)> get_Y;
     std::function<Eigen::Vector2<double>()> get_theta;
-
+    // 更新P矩阵
+    void updata_P();
+    double lambda; // 遗忘因子
 public:
     // 作为对外接口，返回的结果直接存放在Rs_estimated Ls_estimated中了
     void update(const std::vector<double>& Iabc, const std::vector<std::vector<int>>& U);
