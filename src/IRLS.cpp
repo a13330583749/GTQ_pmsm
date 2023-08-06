@@ -33,13 +33,13 @@ IRLS_parameter_identify::IRLS_parameter_identify()
     };
 
     this->get_theta = [this](const std::vector<double>& Idq, const std::vector<double>& Udq,
-                        const double& we, const double& Ts) -> Eigen::Vector2<double>
+                        const double& we, const double& Ts, const Eigen::Vector2<double>& K_) -> Eigen::Vector2<double>
     {
         Eigen::Vector2<double> Theta;
         Eigen::Vector2<double> result;
+        // 这里对应了matlab中的get_theta，因为是直接就输入到了这里
         Theta << Rs_estimated, Ld_estimated;
-        result = Theta + this->get_K(Idq, Udq, we, Ts) * ();
-
+        result = Theta + K_ * (this->get_Rho(Idq, Udq, we, Ts).transpose() *  K_);
         return result;
     };
 }
@@ -50,11 +50,14 @@ void IRLS_parameter_identify::updata_P(const std::vector<double>& Idq, const std
     this->P = (this->P - this->get_K(Idq, Udq, we, Ts) * this->get_Rho(Idq, Udq, we, Ts).transpose() * this->P) / this->lambda;
 }
 
-void IRLS_parameter_identify::update(const std::vector<double>& Iabc, const std::vector<double>& U)
+void IRLS_parameter_identify::update(const std::vector<double>& Idq, const std::vector<double>& Udq,
+                        const double& we, const double& Ts)
 {
-
+    // 1. 更新K，但是之前的步骤是不是相互依赖，所以不行了，得想其他的办法才好
+    auto K = this->get_K(Idq, Udq, we, Ts);
+    updata_P(Idq, Udq, we, Ts);
+    auto result = this->get_theta(Idq, Udq, we, Ts, K);
+    Ld_estimated = Lq_estimated = result[0];
+    Rs_estimated = result[1];
 }
-
-
-
 }

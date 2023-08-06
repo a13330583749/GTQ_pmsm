@@ -31,14 +31,15 @@ private:
                                                     const double& we, const double& Ts)> get_Rho;
     std::function<Eigen::Vector2<double>(const std::vector<double>& Udq, const double& we)> get_Y;
     std::function<Eigen::Vector2<double>(const std::vector<double>& Idq, const std::vector<double>& Udq,
-                        const double& we, const double& Ts)> get_theta;
+                        const double& we, const double& Ts, const Eigen::Vector2<double>& K_)> get_theta;
     // 更新P矩阵
     void updata_P(const std::vector<double>& Idq, const std::vector<double>& Udq,
                         const double& we, const double& Ts);
     double lambda; // 遗忘因子
 public:
     // 作为对外接口，返回的结果直接存放在Rs_estimated Ls_estimated中了
-    void update(const std::vector<double>& Iabc, const std::vector<double>& U);
+    void update(const std::vector<double>& Idq, const std::vector<double>& Udq,
+                        const double& we, const double& Ts);
     
 };
 }
