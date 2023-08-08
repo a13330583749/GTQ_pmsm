@@ -25,6 +25,7 @@
 //稠密矩阵的代数运算（逆、特征值等）
 #include <Eigen/Dense>
 #include "./sda.h"
+#include "./IRLS.h"
 namespace PanJL {
 #define SparseInverter true
 

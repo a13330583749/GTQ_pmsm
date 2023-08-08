@@ -55,7 +55,9 @@ void IRLS_parameter_identify::update(const std::vector<double>& Idq, const std::
 {
     // 1. 更新K，但是之前的步骤是不是相互依赖，所以不行了，得想其他的办法才好
     auto K = this->get_K(Idq, Udq, we, Ts);
+    // 2. 更新P
     updata_P(Idq, Udq, we, Ts);
+    // 3.获得最新的更新结果
     auto result = this->get_theta(Idq, Udq, we, Ts, K);
     Ld_estimated = Lq_estimated = result[0];
     Rs_estimated = result[1];
