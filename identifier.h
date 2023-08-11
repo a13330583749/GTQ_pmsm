@@ -3,6 +3,7 @@
 #ifndef Identifier_h
 #define Identifier_h
 #include <./IRLS.h>
+#include <PMSM_sim.h>
 namespace PanJL{
 
 class Identifier: public IRLS_parameter_identify
