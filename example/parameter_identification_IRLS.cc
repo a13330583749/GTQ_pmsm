@@ -1,5 +1,5 @@
 #include "../PMSM_sim.h"
-#include "../system.h"
+// #include "../system.h"
 #include <fstream>
 #include <fcntl.h>
 #include <chrono>
@@ -61,20 +61,24 @@ int main(int argc, char *argv[])
         return 1;
     }
 
-    PanJL::Plant plant(PanJL::Vdc, 750e-6);
+    
     
     // 创建电流控制器并选择控制策略
     PanJL::FCSMPCer current_trl(PanJL::Vdc, 0);
     current_trl.set_control_method(1);
-
+    // 创建速度控制器
     PanJL::Speed_controller speed_pid(KP, KI, KD, 0);
+    // 创建对象
+    PanJL::Plant plant(PanJL::Vdc, 750e-6);
     plant.init_PMSM(PanJL::Ld_, PanJL::Lq_, PanJL::F_, PanJL::Bm_, PanJL::Rs_, PanJL::TL_, PanJL::Pn_, PanJL::J_);
     plant.set_state_PMSM(0, 0, 0, 0);// 设置wr, id, iq, ele_theta
     if(current_trl.init_PMSM(PanJL::Ld_estimated, PanJL::Lq_estimated, PanJL::F_estimated, 
                             PanJL::Bm_, PanJL::Rs_estimated, PanJL::TL_, PanJL::Pn_, PanJL::J_) < 1);
-        std::cerr << "initial fail\n\r";
+        // std::cerr << "initial fail\n\r";
+    // 创建辨识器
+    PanJL::IRLS_parameter_identify compensator;
     std::vector<std::vector<int>> inputs;
-
+    std::vector<int> vir_Udq;
     double Iq_ref{0};
 
     // 获取程序开始执行的时间点
@@ -82,7 +86,7 @@ int main(int argc, char *argv[])
     for (int i_ = 0; i_ < 1 / PanJL::Ts; i_++)
     {
         Iq_ref = speed_pid.updata(wr_ref - plant.get_wr());
-        inputs = current_trl.controller(0, Iq_ref, plant.get_ele_theta(), plant.get_Iabc(), plant.get_wr(), PanJL::Ts, plant.get_u0());
+        inputs = current_trl.controller(0, Iq_ref, plant.get_ele_theta(), plant.get_Iabc(), plant.get_wr(), PanJL::Ts, plant.get_u0(), vir_Udq);
         if (current_trl.get_flag_control_times())
         {
             plant.updata(inputs[0], PanJL::Ts);
@@ -100,8 +104,7 @@ int main(int argc, char *argv[])
         if (i_ == static_cast<int>(1 / PanJL::Ts / 2))
         {
             plant.set_TL(1.1);    
-        }
-        
+        }    
     }
     // 获取程序执行结束的时间点
     auto end = std::chrono::high_resolution_clock::now();

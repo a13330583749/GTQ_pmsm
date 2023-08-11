@@ -54,7 +54,7 @@ public:
     }   
     std::vector<std::vector<int>> controller(const double& Id_ref, const double& Iq_ref, const double& theta_ele,
                                 const std::vector<double>& Iabc, const double& wr, const double& times,
-                                const double& u0_input);
+                                const double& u0_input, std::vector<int>& vir_Udq);
 
     std::vector<int> Voltage_output_mapping(const std::vector<int>& controller_outputs);
     // true is one time, and false is two times

@@ -1,23 +1,23 @@
-#include <../IRLS.h>
+#include <./IRLS.h>
 namespace PanJL
 {
 IRLS_parameter_identify::IRLS_parameter_identify()
 {
-    P = Eigen::MatrixXd::Identity(rankA, rankA);
+    P = Eigen::MatrixXd::Identity(2, 2);
     lambda = 0.98;
     this->get_Rho = [this](const std::vector<double>& Idq, const std::vector<double>& Udq,
-                        const double& we, const double& Ts) -> Eigen::Matrix<double, rankA,  3>
+                        const double& we, const double& Ts) -> Eigen::Matrix<double, 2,  2>
     {
-        Eigen::Matrix<double, rankA,  3> result;
+        Eigen::Matrix<double, 2,  2> result;
         result << Idq[1], Idq[0] * we + (Idq[1] - this->Iq_last_moment)/ Ts,
                   Idq[0], (Idq[0] - this->Id_last_moment)/ Ts - Idq[1] * we;
         return result;
     };
 
     this->get_K = [this](const std::vector<double>& Idq, const std::vector<double>& Udq,
-                        const double& we, const double& Ts) -> Eigen::Vector2<double>
+                        const double& we, const double& Ts) -> Eigen::Matrix<double, 2, 2>
     {
-        Eigen::MatrixXd eyes(2, 2);
+        Eigen::Matrix<double, 2, 2> eyes;
         eyes << 1, 0,
             0, 1;
         return this->P * this -> get_Rho(Idq, Udq, we, Ts) 
@@ -33,13 +33,13 @@ IRLS_parameter_identify::IRLS_parameter_identify()
     };
 
     this->get_theta = [this](const std::vector<double>& Idq, const std::vector<double>& Udq,
-                        const double& we, const double& Ts, const Eigen::Vector2<double>& K_) -> Eigen::Vector2<double>
+                        const double& we, const double& Ts, const Eigen::Matrix<double, 2, 2>& K_) -> Eigen::Vector2<double>
     {
         Eigen::Vector2<double> Theta;
         Eigen::Vector2<double> result;
         // 这里对应了matlab中的get_theta，因为是直接就输入到了这里
         Theta << Rs_estimated, Ld_estimated;
-        result = Theta + K_ * (this->get_Rho(Idq, Udq, we, Ts).transpose() *  K_);
+        result = Theta + K_ * (this -> get_Y(Udq, we) - this->get_Rho(Idq, Udq, we, Ts).transpose() *  Theta);
         return result;
     };
 }
@@ -48,6 +48,7 @@ void IRLS_parameter_identify::updata_P(const std::vector<double>& Idq, const std
                         const double& we, const double& Ts)
 {
     this->P = (this->P - this->get_K(Idq, Udq, we, Ts) * this->get_Rho(Idq, Udq, we, Ts).transpose() * this->P) / this->lambda;
+    
 }
 
 void IRLS_parameter_identify::update(const std::vector<double>& Idq, const std::vector<double>& Udq,

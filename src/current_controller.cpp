@@ -16,7 +16,7 @@ void FCSMPCer::predict_i_updata(const double& ualpha, const double& ubeta, const
 
 std::vector<std::vector<int>> FCSMPCer::controller(const double &Id_ref, const double &Iq_ref, const double &theta_ele,
                                         const std::vector<double> &Iabc, const double &wr, const double& times,
-                                         const double& u0_input)
+                                         const double& u0_input, std::vector<int>& vir_Udq)
 {
     /*  这一部分是使用长时域的时候会需要到，先放在这里，由于时用到的是单步的计算，所以直接在dq轴中进行控制
     double Ialpha = dq2alpha(Id_ref, Iq_ref, theta_ele);
@@ -37,7 +37,8 @@ std::vector<std::vector<int>> FCSMPCer::controller(const double &Id_ref, const d
         Solvingalgorithms.Id = alphabeta2d(Ialpha, Ibeta, theta_ele);
         Solvingalgorithms.Iq = alphabeta2d(Ialpha, Ibeta, theta_ele);
         Solvingalgorithms.Iq_ref = Iq_ref;
-        result_vir_output = Solvingalgorithms.updata();     
+        result_vir_output = Solvingalgorithms.updata();
+        vir_Udq = result_vir_output;
         break;
     }
     case 2:{ // 选择使用无拍差的控制方案
@@ -73,23 +74,31 @@ std::vector<std::vector<int>> FCSMPCer::controller(const double &Id_ref, const d
             switch (section_judge)
             {
             case 1:
+                vir_Udq = std::vector<int>{1,-1,-1};
                 return std::vector<std::vector<int>>{{1,1,1,0,0}};
             case 2:
+                vir_Udq = std::vector<int>{1,1,-1};
                 return std::vector<std::vector<int>>{{1,1,1,1,0}};
             case 3:
+                vir_Udq = std::vector<int>{-1,1,-1};
                 return std::vector<std::vector<int>>{{1,1,0,1,0}};
             case 4:
+                vir_Udq = std::vector<int>{-1,1,1};
                 return std::vector<std::vector<int>>{{1,1,0,1,1}};
             case 5:
+                vir_Udq = std::vector<int>{-1,-1,1};
                 return std::vector<std::vector<int>>{{1,1,0,0,1}};
             case 6:
+                vir_Udq = std::vector<int>{1,-1,1};
                 return std::vector<std::vector<int>>{{1,1,1,0,1}};
             default:
                 std::cerr << "Ummm, the u_deadbeat is fault.\n\r";
                 break;
             }
-        }else if(Magnitude < Vdc/6)
+        }else if(Magnitude < Vdc/6){
+            vir_Udq = std::vector<int>{1,1,1};
             return std::vector<std::vector<int>>{{1,1,1,1,1}};
+        }
         else {
             switch (section_judge)
             {
@@ -136,7 +145,7 @@ std::vector<std::vector<int>> FCSMPCer::controller(const double &Id_ref, const d
         break;
         }
     } 
-
+    vir_Udq = result_vir_output;
     // std::cout << result_vir_output[0] << " "<< result_vir_output[1] << " "<< result_vir_output[2] << std::endl;
     // 电压输出映射
     if(result_vir_output[0] + result_vir_output[1] + result_vir_output[2] == 0){

@@ -15,6 +15,16 @@
 
 每头文件类的作用：
 
+---
+
+增加电流环控制器类中更新的一个接口  
+从`std::vector<std::vector<int>> FCSMPCer::controller(const double &Id_ref, const double &Iq_ref, const double &theta_ele,
+                                        const std::vector<double> &Iabc, const double &wr, const double& times,
+                                         const double& u0_input)`  
+   更改了：  
+   `std::vector<std::vector<int>> FCSMPCer::controller(const double &Id_ref, const double &Iq_ref, const double &theta_ele,
+                                        const std::vector<double> &Iabc, const double &wr, const double& times,
+                                         const double& u0_input, vector<int>&)`
 
 ---
 2023/08/01
