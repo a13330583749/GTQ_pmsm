@@ -69,7 +69,7 @@ public:
     // 为了算出|Δu|，还需要保留上一个时刻的virtual_u0
     // updata_pmsm_model()中：包含了Idq,wr,theta_ele
     
-    std::vector<int> sda_output_u1(const double& Id_ref, const double& Iq_ref);
+    // std::vector<int> sda_output_u1(const double& Id_ref, const double& Iq_ref);
 
 private:
     // positive voltage vector of small/ long

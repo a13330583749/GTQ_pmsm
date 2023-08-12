@@ -21,10 +21,10 @@ extern const double F_;
 
 class IRLS_parameter_identify
 {
-private:
-    
+protected:
     double Id_last_moment;
     double Iq_last_moment;
+private:
     std::function<Eigen::Matrix<double, 2, 2>(const std::vector<double>& Idq, const std::vector<double>& Udq,
                         const double& we, const double& Ts)> get_K;
     std::function<Eigen::Matrix<double, 2,  2>(const std::vector<double>& Idq, const std::vector<double>& Udq,

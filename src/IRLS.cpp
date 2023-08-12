@@ -3,15 +3,17 @@ namespace PanJL
 {
 IRLS_parameter_identify::IRLS_parameter_identify()
 {
-    P = Eigen::MatrixXd::Identity(2, 2);
-    lambda = 0.98;
+    Iq_last_moment = 0;
+    Id_last_moment = 0;
+    P = 4 * Eigen::MatrixXd::Identity(2, 2);
+    lambda = 0.984;
     this->get_Rho = [this](const std::vector<double>& Idq, const std::vector<double>& Udq,
                         const double& we, const double& Ts) -> Eigen::Matrix<double, 2,  2>
     {
         Eigen::Matrix<double, 2,  2> result;
         result << Idq[1], Idq[0] * we + (Idq[1] - this->Iq_last_moment)/ Ts,
                   Idq[0], (Idq[0] - this->Id_last_moment)/ Ts - Idq[1] * we;
-        return result;
+        return result.transpose();
     };
 
     this->get_K = [this](const std::vector<double>& Idq, const std::vector<double>& Udq,
@@ -60,7 +62,7 @@ void IRLS_parameter_identify::update(const std::vector<double>& Idq, const std::
     updata_P(Idq, Udq, we, Ts);
     // 3.获得最新的更新结果
     auto result = this->get_theta(Idq, Udq, we, Ts, K);
-    Ld_estimated = Lq_estimated = result[0];
-    Rs_estimated = result[1];
+    Ld_estimated = Lq_estimated = result[1];
+    Rs_estimated = result[0];
 }
 }

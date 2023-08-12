@@ -313,7 +313,7 @@ public:
         result[0] = Uopts[0];
         result[1] = Uopts[1];
         result[2] = Uopts[2];
-        std::cout << result[0] << "  " << result[1] << "  " << result[2]<< std::endl;
+        // std::cout << result[0] << "  " << result[1] << "  " << result[2]<< std::endl;
         // std::cout <<U_hat_unc.transpose() << std::endl;
         // Uopts.segment(0, rank_abc*(predictive_N - 1)) = Uopts.segment(rank_abc, rank_abc*(predictive_N - 1));
         // Uopts.segment(rank_abc*(predictive_N - 1), rank_abc) = Uopts.segment(rank_abc*(predictive_N - 2), rank_abc);

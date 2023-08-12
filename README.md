@@ -24,7 +24,11 @@
    更改了：  
    `std::vector<std::vector<int>> FCSMPCer::controller(const double &Id_ref, const double &Iq_ref, const double &theta_ele,
                                         const std::vector<double> &Iabc, const double &wr, const double& times,
-                                         const double& u0_input, vector<int>&)`
+                                         const double& u0_input, vector<int>&)`  
+
+sda使用包含的class，所有直接更新了控制器参数，其他的控制方法需要使用set来更新，有一个问题就是sda必须使用更新了，没有办法使用更新前的参数。
+
+IRLS的辨识参数对于辨识的影响很大！！
 
 ---
 2023/08/01
