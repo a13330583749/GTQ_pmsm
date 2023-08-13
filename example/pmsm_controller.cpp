@@ -9,6 +9,15 @@
 #define kd  0
 #define wr_ref 100
 
+
+extern const double PanJL::Ld_;
+extern const double PanJL::Lq_;
+extern const double PanJL::F_;
+extern const double PanJL::Rs_;
+extern double PanJL::TL_;
+extern const double PanJL::Bm_;
+extern const double PanJL::J_;
+extern const int PanJL::Pn_;
 // 这是整一个控制过程
 class MyClass {
 public:
@@ -42,7 +51,8 @@ int main()
     // 创建对象的实例
     PanJL::FCSMPCer current_trl_instance(100, 0);
     PanJL::Speed_controller speed_pid_instance(kp, ki, kd, 0);
-    current_trl_instance.init_PMSM(Ld_, Lq_, F_, Bm_, Rs_, TL_, Pn_, J_);
+    current_trl_instance.init_PMSM(PanJL::Ld_, PanJL::Lq_, PanJL::F_, PanJL::Bm_, PanJL::Rs_,
+                                     PanJL::TL_, PanJL::Pn_, PanJL::J_);
 
     controller.current_trl = &current_trl_instance;
     controller.speed_pid = &speed_pid_instance;

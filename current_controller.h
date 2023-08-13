@@ -52,10 +52,14 @@ public:
         Idq_predict.resize(2);
         
     }   
+    // 电流控制器的优化函数
     std::vector<std::vector<int>> controller(const double& Id_ref, const double& Iq_ref, const double& theta_ele,
                                 const std::vector<double>& Iabc, const double& wr, const double& times,
                                 const double& u0_input, std::vector<int>& vir_Udq);
-
+    // 重载一个更新函数，给不需要进行参数更新的情况下使用。
+    std::vector<std::vector<int>> controller(const double& Id_ref, const double& Iq_ref, const double& theta_ele,
+                                const std::vector<double>& Iabc, const double& wr, const double& times,
+                                const double& u0_input);
     std::vector<int> Voltage_output_mapping(const std::vector<int>& controller_outputs);
     // true is one time, and false is two times
     inline bool get_flag_control_times() const{return flag;}
