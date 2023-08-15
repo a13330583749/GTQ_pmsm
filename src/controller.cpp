@@ -100,7 +100,7 @@ void CONTROLLER::HandleClient(int clientSocket) {
         memcpy(&message.plant_ele_theta, ptr, sizeof(double));
         ptr += sizeof(double);
 
-        memcmp(&message.plant_u0, ptr, sizeof(double));
+        memcpy(&message.plant_u0, ptr, sizeof(double));
         ptr += sizeof(double);
         
         //解析Iabc
@@ -136,5 +136,3 @@ void CONTROLLER::HandleClient(int clientSocket) {
 }
 
 }
-
-

@@ -14,11 +14,21 @@
 ---
 
 每头文件类的作用：
-前向头文件`PMSM_sim.h`
-
+前向头文件`PMSM_sim.h`：包含整个框架的各个类、提供系统参数的定义和坐标变换。  
+`commincation.h`：TCP连接类，定义client/server两个类，创建时为对象注册回调函数，在accept消息时可以自动调用注册的函数，具体的使用方法可以见[pmsm_plant](example/pmsm_plant.cpp)和[pmsm_controller](example/pmsm_controller.cpp)。  
+`Compensator.h`：延迟补偿类，还没有完成。  
+`current_controller.h`电流环控制器。现在已经提供的控制方案：单矢量控制、球型译码器控制(sphere decoding algorithm)、无拍差控制，可以参考[line68](example/parameter_identification_IRLS.cc)设置控制策略。
+`identifer.h`：用于封装各个观测器的接口类，用于继承具体的辨识方法，现在完成的参数观测辨识的方法有：最小二乘法辨识。  
+`inverter.h`:逆变器对象。用于设置逆变器对象，输入开关序列，输出电压。  
+`IRLS.h`：最小二乘法辨识的具体实现类。  
+`PMSM.h`：永磁同步电机类。实现电机内部的状态和更新方程。
+`sda.h`：球型译码器控制算法的实现，使用Eigen第三方库。成为`current_controller`电流控制器类的一个成员变量，直接提供算法优化。  
+`speed_controller.h`：速度环控制器，内部是一个PID控制器。  
+`system.h`：被控对象类。实现PMSM和逆变器的继承，成为一个统一的被控对象，实现两个父类的一起更新。  
 
 ---
 
+2023/08/11
 增加电流环控制器类中更新的一个接口  
 从`std::vector<std::vector<int>> FCSMPCer::controller(const double &Id_ref, const double &Iq_ref, const double &theta_ele,
                                         const std::vector<double> &Iabc, const double &wr, const double& times,
