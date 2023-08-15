@@ -54,7 +54,7 @@ int main(int argc, char *argv[])
         }
     }
  
-    std::ofstream outputFile("../data/sda_pmsm.txt", std::ios::out | std::ios::binary);
+    std::ofstream outputFile("../data/irls.txt", std::ios::out | std::ios::binary);
     if (!outputFile.is_open())
     {
         std::cerr << "无法打开文件" << std::endl;
@@ -65,7 +65,7 @@ int main(int argc, char *argv[])
     
     // 创建电流控制器并选择控制策略
     PanJL::FCSMPCer current_trl(PanJL::Vdc, 0);
-    current_trl.set_control_method(0);
+    current_trl.set_control_method(2);
     // 创建速度控制器
     PanJL::Speed_controller speed_pid(KP, KI, KD, 0);
     // 创建对象
@@ -81,7 +81,7 @@ int main(int argc, char *argv[])
     std::vector<std::vector<int>> inputs;
     std::vector<int> vir_Udq;
     double Iq_ref{0};
-
+    bool compensator_flag = true;
     // 获取程序开始执行的时间点
     auto start = std::chrono::high_resolution_clock::now();
     for (int i_ = 0; i_ < 1 / PanJL::Ts; i_++) //1代表仿真时间为1second
@@ -98,21 +98,27 @@ int main(int argc, char *argv[])
             plant.updata(inputs[1], PanJL::Ts / 2.0);
         }
         // 进行参数辨识：
-        if (i_ > 0.5/PanJL::Ts){
-            // 参数辨识
-            compensator.renew(plant.get_Iabc(), vir_Udq, PanJL::Ts, plant.get_wr() * PanJL::Pn_, 
-                        PanJL::Vdc, plant.get_ele_theta());
-            // 更新控制器的参数
-            current_trl.set_parameter_pmsm(PanJL::Ld_estimated,PanJL::Lq_estimated, PanJL::F_estimated, PanJL::Rs_estimated);
-            std::cout << "PanJL::Ld_estimated = " << PanJL::Ld_estimated << ",PanJL::Lq_estimated = " 
-                      << PanJL::Lq_estimated << ", PanJL::Rs_estimated = " << PanJL::Rs_estimated 
-                      << ", PanJL::F_estimated = " << PanJL::F_estimated << std::endl;
+        if (i_ > 0.1/PanJL::Ts){
+            if(compensator_flag){
+                //辨识器初始化
+                compensator_flag = false;
+                compensator.init(plant.get_Iabc(), vir_Udq, PanJL::Ts, plant.get_wr() * PanJL::Pn_, 
+                            PanJL::Vdc, plant.get_ele_theta());    
+            }
+            else{
+                // 参数辨识
+                compensator.renew(plant.get_Iabc(), vir_Udq, PanJL::Ts, plant.get_wr() * PanJL::Pn_, 
+                            PanJL::Vdc, plant.get_ele_theta());
+                // 更新控制器的参数
+                current_trl.set_parameter_pmsm(PanJL::Ld_estimated,PanJL::Lq_estimated, PanJL::F_estimated, PanJL::Rs_estimated);
+            }
         }
-        outputFile << plant.get_wr() << "," << plant.get_u0() << std::endl;
-        if (i_ == static_cast<int>(1 / PanJL::Ts / 2))
-        {
-            plant.set_TL(1.1);    
-        }    
+        outputFile << plant.get_wr() << "," << plant.get_u0() <<
+            "," << PanJL::Ld_estimated << "," << PanJL::Rs_estimated <<std::endl;
+        // if (i_ == static_cast<int>(1 / PanJL::Ts / 2))
+        // {
+        //     plant.set_TL(1.1);    
+        // }    
     }
     // 获取程序执行结束的时间点
     auto end = std::chrono::high_resolution_clock::now();
@@ -120,7 +126,7 @@ int main(int argc, char *argv[])
     std::cout << "Program execution time: " << duration.count() << " milliseconds" << std::endl;
     outputFile.close();
 
-    std::system("python3 ../example/python/sda_pmsm.py");
+    std::system("python3 ../example/python/irls.py");
     // ctrl.controller(1.0, 2.0);
     return 0;
 }

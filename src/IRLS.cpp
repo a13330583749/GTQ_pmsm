@@ -5,14 +5,16 @@ IRLS_parameter_identify::IRLS_parameter_identify()
 {
     Iq_last_moment = 0;
     Id_last_moment = 0;
-    P = 4 * Eigen::MatrixXd::Identity(2, 2);
-    lambda = 0.984;
+    Eigen::Matrix<double, 2, 2> S;
+    S << 0.6 , 0 , 0 , 0.00017;
+    P = S;
+    lambda = 0.999;
     this->get_Rho = [this](const std::vector<double>& Idq, const std::vector<double>& Udq,
                         const double& we, const double& Ts) -> Eigen::Matrix<double, 2,  2>
     {
         Eigen::Matrix<double, 2,  2> result;
         result << Idq[1], Idq[0] * we + (Idq[1] - this->Iq_last_moment)/ Ts,
-                  Idq[0], (Idq[0] - this->Id_last_moment)/ Ts - Idq[1] * we;
+                  Idq[0], ((Idq[0] - this->Id_last_moment)/ Ts - Idq[1] * we);
         return result.transpose();
     };
 
@@ -62,7 +64,8 @@ void IRLS_parameter_identify::update(const std::vector<double>& Idq, const std::
     updata_P(Idq, Udq, we, Ts);
     // 3.获得最新的更新结果
     auto result = this->get_theta(Idq, Udq, we, Ts, K);
-    Ld_estimated = Lq_estimated = result[1];
+    Ld_estimated = result[1];
+    Lq_estimated = result[1];
     Rs_estimated = result[0];
 }
 }
