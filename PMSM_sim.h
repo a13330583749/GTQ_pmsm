@@ -2,8 +2,8 @@
 #define PMSM_sim
 #include <utility>
 #include <iostream>
-#include "system.h"
-#include "speed_controller.h"
+#include "system.h"     // 电机对象
+#include "speed_controller.h"  //控制器
 #include "current_controller.h"
 // #include "Compensator.h"
 #include <cmath>
@@ -24,8 +24,8 @@
 #include <Eigen/Core>
 //稠密矩阵的代数运算（逆、特征值等）
 #include <Eigen/Dense>
-#include "./sda.h"
-#include "./identifier.h"
+#include "./sda.h" // 控制算法
+#include "./identifier.h"  // 参数辨识补偿器
 namespace PanJL {
 #define SparseInverter true
 

@@ -103,12 +103,12 @@ int main(int argc, char *argv[])
                 //辨识器初始化
                 compensator_flag = false;
                 compensator.init(plant.get_Iabc(), vir_Udq, PanJL::Ts, plant.get_wr() * PanJL::Pn_, 
-                            PanJL::Vdc, plant.get_ele_theta());    
+                            PanJL::Vdc, plant.get_ele_theta(), plant.get_u0());    
             }
             else{
                 // 参数辨识
                 compensator.renew(plant.get_Iabc(), vir_Udq, PanJL::Ts, plant.get_wr() * PanJL::Pn_, 
-                            PanJL::Vdc, plant.get_ele_theta());
+                            PanJL::Vdc, plant.get_ele_theta(), plant.get_u0());
                 // 更新控制器的参数
                 current_trl.set_parameter_pmsm(PanJL::Ld_estimated,PanJL::Lq_estimated, PanJL::F_estimated, PanJL::Rs_estimated);
             }

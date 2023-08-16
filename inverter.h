@@ -24,6 +24,7 @@ protected:
 public:
     std::function<int(int)> Sm = [this](int Sabc){return this->Sc1 * Sabc + (Sabc - 1) * this->Sc2;};
     // 这里有一个间接的调用Sm(Sabc)，其中使用再一次的调用
+    // 注意这里调用的函数只是针对直流侧的电压，还没有转化为交流测的电压
     std::function<double(int)> Uabc = [this](int Sabc) -> double {return Sm(Sabc) * this->Vdc / 2 - Sm(Sabc) * Sm(Sabc) * this->u0;};
     sparse_inverter(double vdc, double c): C(c), Vdc(vdc), u0(0){}
     void set_igbt(const std::vector<int>&);

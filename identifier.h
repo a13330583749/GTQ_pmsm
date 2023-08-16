@@ -16,9 +16,9 @@ public:
 
     // 注意这里使用的是点角速度，所有main传参的时候需要注意
     void renew(const std::vector<double>& Iabc,const std::vector<int>& inputs, const double& Ts,
-                const double& we, const double& Vdc, const double&theta_ele);
+                const double& we, const double& Vdc, const double&theta_ele, const double& u0);
     void init(const std::vector<double>& Iabc,const std::vector<int>& inputs, const double& Ts,
-                const double& we, const double& Vdc, const double&theta_ele);
+                const double& we, const double& Vdc, const double&theta_ele, const double& u0);
     Identifier() = default;
 };
 }

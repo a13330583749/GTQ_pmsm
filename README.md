@@ -28,6 +28,15 @@
 
 ---
 
+最小二乘辨识的结果：Ls = 7e-3; Rs= 2.98;  
+参数的问题吗？同样的结果在matlab中是没有问题的。  
+![IRS](figure/IRS.png)  
+matlab中的结果  
+![Alt text](figure/matlab%E7%BB%93%E6%9E%9C.jpg)  
+暂时留坑，先写反步法了，为了毕业打算。
+
+---
+
 2023/08/11
 增加电流环控制器类中更新的一个接口  
 从`std::vector<std::vector<int>> FCSMPCer::controller(const double &Id_ref, const double &Iq_ref, const double &theta_ele,

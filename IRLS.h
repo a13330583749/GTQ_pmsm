@@ -7,6 +7,7 @@
 #include <Eigen/Dense>
 #include <functional>
 #include <vector>
+#include <iostream>
 namespace PanJL{
 
 // 这里直接就声明进入更新了，不再设置传入这四个变量
@@ -34,7 +35,7 @@ private:
                         const double& we, const double& Ts, const Eigen::Matrix<double, 2, 2>& K_)> get_theta;
     // 更新P矩阵
     void updata_P(const std::vector<double>& Idq, const std::vector<double>& Udq,
-                        const double& we, const double& Ts);
+                        const double& we, const double& Ts, const Eigen::Matrix<double, 2, 2>& K_);
     double lambda; // 遗忘因子
 public:
     // 作为对外接口，返回的结果直接存放在Rs_estimated Ls_estimated中了
