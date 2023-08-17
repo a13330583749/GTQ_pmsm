@@ -26,6 +26,7 @@
 #include <Eigen/Dense>
 #include "./sda.h" // 控制算法
 #include "./identifier.h"  // 参数辨识补偿器
+#include "./svpwm.h"  // SVPWM调制部分
 namespace PanJL {
 #define SparseInverter true
 

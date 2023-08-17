@@ -17,7 +17,7 @@
 前向头文件`PMSM_sim.h`：包含整个框架的各个类、提供系统参数的定义和坐标变换。  
 `commincation.h`：TCP连接类，定义client/server两个类，创建时为对象注册回调函数，在accept消息时可以自动调用注册的函数，具体的使用方法可以见[pmsm_plant](example/pmsm_plant.cpp)和[pmsm_controller](example/pmsm_controller.cpp)。  
 `Compensator.h`：延迟补偿类，还没有完成。  
-`current_controller.h`电流环控制器。现在已经提供的控制方案：单矢量控制、球型译码器控制(sphere decoding algorithm)、无拍差控制，可以参考[line68](example/parameter_identification_IRLS.cc)设置控制策略。
+`current_controller.h`电流环控制器。现在已经提供的控制方案：单矢量控制、球型译码器控制(sphere decoding algorithm)、无拍差控制，可以参考[line68](example/parameter_identification_IRLS.cc)设置控制策略。  
 `identifer.h`：用于封装各个观测器的接口类，用于继承具体的辨识方法，现在完成的参数观测辨识的方法有：最小二乘法辨识。  
 `inverter.h`:逆变器对象。用于设置逆变器对象，输入开关序列，输出电压。  
 `IRLS.h`：最小二乘法辨识的具体实现类。  
@@ -25,6 +25,12 @@
 `sda.h`：球型译码器控制算法的实现，使用Eigen第三方库。成为`current_controller`电流控制器类的一个成员变量，直接提供算法优化。  
 `speed_controller.h`：速度环控制器，内部是一个PID控制器。  
 `system.h`：被控对象类。实现PMSM和逆变器的继承，成为一个统一的被控对象，实现两个父类的一起更新。  
+
+---
+
+2023/08/17  
+计算加入调制类，首先加入SVPWM的调制类，具体实现的过程之后再说
+
 
 ---
 
@@ -64,7 +70,7 @@ IRLS的辨识参数对于辨识的影响很大！！
 不过这样也好。可不可以再把这个东西做一个更加独立的头文件出来呢？
 但是显得整个class就会越来越复杂  add 
 
-![](带有遗忘因子的最小二乘法.png "IRLS中的算法")
+![IRLS](figure/IRLS.png)
 
 ---
 
@@ -88,7 +94,7 @@ IRLS的辨识参数对于辨识的影响很大！！
 **这也意味着之前的分支是存在问题的代码，要使用之前先要完成bug的修补**
 
 完成仿真。最终得到结果：在$t=0.5s$时加入阶跃扰动:
-   ![](sda_pmsm.png "单步控制")
+![sda_pmsm](figure/sda_pmsm.png)
 
 ---
 
@@ -127,7 +133,7 @@ IRLS的辨识参数对于辨识的影响很大！！
 
 chol分解：[test_Eigen](./example/test_Eigen2.cpp)
 
-所用的时间的结果：![](chol用时对比.png "图片title")
+所用的时间的结果：![chol_compare](figure/chol_compare.png)
 
 编译时增加了Eigen库的内容，会大大增加编译二进制文件的大小。通过连乘测试：[test_Eigen3](./example/test_Eigen3.cpp)
 
@@ -143,7 +149,7 @@ chol分解：[test_Eigen](./example/test_Eigen2.cpp)
 
 使用图片的结果，需要使用33.44分钟。
 
-![](TCP.png "图片title")
+![TCP](figure/TCP.png)
 
 TCP测试采用的是回环地址127.0.0.1，主要作用有两个：一是测试本机的网络配置，能PING通127.0.0.1说明本机的网卡和IP协议安装都没有问题；另一个作用是某些SERVER/CLIENT的应用程序在运行时需调用服务器上的资源，一般要指定SERVER的IP地址，但当该程序要在同一台机器上运行而没有别的SERVER时就可以把SERVER的资源装在本机，SERVER的IP地址设为127.0.0.1也同样可以运行。
 
