@@ -99,4 +99,21 @@ void SVPWM::calculation(const double& Valpha, const double& Vbeta)
     }
 
 }
+
+std::vector<int> SVPWM::Tcmp_to_Sabc(const double& PWM_value)
+{
+    int Sa = signal(Tcmp1, PWM_value);
+    int Sb = signal(Tcmp2, PWM_value);
+    int Sc = signal(Tcmp3, PWM_value);
+    std::vector<int> result{Sa, Sb, Sc};
+    return result;
+}
+
+std::vector<double> SVPWM::Sabc_to_Uabc(const std::vector<int>& Sabc)
+{
+    double Ua = Vdc / 3.0 * (2*Sabc[0] - Sabc[1] - Sabc[2]);
+    double Ub = Vdc / 3.0 * (2*Sabc[1] - Sabc[0] - Sabc[2]);
+    double Uc = Vdc / 3.0 * (2*Sabc[2] - Sabc[1] - Sabc[0]);
+    return std::vector<double>{Ua, Ub, Uc};
+}
 }
