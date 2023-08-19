@@ -1,5 +1,5 @@
 # GTQ_pmsm
-使用C++的PMSM仿真
+使用C++的PMSM仿真，主要的控制为finite control set-model predictive control
 
 预计目标：
 1. 完成单步FCS-MPC控制；对应`DelayCompensation`分支
@@ -24,6 +24,7 @@
 `PMSM.h`：永磁同步电机类。实现电机内部的状态和更新方程。
 `sda.h`：球型译码器控制算法的实现，使用Eigen第三方库。成为`current_controller`电流控制器类的一个成员变量，直接提供算法优化。  
 `speed_controller.h`：速度环控制器，内部是一个PID控制器。  
+`svpmw.h`：调制类，未完成...  
 `system.h`：被控对象类。实现PMSM和逆变器的继承，成为一个统一的被控对象，实现两个父类的一起更新。  
 
 ---
