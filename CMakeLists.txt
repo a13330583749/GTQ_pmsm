@@ -16,9 +16,13 @@ file(GLOB SOURCES src/*.cpp)
 
 # add_executable(sda_pmsm ./example/sda_pmsm.cpp ${SOURCES})
 
-add_executable(parameter_identification_IRLS ./example/parameter_identification_IRLS.cc ${SOURCES})
-target_include_directories(parameter_identification_IRLS PRIVATE ./)
+# 最小二乘法辨识
+# add_executable(parameter_identification_IRLS ./example/parameter_identification_IRLS.cc ${SOURCES})
+# target_include_directories(parameter_identification_IRLS PRIVATE ./)
 
+# SVPWM测试
+add_executable(svpwm_test ./example/svpwm_test.cpp  ${SOURCES})
+target_include_directories(svpwm_test PRIVATE ./)
 
 # add_executable(PMSM ./example/test_PMSM_model.cpp current_controller.cpp PMSM.cpp system.cpp inverter.cpp)
 # add_executable(bool_test ./example/bool_test.cpp)

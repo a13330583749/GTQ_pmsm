@@ -4,10 +4,11 @@ void SVPWM::calculation(const double& Valpha, const double& Vbeta)
 {
     // Parameters statement
     double Vref1 = Vbeta;
-    double Vref2 = (std::sqrt(3) * Valpha - Vbeta) / 2;
-    double Vref3 = (-std::sqrt(3) * Valpha - Vbeta) / 2;
-
+    double Vref2 = (std::sqrt(3) * Valpha - Vbeta) / 2.0;
+    double Vref3 = (-std::sqrt(3) * Valpha - Vbeta) / 2.0;
+    this->sector = 0;
     // Sector calculation
+    // 扇区计算
     if(Vref1>0)
         this->sector = 1;
     if(Vref2>0)
@@ -16,11 +17,13 @@ void SVPWM::calculation(const double& Valpha, const double& Vbeta)
         this->sector = this->sector + 4;
     
     // X Y Z calculation
+    // 计算各矢量的时间
     double X = std::sqrt(3) * Vbeta * (this->Tpwm) / (this->Vdc);
-    double Y = (this->Tpwm) / (this->Vdc) * (3/2 * Valpha + std::sqrt(3)/2 * Vbeta);
-    double Z = (this->Tpwm) / (this->Vdc) * (-3/2 * Valpha + std::sqrt(3)/2 * Vbeta);
+    double Y = (this->Tpwm) / (this->Vdc) * (3.0/2.0 * Valpha + std::sqrt(3)/2 * Vbeta);
+    double Z = (this->Tpwm) / (this->Vdc) * (-3.0/2.0 * Valpha + std::sqrt(3)/2 * Vbeta);
     double T1, T2;
 
+    // 各矢量的作用时间
     // Duty ratio calculation
     switch (this->sector)
     {
@@ -44,6 +47,7 @@ void SVPWM::calculation(const double& Valpha, const double& Vbeta)
     case 5:
         T1 = X;
         T2 = -Y;
+        break;
     default:
         T1 = -Y;
         T2 = -Z;
@@ -94,7 +98,7 @@ void SVPWM::calculation(const double& Valpha, const double& Vbeta)
         this->Tcmp3 = ta;
         break;
     default:
-        std::cerr << "时间序列出错";
+        std::cerr << "sector = " << this->sector << "时间序列出错" << std::endl;
         break;
     }
 
