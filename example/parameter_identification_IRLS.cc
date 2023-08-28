@@ -65,7 +65,7 @@ int main(int argc, char *argv[])
     
     // 创建电流控制器并选择控制策略
     PanJL::FCSMPCer current_trl(PanJL::Vdc, 0);
-    current_trl.set_control_method(2);
+    current_trl.set_control_method(1);
     // 创建速度控制器
     PanJL::Speed_controller speed_pid(KP, KI, KD, 0);
     // 创建对象
@@ -73,8 +73,8 @@ int main(int argc, char *argv[])
     plant.init_PMSM(PanJL::Ld_, PanJL::Lq_, PanJL::F_, PanJL::Bm_, PanJL::Rs_, PanJL::TL_, PanJL::Pn_, PanJL::J_);
     plant.set_state_PMSM(0, 0, 0, 0);// 设置wr, id, iq, ele_theta
     if(current_trl.init_PMSM(PanJL::Ld_estimated, PanJL::Lq_estimated, PanJL::F_estimated, 
-                            PanJL::Bm_, PanJL::Rs_estimated, PanJL::TL_, PanJL::Pn_, PanJL::J_) < 1);
-        // std::cerr << "initial fail\n\r";
+                            PanJL::Bm_, PanJL::Rs_estimated, PanJL::TL_, PanJL::Pn_, PanJL::J_) < 1)
+        return -1;
     // 创建辨识器
     PanJL::Identifier compensator;
     
@@ -112,6 +112,7 @@ int main(int argc, char *argv[])
                 // 更新控制器的参数
                 current_trl.set_parameter_pmsm(PanJL::Ld_estimated,PanJL::Lq_estimated, PanJL::F_estimated, PanJL::Rs_estimated);
             }
+            std::cout << vir_Udq[0] << " " << vir_Udq[1] << " " << vir_Udq[2] << std::endl;
         }
         outputFile << plant.get_wr() << "," << plant.get_u0() <<
             "," << PanJL::Ld_estimated << "," << PanJL::Rs_estimated <<std::endl;

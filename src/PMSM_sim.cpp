@@ -18,7 +18,7 @@ namespace PanJL {
 
     double Ld_estimated = 0.7* Ld_;
     double Lq_estimated = 0.7* Lq_;
-    double Rs_estimated = 1.3* Rs_;
+    double Rs_estimated = 0.7* Rs_;
     double F_estimated  =  F_;
 
     const double PI = 3.1415926536;
