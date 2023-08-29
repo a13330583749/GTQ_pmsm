@@ -38,12 +38,20 @@ svpwm_test的马鞍波测试
 
 ---
 
+2023/08/29，潘继良  
+找到问题bug，在2s/3s变换的时候把alpha beta -> a的坐标变换弄错了。。。  
+更新之后的结果：![IRS_corrent](figure/IRS_corrent.png)   
+
+---
+
 最小二乘辨识的结果：Ls = 7e-3; Rs= 2.98;  
 参数的问题吗？同样的结果在matlab中是没有问题的。  
 ![IRS](figure/IRS.png)  
 matlab中的结果  
 ![Alt text](figure/matlab%E7%BB%93%E6%9E%9C.jpg)  
 暂时留坑，先写反步法了，为了毕业打算。
+
+
 
 ---
 

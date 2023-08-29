@@ -17,8 +17,8 @@ file(GLOB SOURCES src/*.cpp)
 # add_executable(sda_pmsm ./example/sda_pmsm.cpp ${SOURCES})
 
 # 最小二乘法辨识
-# add_executable(parameter_identification_IRLS ./example/parameter_identification_IRLS.cc ${SOURCES})
-# target_include_directories(parameter_identification_IRLS PRIVATE ./)
+add_executable(parameter_identification_IRLS ./example/parameter_identification_IRLS.cc ${SOURCES})
+target_include_directories(parameter_identification_IRLS PRIVATE ./)
 
 # SVPWM测试
 add_executable(svpwm_test ./example/svpwm_test.cpp  ${SOURCES})

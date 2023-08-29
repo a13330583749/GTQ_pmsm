@@ -84,7 +84,7 @@ int main(int argc, char *argv[])
     bool compensator_flag = true;
     // 获取程序开始执行的时间点
     auto start = std::chrono::high_resolution_clock::now();
-    for (int i_ = 0; i_ < 1 / PanJL::Ts; i_++) //1代表仿真时间为1second
+    for (int i_ = 0; i_ < 1.0 / PanJL::Ts; i_++) //1代表仿真时间为1second
     {
         Iq_ref = speed_pid.updata(wr_ref - plant.get_wr());
         inputs = current_trl.controller(0, Iq_ref, plant.get_ele_theta(), plant.get_Iabc(), plant.get_wr(), PanJL::Ts, plant.get_u0(), vir_Udq);
@@ -98,7 +98,7 @@ int main(int argc, char *argv[])
             plant.updata(inputs[1], PanJL::Ts / 2.0);
         }
         // 进行参数辨识：
-        if (i_ > 0.1/PanJL::Ts){
+        if (static_cast<double>(i_) > 0.3/PanJL::Ts){
             if(compensator_flag){
                 //辨识器初始化
                 compensator_flag = false;

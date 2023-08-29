@@ -6,7 +6,7 @@
 //稠密矩阵的代数运算（逆、特征值等）
 #include <Eigen/Dense>
 // 预测时域：对于SDA算法，或者multiplestep FCS-MPC使用
-const static int predictive_N = 3;
+const static int predictive_N = 2;
 const static int rank_abc     = 3;
 const static int rankA = 2;
 
