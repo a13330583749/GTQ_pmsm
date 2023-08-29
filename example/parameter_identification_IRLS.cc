@@ -65,7 +65,7 @@ int main(int argc, char *argv[])
     
     // 创建电流控制器并选择控制策略
     PanJL::FCSMPCer current_trl(PanJL::Vdc, 0);
-    current_trl.set_control_method(1);
+    current_trl.set_control_method(0);
     // 创建速度控制器
     PanJL::Speed_controller speed_pid(KP, KI, KD, 0);
     // 创建对象

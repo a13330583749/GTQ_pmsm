@@ -32,7 +32,7 @@ namespace PanJL {
     };
 
     const std::function<double(double, double)> alphabeta2a = [](double alpha, double beta) -> double {
-        return  beta;
+        return alpha;
     };
 
     const std::function<double(double, double)> alphabeta2b = [](double alpha, double beta) -> double {
