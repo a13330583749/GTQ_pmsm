@@ -24,8 +24,16 @@
 `PMSM.h`：永磁同步电机类。实现电机内部的状态和更新方程。
 `sda.h`：球型译码器控制算法的实现，使用Eigen第三方库。成为`current_controller`电流控制器类的一个成员变量，直接提供算法优化。  
 `speed_controller.h`：速度环控制器，内部是一个PID控制器。  
-`svpmw.h`：调制类，未完成...  
+`svpmw.h`：调制类，目前只有实现SVPWM，对于SPWM及其谐波补偿的方式都还没有完成。      
 `system.h`：被控对象类。实现PMSM和逆变器的继承，成为一个统一的被控对象，实现两个父类的一起更新。  
+
+---
+
+2023/08/29，潘继良  
+找到问题bug，在2s/3s变换的时候把alpha beta -> a的坐标变换弄错了。。。  
+更新之后的结果：![IRS_corrent](figure/IRS_corrent.png)   
+
+
 
 ---
 
@@ -35,12 +43,6 @@
 svpwm_test的马鞍波测试  
 ![svpwm_test](figure/svpwm_test.png)  
 有关具有调制环节的测试就这样，对应具体的控制的之后有空再写，输入就是Valpha、Vbeta。回去看看反步法应该怎么弄。  
-
----
-
-2023/08/29，潘继良  
-找到问题bug，在2s/3s变换的时候把alpha beta -> a的坐标变换弄错了。。。  
-更新之后的结果：![IRS_corrent](figure/IRS_corrent.png)   
 
 ---
 
